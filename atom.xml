@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Lee&#39;s Blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-04-16T02:42:40.370Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Lee&#39;s Blog</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>编辑好手-Markdown</title>
+    <link href="http://yoursite.com/2019/04/12/markdown%E4%B8%8A%E6%89%8B/"/>
+    <id>http://yoursite.com/2019/04/12/markdown上手/</id>
+    <published>2019-04-11T16:00:00.000Z</published>
+    <updated>2019-04-16T02:42:40.370Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://pan.baidu.com/s/1eSKXqka" title="下载地址" target="_blank" rel="noopener">下载地址</a></p><h3 id="激活——进入enter-key"><a href="#激活——进入enter-key" class="headerlink" title="激活——进入enter key"></a>激活——进入enter key</h3><a id="more"></a><ul><li>邮箱地址：<a href="mailto:Soar360@live.com" target="_blank" rel="noopener">Soar360@live.com</a>  </li><li>激活码：<code>GBPduHjWfJU1mZqcPM3BikjYKF6xKhlKIys3i1MU2eJHqWGImDHzWdD6xhMNLGVpbP2M5SN6bnxn2kSE8qHqNY5QaaRxmO3YSMHxlv2EYpjdwLcPwfeTG7kUdnhKE0vVy4RidP6Y2wZ0q74f47fzsZo45JE2hfQBFi2O9Jldjp1mW8HUpTtLA2a5/sQytXJUQl/QKO0jUQY4pa5CCx20sV1ClOTZtAGngSOJtIOFXK599sBr5aIEFyH0K7H4BoNMiiDMnxt1rD8Vb/ikJdhGMMQr0R4B+L3nWU97eaVPTRKfWGDE8/eAgKzpGwrQQoDh+nzX1xoVQ8NAuH+s4UcSeQ==</code><br><img src="https://i.loli.net/2019/04/12/5caff1e6cbd0d.png" alt><h3 id="【报错】缺少插件"><a href="#【报错】缺少插件" class="headerlink" title="【报错】缺少插件"></a>【报错】缺少插件</h3><a href="https://pan.baidu.com/s/1qY7LKba" title="插件下载" target="_blank" rel="noopener">插件下载</a><h4 id="下载安装该插件"><a href="#下载安装该插件" class="headerlink" title="下载安装该插件"></a>下载安装该插件</h4><img src="https://i.loli.net/2019/04/12/5caff460df49f.png" alt><h3 id="修改语言"><a href="#修改语言" class="headerlink" title="修改语言"></a>修改语言</h3>工具-&gt;选项-&gt;语言<h3 id="关于图片插入问题"><a href="#关于图片插入问题" class="headerlink" title="关于图片插入问题"></a>关于图片插入问题</h3></li></ul><ul><li>Markdown点击插入图片无法显示（或无法正常显示）</li><li>使用图床，将本地图片上传</li></ul><h4 id="类似的工具软件有："><a href="#类似的工具软件有：" class="headerlink" title="类似的工具软件有："></a>类似的工具软件有：</h4><ul><li>MPic</li><li>七牛云</li><li><p>PicGo</p></li><li><p>SM.MS（笔者正在用的这个，简单高效）<br><a href="https://sm.ms/" title="SM.MS地址" target="_blank" rel="noopener">SM.MS地址</a><br><img src="https://i.loli.net/2019/04/12/5caffa0e499ef.png" alt></p><h3 id="The-End"><a href="#The-End" class="headerlink" title="The End"></a>The End</h3></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://pan.baidu.com/s/1eSKXqka&quot; title=&quot;下载地址&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;下载地址&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;激活——进入enter-key&quot;&gt;&lt;a href=&quot;#激活——进入enter-key&quot; class=&quot;headerlink&quot; title=&quot;激活——进入enter key&quot;&gt;&lt;/a&gt;激活——进入enter key&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="Markdown" scheme="http://yoursite.com/categories/Markdown/"/>
+    
+    
+      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
+    
+      <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>本地web项目，通过内网穿透，实现公网访问</title>
+    <link href="http://yoursite.com/2019/04/07/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    <id>http://yoursite.com/2019/04/07/内网穿透/</id>
+    <published>2019-04-06T16:00:00.000Z</published>
+    <updated>2019-04-16T02:43:08.443Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="什么是内网穿透？"><a href="#什么是内网穿透？" class="headerlink" title="什么是内网穿透？"></a>什么是内网穿透？</h3><pre><code>内网穿透即NAT穿透，网络连接时术语，计算机是局域网内时，外网与内网的计算机节点需要连接通信，有时就会出现不支持内网穿透。就是说映射端口,能让外网的电脑找到处于内网的电脑,提高下载速度。不管是内网穿透还是其他类型的网络穿透，都是网络穿透的统一方法来研究和解决。NAT穿透，nat穿透中有关于网络穿透的详细信息。</code></pre><h3 id="内网穿透工具有哪些？"><a href="#内网穿透工具有哪些？" class="headerlink" title="内网穿透工具有哪些？"></a>内网穿透工具有哪些？</h3><ul><li>Ngrok</li><li>Sunny-Ngrok</li><li>Frp</li><li>花生壳</li></ul><ul><li>……<a id="more"></a><h3 id="将基于hexo搭建的博客实现内网穿透（Sunny-Ngrok实现）"><a href="#将基于hexo搭建的博客实现内网穿透（Sunny-Ngrok实现）" class="headerlink" title="将基于hexo搭建的博客实现内网穿透（Sunny-Ngrok实现）"></a>将基于hexo搭建的博客实现内网穿透（Sunny-Ngrok实现）</h3><a href="https://www.ngrok.cc/" target="_blank" rel="noopener">点我进入Sunny-Ngrok</a></li></ul><h3 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h3><p>————————————————————————————————————————————</p><p><a href="https://www.cnblogs.com/silly-bird/p/10663291.html" title="我的另一篇博客有详细的说明，欢迎访问" target="_blank" rel="noopener">我的另一篇博客有详细的说明，欢迎访问！</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;什么是内网穿透？&quot;&gt;&lt;a href=&quot;#什么是内网穿透？&quot; class=&quot;headerlink&quot; title=&quot;什么是内网穿透？&quot;&gt;&lt;/a&gt;什么是内网穿透？&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;内网穿透即NAT穿透，网络连接时术语，计算机是局域网内时，外网与内网的计算机节点需要连接通信，有时就会出现不支持内网穿透。就是说映射端口,能让外网的电脑找到处于内网的电脑,提高下载速度。不管是内网穿透还是其他类型的网络穿透，都是网络穿透的统一方法来研究和解决。NAT穿透，nat穿透中有关于网络穿透的详细信息。
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;内网穿透工具有哪些？&quot;&gt;&lt;a href=&quot;#内网穿透工具有哪些？&quot; class=&quot;headerlink&quot; title=&quot;内网穿透工具有哪些？&quot;&gt;&lt;/a&gt;内网穿透工具有哪些？&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Ngrok&lt;/li&gt;
+&lt;li&gt;Sunny-Ngrok&lt;/li&gt;
+&lt;li&gt;Frp&lt;/li&gt;
+&lt;li&gt;花生壳&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;……
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+    
+    
+      <category term="内网穿透" scheme="http://yoursite.com/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    
+      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
+    
+  </entry>
+  
+</feed>
