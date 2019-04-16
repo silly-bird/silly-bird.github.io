@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-16T02:42:40.370Z</updated>
+  <updated>2019-04-16T07:18:31.545Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>为github pages博客添加域名</title>
+    <link href="http://yoursite.com/2019/04/17/%E5%9F%9F%E5%90%8D/"/>
+    <id>http://yoursite.com/2019/04/17/域名/</id>
+    <published>2019-04-16T16:00:00.000Z</published>
+    <updated>2019-04-16T07:18:31.545Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Markdown" scheme="http://yoursite.com/categories/Markdown/"/>
+    
+    
+      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
+    
+      <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>编辑好手-Markdown</title>
