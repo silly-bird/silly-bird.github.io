@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[个人博客，实现评论功能]]></title>
+    <url>%2F2019%2F04%2F17%2F%E8%AF%84%E8%AE%BA%2F</url>
+    <content type="text"><![CDATA[评论的相关插件 多说（凉凉了） Hypercomments 来必力 Gitment …… 我的博客用的是Valine+leancloud Leancloud官网 注册登陆就不啰里啰唆了，绑定邮箱并验证就可以使用了 创建应用——&gt;选择开发板——&gt;创建 设置——&gt;应用key App ID App Key 进入 安全中心——&gt;Web安全域名 ![](https://i.loli.net/2019/04/17/5cb72983f151f.png 填上自己的仓库地址 如果有域名写上自己的域名 有域名一定要写，不然评论会报错 Valine配置下载Valine.min.js代码到本地：下载地址 鼠标右击另存为，将下载好的文件放在next\source\js\src 配置valine：next\layout_third-party\comments\valine.swig {% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %} //调用刚下载的本地文件以加速加载速度 {% set valine_uri = '/js/src/Valine.min.js' %} //这里改为从本地加载 {% if theme.vendors.valine %} {% set valine_uri = theme.vendors.valine %} {% endif %} &lt;script src=&quot;{{ valine_uri }}&quot;&gt;&lt;/script&gt; &lt;script type=&quot;text/javascript&quot;&gt; var GUEST = [&apos;nick&apos;,&apos;mail&apos;,&apos;link&apos;]; var guest = &apos;{{ theme.valine.guest_info }}&apos;; guest = guest.split(&apos;,&apos;).filter(function (item) { return GUEST.indexOf(item)&gt;-1; }); new Valine({ el: &apos;#comments&apos; , verify: {{ theme.valine.verify }}, notify: {{ theme.valine.notify }}, appId: &apos;{{ theme.valine.appid }}&apos;, appKey: &apos;{{ theme.valine.appkey }}&apos;, placeholder: &apos;{{ theme.valine.placeholder }}&apos;, avatar:&apos;{{ theme.valine.avatar }}&apos;, guest_info:[&apos;nick&apos;] , //评论者只需要提供评论的昵称即可 pageSize:&apos;{{ theme.valine.pageSize }}&apos; || 10, }); //增加以下六行代码去除 power by valine var infoEle = document.querySelector(&apos;#comments .info&apos;); if (infoEle &amp;&amp; infoEle.childNodes &amp;&amp; infoEle.childNodes.length &gt; 0){ infoEle.childNodes.forEach(function(item) { item.parentNode.removeChild(item); }); } &lt;/script&gt; {% endif %}12345678910111213141516- 修改主题配置文件_config.yml # valine: enable: true //打开valine评论功能 appid: 你的leancloud appid appkey: 你的leancloud appkey notify: false //邮件提醒 verify: true //评论时是否有验证码，需要在Leancloud 设置-&gt;安全中心 中打开 placeholder: 说点什么吧！ //评论框默认显示 avatar: hide //评论者的头像,我这里设置的不显示 guest_info: nick # custom comment header pageSize: 10 # pagination size 实现效果如下↓↓↓]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>评论实现</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[为github pages博客添加域名]]></title>
     <url>%2F2019%2F04%2F17%2F%E5%9F%9F%E5%90%8D%2F</url>
     <content type="text"><![CDATA[首先将本地的博客项目上传至托管平台 github gitee 服务器 …… 笔者将博客项目上传至github上项目仓库地址 https://silly-bird.github. https://www.ljcn.xyz 当然，绑定域名之后，输入https://silly-bird.github之后访问的也是https://www.ljcn.xyz 博客的创建的过程网上有很多的教程，可谓是五花八门，笔者提示一点注意版本问题意思是：有些命令或者配置参数有可能发生变更，如果有什么问题可以给我留言，我尽可能帮助！ 域名绑定我也是当时碰到腾讯做活动，买了一个域名，主要是想尝试一下绑定域名的整个过程 购买域名 实名认证（时间不是很久） 解析域名： 记录类型：CNAME 主机记录：www 记录值：填上你代码的托管地址，例如：silly-bird.github.io 记录类型（A、 MX、 TXT等等）和主机记录说明（@、 *、 mail等等） 添加CNAME文件添加路径：博客文件的source下，例如： 内容为购买的域名，例如：www.ljcn.xyz 最后最后，提交更新到托管平台]]></content>
