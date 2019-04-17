@@ -3,13 +3,15 @@
   <entry>
     <title><![CDATA[为github pages博客添加域名]]></title>
     <url>%2F2019%2F04%2F17%2F%E5%9F%9F%E5%90%8D%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[首先将本地的博客项目上传至托管平台 github gitee 服务器 …… 笔者将博客项目上传至github上项目仓库地址 https://silly-bird.github. https://www.ljcn.xyz 当然，绑定域名之后，输入https://silly-bird.github之后访问的也是https://www.ljcn.xyz 博客的创建的过程网上有很多的教程，可谓是五花八门，笔者提示一点注意版本问题意思是：有些命令或者配置参数有可能发生变更，如果有什么问题可以给我留言，我尽可能帮助！ 域名绑定我也是当时碰到腾讯做活动，买了一个域名，主要是想尝试一下绑定域名的整个过程 购买域名 实名认证（时间不是很久） 解析域名： 记录类型：CNAME 主机记录：www 记录值：填上你代码的托管地址，例如：silly-bird.github.io 记录类型（A、 MX、 TXT等等）和主机记录说明（@、 *、 mail等等） 添加CNAME文件添加路径：博客文件的source下，例如： 内容为购买的域名，例如：www.ljcn.xyz 最后最后，提交更新到托管平台]]></content>
       <categories>
-        <category>Markdown</category>
+        <category>hexo</category>
       </categories>
       <tags>
         <tag>windows</tag>
         <tag>Markdown</tag>
+        <tag>hexo</tag>
+        <tag>next</tag>
       </tags>
   </entry>
   <entry>
