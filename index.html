@@ -375,8 +375,7 @@
 
       
         
-          
-            <h3 id="什么是Ajax？"><a href="#什么是Ajax？" class="headerlink" title="什么是Ajax？"></a><strong>什么是Ajax？</strong></h3><ul>
+          <h3 id="什么是Ajax？"><a href="#什么是Ajax？" class="headerlink" title="什么是Ajax？"></a><strong>什么是Ajax？</strong></h3><ul>
 <li>Ajax 即“Asynchronous Javascript And XML”（异步 JavaScript 和 XML），是指一种创建交互式网页应用的网页开发技术。</li>
 <li>Ajax = 异步 JavaScript 和 XML 或者是 HTML（标准通用标记语言的子集）。</li>
 <li>Ajax 是一种用于创建快速动态网页的技术。</li>
@@ -384,78 +383,13 @@
 <li>通过在后台与服务器进行少量数据交换，Ajax 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</li>
 <li><em>传统的网页（不使用 Ajax）如果需要更新内容，必须重载整个网页页面。</em></li>
 </ul>
-<hr>
-<hr>
-<h3 id="使用流程"><a href="#使用流程" class="headerlink" title="使用流程"></a>使用流程</h3><hr>
-<h5 id="创建ajax引擎对象"><a href="#创建ajax引擎对象" class="headerlink" title="创建ajax引擎对象"></a>创建ajax引擎对象</h5><pre><code>var ajax;
-if(window.XMLHttpRequest){
-    ajax=new XMLHttpRequest();
-}else if(window.ActiveXObject(&quot;Msxml2.XMLHTTP&quot;));                            
-</code></pre><h5 id="复写onreadystatechange函数"><a href="#复写onreadystatechange函数" class="headerlink" title="复写onreadystatechange函数"></a>复写onreadystatechange函数</h5><p>  <code>ajax.onreadystatechange(){}</code>    </p>
-<h5 id="判断ajax状态码"><a href="#判断ajax状态码" class="headerlink" title="判断ajax状态码"></a>判断ajax状态码</h5><ul>
-<li>0 （未初始化）还没有调用send()方法</li>
-<li>1 （载入）已调用send()方法，正在发送请求</li>
-<li>2 （载入完成）send()方法执行完成，已经接收到全部响应内容</li>
-<li>3 （交互）正在解析响应内容</li>
-<li>4 （完成）响应内容解析完成，可以在客户端调用了<br><code>if(ajax.readyState==4){}</code>    </li>
-</ul>
-<h5 id="判断响应状态码"><a href="#判断响应状态码" class="headerlink" title="判断响应状态码"></a>判断响应状态码</h5><ul>
-<li>200 请求成功</li>
-<li>404 资源未找到</li>
-<li>500 内部服务器错误<br><code>if(ajax.status==200){}</code></li>
-</ul>
-<h5 id="获取响应内容"><a href="#获取响应内容" class="headerlink" title="获取响应内容"></a>获取响应内容</h5><pre><code>var result=ajax.responseText;
-</code></pre><h5 id="处理响应内容"><a href="#处理响应内容" class="headerlink" title="处理响应内容"></a>处理响应内容</h5><h5 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h5><ul>
-<li>get方式<pre><code>ajax.open(&quot;get&quot;, &quot;AjaxTest?name=ljc&amp;pwd=123&quot;);    
-ajax.send(null);
-</code></pre></li>
-<li><p>post方式</p>
-<pre><code>ajax.open(&quot;post&quot;, &quot;AjaxTest&quot;);
-ajax.setRequestHeader(&quot;Content-Type&quot;,&quot;application/x-www-form-urlencoded&quot;);
-ajax.send(&quot;name=ljc&amp;pwd=123&quot;);
-</code></pre></li>
-</ul>
-<hr>
-<hr>
-<h3 id="部分代码"><a href="#部分代码" class="headerlink" title="部分代码"></a>部分代码</h3><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-
-function ajaxReq(){
-    //创建ajax对象
-    var ajax;
-    if(window.XMLHttpRequest){
-        ajax=new XMLHttpRequest();
-    }else if(window.ActiveXObject(&quot;Msxml2.XMLHTTP&quot;));
-    //复写onreadystatechange函数
-    ajax.onreadystatechange(){
-        //判断ajax状态码
-        if(ajax.readyState==4){
-            //判断响应状态码
-            if(ajax.status==200){
-                //获取响应内容
-                var result=ajax.responseText;
-                //处理响应内容
-                alert(result);
-            }
-
-        }
-
-    }
-
-    //发送请求
-        //get方式 
-        ajax.open(&quot;get&quot;, &quot;AjaxTest?name=ljc&amp;pwd=123&quot;);    
-        ajax.send(null);
-
-        //post方式
-        //ajax.open(&quot;post&quot;, &quot;AjaxTest&quot;);
-        //ajax.setRequestHeader(&quot;Content-Type&quot;,&quot;application/x-www-form-urlencoded&quot;);
-        //ajax.send(&quot;name=ljc&amp;pwd=123&quot;);
-
-}
-&lt;/script&gt;
-</code></pre><hr>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/24/Ajax/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
