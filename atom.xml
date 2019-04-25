@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-24T14:43:27.350Z</updated>
+  <updated>2019-04-25T09:21:04.198Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基本数据类型转换</title>
+    <link href="http://yoursite.com/2019/04/25/%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/"/>
+    <id>http://yoursite.com/2019/04/25/数值类型转换/</id>
+    <published>2019-04-24T16:00:00.000Z</published>
+    <updated>2019-04-25T09:21:04.198Z</updated>
+    
+    <content type="html"><![CDATA[<hr><a id="more"></a><h3 id="java八种基本数据类型"><a href="#java八种基本数据类型" class="headerlink" title="java八种基本数据类型"></a>java八种基本数据类型</h3><p><img src="https://i.loli.net/2019/04/25/5cc17599de30d.png" alt></p><h3 id="基本数据类型转换"><a href="#基本数据类型转换" class="headerlink" title="基本数据类型转换"></a>基本数据类型转换</h3><pre><code>if(两个操作数中有一个是double类型){    另一个操作数就会转换成double类型；}else if（两个操作数中有一个是float类型）{    另一个操作数就会转换成float类型；}else if（两个操作数中有一个是long类型）{    另一个操作数就会转换成flong类型；}else{    两个操作数都被转换成int类型；}</code></pre><p><img src="https://i.loli.net/2019/04/25/5cc1796f5ce65.png" alt><br><em>蓝色箭头代表无精度丢失的转换<br>黄色箭头表示可能有精度丢失的转换</em></p><h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><p>例如，将double类型的数值转换成int类型，需要通过强制类型转换（cast）实现。</p><pre><code>double test=1.111；int test2=（int）test；</code></pre><p><strong>注意</strong>：如果试图将一个数值从一种数据类型强制转换成另外一种数据类型，同时超过了目标类型的表示范围，结果会截取成完全不同的数值。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="基本数据类型" scheme="http://yoursite.com/tags/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Ajax学习</title>
