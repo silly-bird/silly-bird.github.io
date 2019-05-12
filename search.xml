@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Java中浅谈"equals"和"=="]]></title>
+    <url>%2F2019%2F05%2F12%2Fequals%20%E5%92%8C%20%3D%3D%2F</url>
+    <content type="text"><![CDATA[“equals”和“==”怎么区分使用，什么时候使用equals（）？什么时候使用 “==” ？ “==”使用场景 如果两个变量是基本数据类型，可以直接使用“==”运算符来比较数值是否相等。 如果是引用数据类型（对象），这里涉及两块内存，对象存储在对内存中，变量占用另外一块内存。如果要比较两个对象是否指向同一个对象，看这两个对象是否指向同一块存储空间 例如： String s=new String(); `new String()占用一块内存 变量s占用一块内存` 此时，变量s所对应内存中存储的数值就是对象占用的那块地址的首地址 基本数据类型：byte、int、long、short、float、double、char、boolean（比较值）引用数据类型：类（包括对象）、接口、数组（比较的是他们在内存中的存放地址） equals使用场景equals是Object提供的方法，每个类都继承至Object，所以都具有equals方法。 没有覆盖的equals底层也是使用“==”运算符比较两个对象 boolean equals（Object object）{ return this==object； } “==”和equals比较相比较“==”运算符，equals方法可以被覆盖，可以通过覆盖，让他比较数据内容而不是引用比较堆中内容是否相等 new 两个对象： String s1=new Strig(&quot;www.ljcn.xyz&quot;); String s2=new Strig(&quot;www.ljcn.xyz&quot;); 这是俩个不同的对象，首地址不同s1=s2；返回falses1.equals(s2);返回true 最后如果编写的类希望比较该类创建的两个实例对象的内容是否相同，需覆盖equals方法！]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>equals和==</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[基本数据类型转换]]></title>
     <url>%2F2019%2F04%2F25%2F%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%2F</url>
     <content type="text"><![CDATA[java八种基本数据类型 基本数据类型转换if(两个操作数中有一个是double类型){ 另一个操作数就会转换成double类型； }else if（两个操作数中有一个是float类型）{ 另一个操作数就会转换成float类型； }else if（两个操作数中有一个是long类型）{ 另一个操作数就会转换成flong类型； }else{ 两个操作数都被转换成int类型； } 蓝色箭头代表无精度丢失的转换黄色箭头表示可能有精度丢失的转换 强制类型转换例如，将double类型的数值转换成int类型，需要通过强制类型转换（cast）实现。 double test=1.111； int test2=（int）test； 注意：如果试图将一个数值从一种数据类型强制转换成另外一种数据类型，同时超过了目标类型的表示范围，结果会截取成完全不同的数值。]]></content>

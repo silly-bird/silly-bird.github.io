@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-25T09:21:04.198Z</updated>
+  <updated>2019-05-12T10:12:53.974Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java中浅谈&quot;equals&quot;和&quot;==&quot;</title>
+    <link href="http://yoursite.com/2019/05/12/equals%20%E5%92%8C%20==/"/>
+    <id>http://yoursite.com/2019/05/12/equals 和 ==/</id>
+    <published>2019-05-11T16:00:00.000Z</published>
+    <updated>2019-05-12T10:12:53.974Z</updated>
+    
+    <content type="html"><![CDATA[<p>“equals”和“==”怎么区分使用，什么时候使用equals（）？什么时候使用 “==” ？</p><a id="more"></a><h3 id="“-”使用场景"><a href="#“-”使用场景" class="headerlink" title="“==”使用场景"></a>“==”使用场景</h3><p>  如果两个变量是基本数据类型，可以直接使用“==”运算符来比较数值是否相等。<br>  如果是引用数据类型（对象），这里涉及两块内存，对象存储在对内存中，变量占用另外一块内存。如果要比较两个对象是否指向同一个对象，看这两个对象是否指向同一块存储空间<br>    <code>例如：  String s=new String();</code></p><pre><code>`new String()占用一块内存    变量s占用一块内存`</code></pre><p><em>此时，变量s所对应内存中存储的数值就是对象占用的那块地址的首地址</em></p><blockquote><p>基本数据类型：byte、int、long、short、float、double、char、boolean（比较值）<br>引用数据类型：类（包括对象）、接口、数组（比较的是他们在内存中的存放地址）</p></blockquote><h3 id="equals使用场景"><a href="#equals使用场景" class="headerlink" title="equals使用场景"></a>equals使用场景</h3><p>equals是Object提供的方法，每个类都继承至Object，所以都具有equals方法。<br><strong>  没有覆盖的equals底层也是使用“==”运算符比较两个对象 </strong></p><pre><code>boolean equals（Object object）{       return this==object； }</code></pre><h3 id="“-”和equals比较"><a href="#“-”和equals比较" class="headerlink" title="“==”和equals比较"></a>“==”和equals比较</h3><p>相比较“==”运算符，equals方法可以被覆盖，<strong>可以通过覆盖，让他比较数据内容而不是引用</strong>比较堆中内容是否相等</p><p>new 两个对象：</p><pre><code>String s1=new Strig(&quot;www.ljcn.xyz&quot;);String s2=new Strig(&quot;www.ljcn.xyz&quot;);</code></pre><p>这是俩个不同的对象，首地址不同<br>s1=s2；返回false<br>s1.equals(s2);返回true</p><h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>如果编写的类希望比较该类创建的两个实例对象的内容是否相同，需覆盖equals方法！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;“equals”和“==”怎么区分使用，什么时候使用equals（）？什么时候使用 “==” ？&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="equals和==" scheme="http://yoursite.com/tags/equals%E5%92%8C/"/>
+    
+  </entry>
   
   <entry>
     <title>基本数据类型转换</title>
