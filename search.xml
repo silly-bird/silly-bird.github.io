@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MyBatis与传统JDBC]]></title>
+    <url>%2F2019%2F05%2F21%2FMyBatis%EF%BC%881%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[传统JDBC开发模式的缺陷JDBC（Java DataBase Connectivity）即“Java数据库连接”，是一种提供连接数据库，使用SQL语句操作数据库数据的技术的标准Java API。在传统Jsp/Servlet开发模式下，一般直接使用JDBC进行数据库的连接和操作。引入相关数据库驱动jar包，创建数据库连接类，该类数据库驱动的加载、数据库连接参数配置、连接对象的获取以及连接对象的关闭操作。 硬编码问题//定义mysql的数据库驱动程序 public static final String DBDRIVER=&quot;org.gjt.mm.mysql.Driver&quot;; //定义mysql的数据库连接地址 public static final String DBURL=&quot;jdbc.mysql://localhost:3306/my&quot;; //数据库连接用户名 public static final String DBUSER=&quot;root&quot;; //连接密码 public static final String DBPASS=&quot;root&quot;; 可以看到，数据库驱动程序名称、数据库连接地址、数据库账号及密码都是硬编码到程序中。 什么是硬编码将程序中的外部变量值，使用赋值语句写死在程序中，当需要修改时，要修改源码并重新编译。扩展性差。 待优化问题 连接参数，sql语句的硬编码问题：将sql语句配置在xml或其他非java的配置文件，可以避免修改配置后，重新编译java文件。 数据库的频繁连接与断开 ：使用数据库连接池来管理数据的连接。 查询结果集取数据的硬编码 ：使用一种机制，将查询出的结果集自动映射成java对象，无需手动配置。 什么是MyBatis？MyBatis是一款优秀的持久层框架，它支持定制化SQL存储过程以及高级映射，MyBatis避免了所有的JDBC代码和手动设置参数以及获取结果集。MyBatis可以使用简单的XML或注解来配置合映射原生信息，将接口和Java的pojos（Plain Old Java Objects 普通Java对象）映射成数据库中的记录。 mybatis特点 ：采用配置文件动态管理sql语句，含有输入、输出映射机制以及数据库连接池配置的持久层框架。 mybatis整体架构 数据源配置文件（SqlMapConfig.xml）(文件名可更改) sql映射配置文件（xxxMapper.xml）(文件名可更改) 会话工厂(SqlSessionFactory) 会话(SqlSession) 执行器(EXcutor) 底层封装对象(Statement) mybatis运行流程mybatis的整个运行流程仅仅围绕数据库连接池配置文件SqlMapConfig.xml以及sql映射配置文件Mapper.xml开展。 首先，SqlSessionFactory会话工厂会通过Resources资源信息加载对象获取SqlMapConfig.xml配置文件信息；然后，产生可以与数据库进行交互的会话实例类SqlSession。会话实例类SqlSession可以根据Mapper位置文件的SQL配置，去执行相应的增删改查操作。而在会话实例类SqlSession内部，是通过执行器Executor（基本执行器和缓存执行器）对数据库进行操作。执行器与数据库交互依靠的是底层封装对象Mappered Statement，它封装了从Mapper文件中读取的信息（包括Sql语句、执行参数、输出结果类型）。通过执行器Executor与底层封装对象Mappered Statement的结合，MyBatis实现了与数据库进行交互的功能。 SqlMapConfig.xml:配置数据库连接信息、事务等。配置了包含SQL语句的映射文件集合（Mapper文件） Mappere.xml：配置SQL语句、输入参数和输出结果类型等配置信息 SqlSessionFactory：会话工厂，根据资源加载类获取数据库配置文件信息而生成。作用：生成SqlSession会话对象 SqlSession:由SqlSessionFactory生成。作用：操作数据库 Executor：执行器（分为基本执行器和缓存执行器），是一个接口，为SqlSession执行数据库操作 Mappered Statement：底层封装对象，对操作数据库的信息进行封装（包括SQL语句、输入参数、输出结果类型） 输入参数类型： Java简单类型 HashMap类型 pojo自定义包装类型 输出结果类型: Java简单类型 HashMap类型 pojo自定义包装类型 END更多精彩内容，欢迎扫码关注微信公众号]]></content>
+      <categories>
+        <category>MyBatis</category>
+      </categories>
+      <tags>
+        <tag>MyBatis（1）</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Java中浅谈"equals"和"=="]]></title>
     <url>%2F2019%2F05%2F12%2Fequals%20%E5%92%8C%20%3D%3D%2F</url>
     <content type="text"><![CDATA[“equals”和“==”怎么区分使用，什么时候使用equals（）？什么时候使用 “==” ？ “==”使用场景 如果两个变量是基本数据类型，可以直接使用“==”运算符来比较数值是否相等。 如果是引用数据类型（对象），这里涉及两块内存，对象存储在对内存中，变量占用另外一块内存。如果要比较两个对象是否指向同一个对象，看这两个对象是否指向同一块存储空间 例如： String s=new String(); `new String()占用一块内存 变量s占用一块内存` 此时，变量s所对应内存中存储的数值就是对象占用的那块地址的首地址 基本数据类型：byte、int、long、short、float、double、char、boolean（比较值）引用数据类型：类（包括对象）、接口、数组（比较的是他们在内存中的存放地址） equals使用场景equals是Object提供的方法，每个类都继承至Object，所以都具有equals方法。 没有覆盖的equals底层也是使用“==”运算符比较两个对象 boolean equals（Object object）{ return this==object； } “==”和equals比较相比较“==”运算符，equals方法可以被覆盖，可以通过覆盖，让他比较数据内容而不是引用比较堆中内容是否相等 new 两个对象： String s1=new Strig(&quot;www.ljcn.xyz&quot;); String s2=new Strig(&quot;www.ljcn.xyz&quot;); 这是俩个不同的对象，首地址不同s1=s2；返回falses1.equals(s2);返回true 最后如果编写的类希望比较该类创建的两个实例对象的内容是否相同，需覆盖equals方法！]]></content>
