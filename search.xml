@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title><![CDATA[AppServ登录phpMyAdmin错误]]></title>
-    <url>%2F2019%2F05%2F31%2FAppServ%232002%2F</url>
+    <url>%2F2019%2F05%2F31%2FAppServ%2F</url>
     <content type="text"><![CDATA[错误信息 #2002——&amp;mdash；服务器没有响应（或本地服务器的套接字没有正确设置）。 问题分析 网上有很多与#2002相关的解决方案，主要的是更改相关配置 AppServ→www→phpMyAdmin→config.sample.inc 造成#2020错误的原因有很多，这种方式只能解决造成这一错误的一种情况 按照网上的方法添加了相关信息，但是问题没有得到解决 问题解决 由于我电脑里还装了MySQL的其他版本，猜想是端口冲突造成的 找到了问题的根源，没有开启MySQL服务 mysql57是服务器内置的MySQL MySQL是自己安装的MySQL版本 其他 开启MySQL57，问题解决 END 更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
       <categories>
         <category>PHP</category>
