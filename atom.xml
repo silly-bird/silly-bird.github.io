@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-29T11:01:55.132Z</updated>
+  <updated>2019-05-31T09:54:20.462Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AppServ登录phpMyAdmin错误</title>
+    <link href="http://yoursite.com/2019/05/31/AppServ#2002/"/>
+    <id>http://yoursite.com/2019/05/31/AppServ#2002/</id>
+    <published>2019-05-30T16:00:00.000Z</published>
+    <updated>2019-05-31T09:54:20.462Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h3><blockquote><p><em>#2002——&amp;mdash；服务器没有响应（或本地服务器的套接字没有正确设置）。</em></p></blockquote><a id="more"></a><p><img src="https://i.loli.net/2019/05/31/5cf0e7be61fe150750.png" alt="错误预览"></p><h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><ul><li>网上有很多与#2002相关的解决方案，主要的是更改相关配置</li></ul><blockquote><p>AppServ→www→phpMyAdmin→config.sample.inc</p></blockquote><p><img src="https://i.loli.net/2019/05/31/5cf0f013aee1f33466.png" alt></p><ul><li>造成#2020错误的原因有很多，这种方式只能解决造成这一错误的一种情况</li></ul><p><img src="https://i.loli.net/2019/05/31/5cf0f618e37c196304.png" alt></p><ul><li>按照网上的方法添加了相关信息，但是问题没有得到解决</li></ul><h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><ul><li>由于我电脑里还装了MySQL的其他版本，猜想是端口冲突造成的</li></ul><p><img src="https://i.loli.net/2019/05/31/5cf0f750bf75029948.png" alt></p><ul><li>找到了问题的根源，没有<strong>开启MySQL服务</strong><ul><li>mysql57是服务器内置的MySQL</li><li>MySQL是自己安装的MySQL版本 </li></ul></li></ul><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul><li>开启MySQL57，问题解决</li></ul><p><img src="https://i.loli.net/2019/05/31/5cf0f88e397a766500.png" alt></p><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;错误信息&quot;&gt;&lt;a href=&quot;#错误信息&quot; class=&quot;headerlink&quot; title=&quot;错误信息&quot;&gt;&lt;/a&gt;错误信息&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;#2002——&amp;amp;mdash；服务器没有响应（或本地服务器的套接字没有正确设置）。&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://yoursite.com/categories/PHP/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/categories/PHP/Android/"/>
+    
+    
+      <category term="AppServ" scheme="http://yoursite.com/tags/AppServ/"/>
+    
+  </entry>
   
   <entry>
     <title>阿里云（CentOS）安装MySQL</title>

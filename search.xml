@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[AppServ登录phpMyAdmin错误]]></title>
+    <url>%2F2019%2F05%2F31%2FAppServ%232002%2F</url>
+    <content type="text"><![CDATA[错误信息 #2002——&amp;mdash；服务器没有响应（或本地服务器的套接字没有正确设置）。 问题分析 网上有很多与#2002相关的解决方案，主要的是更改相关配置 AppServ→www→phpMyAdmin→config.sample.inc 造成#2020错误的原因有很多，这种方式只能解决造成这一错误的一种情况 按照网上的方法添加了相关信息，但是问题没有得到解决 问题解决 由于我电脑里还装了MySQL的其他版本，猜想是端口冲突造成的 找到了问题的根源，没有开启MySQL服务 mysql57是服务器内置的MySQL MySQL是自己安装的MySQL版本 其他 开启MySQL57，问题解决 END 更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
+      <categories>
+        <category>PHP</category>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>AppServ</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[阿里云（CentOS）安装MySQL]]></title>
     <url>%2F2019%2F05%2F29%2FLinux-MySQL%2F</url>
     <content type="text"><![CDATA[可以通过输入“sudo su root”切换至root账号下面的一些操作都是在root用户下完成的。 [admin@izwz9gwtq4y4p311j81i6fz ~]$ sudo su root [root@izwz9gwtq4y4p311j81i6fz admin]# 安装步骤①安装MySQL官方的Yum Repository [root@izwz9gwtq4y4p311j81i6fz admin]# wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm ②下载rpm包 [root@izwz9gwtq4y4p311j81i6fz admin]#yum -y install mysql57-community-release-el7-10.noarch.rpm ③安装MySQL服务 [root@izwz9gwtq4y4p311j81i6fz admin]#yum -y install mysql-community-server ④启动mysql服务 [root@izwz9gwtq4y4p311j81i6fz admin]#systemctl start mysqld.service ⑤查看状态 [root@izwz9gwtq4y4p311j81i6fz admin]#systemctl status mysqld.service 初始化设置①查看原始密码 [root@izwz9gwtq4y4p311j81i6fz admin]#vi /var/log/mysqld.log 找到： 2019-05-29T00:47[Note] A temporary password is generated for root @localhost: At#qydoUG2ae 初始化密码：At#qydoUG2ae ②更改初始密码 [root@izwz9gwtq4y4p311j81i6fz admin]#mysqladmin -u root -p&apos;旧密码&apos; password &apos;新密码&apos; 注：若密码设置简单，或有警告和提示密码更改失败 vim /etc/my.cnf， 增加这么一行validate_password=off 重启MySQL systemctl restart mysqld 登录MySQL[root@izwz9gwtq4y4p311j81i6fz admin]#mysql -u root -p 提示输入密码Enter password: 登录成功： 退出MySQLmysql&gt;exit END更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
