@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Android新闻客户端]]></title>
+    <url>%2F2019%2F06%2F01%2FAndroid%E6%96%B0%E9%97%BB%E5%AE%A2%E6%88%B7%E7%AB%AF%2F</url>
+    <content type="text"><![CDATA[什么是AppServAppServ 是 PHP 网页架站工具组合包，作者将一些网络上免费的架站资源重新包装成单一的安装程序，以方便初学者快速完成架站，AppServ 所包含的软件有：Apache、Apache Monitor、PHP、MySQL、phpMyAdmin等。为帮助大家能够迅速的在本地试用EcShop软件，我们编写如下文档。如果您的本地机器没有安装过apache、php、mysql等系统，那么用这个软件则可以让你迅速搭建完整的底层环境。（百度百科） AppServ的获取与安装下载地址 安装 点击“DOWNLOAD”→解压→双击.exe文件安装 安装成功效果 浏览器输入 localhost 检查是否安装成功 AppServ结构简单介绍 AppServ结构 Apache24是Apache的一个服务器 Apache Web Server的目录结构 apache / bin主Apache程序。 apache / conf Apache配置文件。 apache / error Apache错误模板（仅在Apache2.x上找到）。 apache / icons Apache图标。 apache / logs Apache日志文件。 apache / modules Apache模块。 Mysql是数据库（如果本地已安装mysql数据库，确定这里数据库的版本信息，防止因版本冲突造成的不便） mysql / bin主MySQL数据库执行文件。 mysql / data MySQL数据库存储。 mysql / share MySQL错误消息。 php目录结构 php PHP命令行执行和DLL库。 用于PHP的php / ext PECL PHP扩展（仅限PHP5）。 php / extension用于PHP的PECL PHP扩展（仅在PHP 4上找到）。 用于PHP的php / PEAR PEAR框架组件。 www文件存储的目录结构。 www网页文件的目录根。 www / cgi-bin CGI文件目录。 www / phpMyAdmin phpMyAdmin程序目录。 www / appserv AppServ文件，您可以在安装后将其删除。 www / index.php AppServ index.php文件，您可以在安装后将其删除。 环境搭建数据库准备 接下来，设计数据库或者导入已有的数据（这里不做进一步说明） 将数据库中的数据转化为json数据（PHP语言） 连接数据库的文件xxx.php 具体用于创建json数据的xxx.php将PHP文件放入www目录下 输入http://localhost/NewsDemo/getNewsJSON.php Android客户端实现源码：搜索关注微信公众号“原味工厂”，或文章结尾扫码关注！回复：20190601， 即可获取！ 项目结构 更改服务器地址 http://localhost/NewsDemo/getNewsJSON.php http://127.0.0.1/NewsDemo/getNewsJSON.php http://10.0.0.2/NewsDemo/getNewsJSON.php http://10.0.2.2/NewsDemo/getNewsJSON.php运行效果更改logo效果更改背景图效果若无效果 检查服务器地址是否正确 成功返回数据库数据 END 更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
+      <categories>
+        <category>PHP</category>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>AppServ</tag>
+        <tag>Android</tag>
+        <tag>PHP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[AppServ登录phpMyAdmin错误]]></title>
+    <url>%2F2019%2F05%2F31%2FAppServ%232002%2F</url>
+    <content type="text"><![CDATA[错误信息 #2002——&amp;mdash；服务器没有响应（或本地服务器的套接字没有正确设置）。 问题分析 网上有很多与#2002相关的解决方案，主要的是更改相关配置 AppServ→www→phpMyAdmin→config.sample.inc 造成#2020错误的原因有很多，这种方式只能解决造成这一错误的一种情况 按照网上的方法添加了相关信息，但是问题没有得到解决 问题解决 由于我电脑里还装了MySQL的其他版本，猜想是端口冲突造成的 找到了问题的根源，没有开启MySQL服务 mysql57是服务器内置的MySQL MySQL是自己安装的MySQL版本 其他 开启MySQL57，问题解决 END 更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
+      <categories>
+        <category>PHP</category>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>AppServ</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[AppServ登录phpMyAdmin错误]]></title>
     <url>%2F2019%2F05%2F31%2FAppServ%2F</url>
     <content type="text"><![CDATA[错误信息 #2002——&amp;mdash；服务器没有响应（或本地服务器的套接字没有正确设置）。 问题分析 网上有很多与#2002相关的解决方案，主要的是更改相关配置 AppServ→www→phpMyAdmin→config.sample.inc 造成#2020错误的原因有很多，这种方式只能解决造成这一错误的一种情况 按照网上的方法添加了相关信息，但是问题没有得到解决 问题解决 由于我电脑里还装了MySQL的其他版本，猜想是端口冲突造成的 找到了问题的根源，没有开启MySQL服务 mysql57是服务器内置的MySQL MySQL是自己安装的MySQL版本 其他 开启MySQL57，问题解决 END 更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
