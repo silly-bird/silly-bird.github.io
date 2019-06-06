@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-06-01T03:11:05.641Z</updated>
+  <updated>2019-06-06T03:11:11.525Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>XShell远程连接阿里云服务器（CentOS）</title>
+    <link href="http://yoursite.com/2019/06/06/xshell-aliyun/"/>
+    <id>http://yoursite.com/2019/06/06/xshell-aliyun/</id>
+    <published>2019-06-05T16:00:00.000Z</published>
+    <updated>2019-06-06T03:11:11.525Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="XShell"><a href="#XShell" class="headerlink" title="XShell"></a>XShell</h3><p>Xshell是一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及Microsoft Windows 平台的TELNET 协议。Xshell 通过互联网到远程主机的安全连接以及它创新性的设计和特色帮助用户在复杂的网络环境中享受他们的工作。<br>Xshell可以在Windows界面下用来访问远端不同系统下的服务器，从而比较好的达到远程控制终端的目的。除此之外，其还有丰富的外观配色方案以及样式选择。（百度百科）</p><a id="more"></a><h3 id="获取XShell"><a href="#获取XShell" class="headerlink" title="获取XShell"></a>获取XShell</h3><p>XShell是一款收费软件，现在已经更新到XSHell6了。</p><p><img src="https://i.loli.net/2019/06/06/5cf87ab319b3768005.png" alt></p><ul><li>你可以免费试用30天</li><li>你可以花钱购买</li><li>如果只是学习，申请一个家庭/学校免费版的就够了</li></ul><h3 id="家庭-学校免费版获取"><a href="#家庭-学校免费版获取" class="headerlink" title="家庭/学校免费版获取"></a>家庭/学校免费版获取</h3><p><a href="https://www.netsarang.com/zh/free-for-home-school/" target="_blank" rel="noopener">获取地址</a></p><p><img src="https://i.loli.net/2019/06/06/5cf87c1ccea3c98736.png" alt></p><ul><li>填写姓名</li><li>填写邮件（会通过邮箱的方式发送下载链接）</li><li>选择你的需求<ul><li>XShell</li><li>Xftp</li><li>两者</li></ul></li></ul><h3 id="远程连接（秘钥连接）"><a href="#远程连接（秘钥连接）" class="headerlink" title="远程连接（秘钥连接）"></a>远程连接（秘钥连接）</h3><p>有多种连接方式，这里只介绍采用秘钥连接的方式进行演示。其中，秘钥连接有服务器端生成秘钥，XShell导入秘钥文件；另外一种是XShell生成秘钥，服务器导入秘钥文件。</p><h4 id="第一种，XShell生成秘钥（一连接远程主机，进行SSH用户身份验证）"><a href="#第一种，XShell生成秘钥（一连接远程主机，进行SSH用户身份验证）" class="headerlink" title="第一种，XShell生成秘钥（一连接远程主机，进行SSH用户身份验证）"></a>第一种，XShell生成秘钥（一连接远程主机，进行SSH用户身份验证）</h4><ul><li>浏览-&gt;用户秘钥-&gt;生成 <ul><li>生成后记得保存*.pem文件</li></ul></li></ul><p><img src="https://i.loli.net/2019/06/06/5cf87f571744118337.png" alt></p><ul><li>服务器端导入秘钥文件</li></ul><p><img src="https://i.loli.net/2019/06/06/5cf881940817d69889.png" alt></p><h4 id="第二种，服务器端生成秘钥文件，XShell导入秘钥文件进行连接登录"><a href="#第二种，服务器端生成秘钥文件，XShell导入秘钥文件进行连接登录" class="headerlink" title="第二种，服务器端生成秘钥文件，XShell导入秘钥文件进行连接登录"></a>第二种，服务器端生成秘钥文件，XShell导入秘钥文件进行连接登录</h4><ul><li>远程连接-&gt;秘钥管理</li></ul><p><img src="https://i.loli.net/2019/06/06/5cf882623732343127.png" alt></p><ul><li><p>XShell导入秘钥文件</p></li><li><p>预览-&gt;文件<br><img src="https://i.loli.net/2019/06/06/5cf8832de4fb126614.png" alt></p></li><li><p>输入密码</p></li><li><p>连接成功</p></li></ul><p><img src="https://i.loli.net/2019/06/06/5cf883f41e45494561.png" alt></p><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;XShell&quot;&gt;&lt;a href=&quot;#XShell&quot; class=&quot;headerlink&quot; title=&quot;XShell&quot;&gt;&lt;/a&gt;XShell&lt;/h3&gt;&lt;p&gt;Xshell是一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及Microsoft Windows 平台的TELNET 协议。Xshell 通过互联网到远程主机的安全连接以及它创新性的设计和特色帮助用户在复杂的网络环境中享受他们的工作。&lt;br&gt;Xshell可以在Windows界面下用来访问远端不同系统下的服务器，从而比较好的达到远程控制终端的目的。除此之外，其还有丰富的外观配色方案以及样式选择。（百度百科）&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="XShell" scheme="http://yoursite.com/tags/XShell/"/>
+    
+      <category term="服务器" scheme="http://yoursite.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>Android新闻客户端</title>
