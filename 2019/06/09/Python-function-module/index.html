@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Python 第三章：Python函数与模块,">
 
 
 
@@ -79,16 +79,20 @@
 
 
 
-<meta name="description" content="不破不立">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lee&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/categories/hexo/index.html">
+<meta name="description" content="什么是函数把实现某一特定功能的相关语句按某种格式组织在一起形成一个程序单元，这样的一个程序单元叫做函数（function）。函数有时也被成为例程或过程。">
+<meta name="keywords" content="Python 第三章：Python函数与模块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python函数与模块">
+<meta property="og:url" content="http://yoursite.com/2019/06/09/Python-function-module/index.html">
 <meta property="og:site_name" content="Lee&#39;s Blog">
-<meta property="og:description" content="不破不立">
+<meta property="og:description" content="什么是函数把实现某一特定功能的相关语句按某种格式组织在一起形成一个程序单元，这样的一个程序单元叫做函数（function）。函数有时也被成为例程或过程。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg">
+<meta property="og:updated_time" content="2019-06-09T10:52:47.625Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lee&#39;s Blog">
-<meta name="twitter:description" content="不破不立">
+<meta name="twitter:title" content="Python函数与模块">
+<meta name="twitter:description" content="什么是函数把实现某一特定功能的相关语句按某种格式组织在一起形成一个程序单元，这样的一个程序单元叫做函数（function）。函数有时也被成为例程或过程。">
+<meta name="twitter:image" content="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg">
 
 
 
@@ -118,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/hexo/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/09/Python-function-module/">
 
 
 
 
 
-  <title>分类: hexo | Lee's Blog</title>
+  <title>Python函数与模块 | Lee's Blog</title>
   
 
 
@@ -143,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 	<a href="https://github.com/silly-bird" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,105 +251,378 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>hexo<small>分类</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/09/Python-function-module/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lee's Blog">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lee's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/04/17/评论/" itemprop="url">
-              
-                <span itemprop="name">个人博客，实现评论功能</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Python函数与模块</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-17T21:03:13+08:00" content="2019-04-17">
-          04-17
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-09T00:00:00+08:00">
+                2019-06-09
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/09/Python-function-module/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/09/Python-function-module/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/06/09/Python-function-module/" class="leancloud_visitors" data-flag-title="Python函数与模块">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/17/域名/" itemprop="url">
-              
-                <span itemprop="name">为github pages博客添加域名</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-17T00:00:00+08:00" content="2019-04-17">
-          04-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
+        <h3 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函数</h3><p>把实现某一特定功能的相关语句按某种格式组织在一起形成一个程序单元，这样的一个程序单元叫做函数（function）。<br>函数有时也被成为例程或过程。<br><a id="more"></a><br>使用函数的目的：</p>
+<ul>
+<li>分解问题，降低编程难度</li>
+<li>代码重用</li>
+</ul>
+<h5 id="函数的定义格式"><a href="#函数的定义格式" class="headerlink" title="函数的定义格式"></a>函数的定义格式</h5><p>def 函数名([参数列表])：<br>  [函数体]<br>return[返回值列表]</p>
+<blockquote>
+<p>【例】</p>
+</blockquote>
+<pre><code>def say_hello():
+  print(&quot;hello world!&quot;)
+say_hello()
+</code></pre><blockquote>
+<p>运行结果：</p>
+</blockquote>
+<pre><code>hello world!
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+Process finished with exit code 0
+</code></pre><blockquote>
+<p>【例】定义函数计算最大值</p>
+</blockquote>
+<pre><code>def maxnum(x,y):
+    if x&gt;y:
+        return x
+    elif x==y:
+        return &quot;两数相等&quot;
+    else:
+        return y
+（# a=input(&quot;input a:&quot;)）
+（# b=input(&quot;input b:&quot;)）
+a,b=input(&quot;input a b:&quot;).split(&quot;-&quot;)
+print(maxnum(a,b))
+</code></pre><blockquote>
+<p>运行结果：</p>
+</blockquote>
+<pre><code>input a b:12-34
+34
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/07/内网穿透/" itemprop="url">
-              
-                <span itemprop="name">本地web项目，通过内网穿透，实现公网访问</span>
-              
-            </a>
-        
-      </h2>
+Process finished with exit code 0
+</code></pre><h3 id="模块及其应用"><a href="#模块及其应用" class="headerlink" title="模块及其应用"></a>模块及其应用</h3><h5 id="模块的定义及引用"><a href="#模块的定义及引用" class="headerlink" title="模块的定义及引用"></a>模块的定义及引用</h5><p>Python模块（module）是一个python文件，以.py结尾，包含了Python对象定义和Python语句。</p>
+<blockquote>
+<p>例 support.py</p>
+</blockquote>
+<pre><code>def print_func():
+    print(str)
+    print(&quot;hello&quot;)
+    return 
+</code></pre><h5 id="模块的分类"><a href="#模块的分类" class="headerlink" title="模块的分类"></a>模块的分类</h5><ul>
+<li>系统内置模块，例如：sys、time、json模块</li>
+<li>自定义模块</li>
+<li>开源模块，通过<code>pip install</code>进行安装</li>
+</ul>
+<p>注：自定义模块命名不能和系统内置的模块重名，否则无法再导入系统模块</p>
+<h5 id="模块的使用"><a href="#模块的使用" class="headerlink" title="模块的使用"></a>模块的使用</h5><blockquote>
+<p>模块的引用</p>
+</blockquote>
+<p>方式一：import 模块名 </p>
+<pre><code>import math
+print(math.cos(60))
+</code></pre><p>方式二：from 模块名 import 函数名</p>
+<pre><code>from math import cos
+print(cos(60)
+</code></pre><h3 id="包"><a href="#包" class="headerlink" title="包"></a>包</h3><p>每一个Python的包目录下面都会有名为<strong>init</strong>.py的特殊文件，该文件可以为空，但必须存在。</p>
+<blockquote>
+<p>包、模块、函数之间的关系</p>
+<p><strong>包</strong>（<strong>模块1</strong>（<strong>函数</strong>，类），<strong>模块2</strong>（<strong>函数</strong>，类），……）</p>
+</blockquote>
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><blockquote>
+<p>1.验证哥德巴赫猜想：一个不小于7的偶数可以表示两个素数的和</p>
+</blockquote>
+<pre><code>import math
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-07T00:00:00+08:00" content="2019-04-07">
-          04-07
-        </time>
-      </div>
 
-    </header>
-  </article>
+def isprime(n):  # 判断素数
+    if n == 1:
+    return False
+elif n == 2:
+    return True
+else:
+    for i in range(2, int(math.sqrt(n) + 1)):
+        if n % i == 0:
+            return False
+            return True
 
+
+def thonsand(n):  # 生成若干个素数，返回素数list
+    a = []
+    for i in range(1, n + 1):
+        if isprime(i):
+        a.append(i)
+        return a
+
+
+&quot;&quot;&quot;利用前面的两个函数生成n范围内的素数列表
+两层for循环，两个迭代变量之和如果等于参数n就加入列表中
+循环完所有的情况后返回列表，并打印输出。
+&quot;&quot;&quot;
+
+
+def gdbh(n):
+    a = []
+    ls = thonsand(n)
+    for i in ls:
+        for j in ls:
+            if n == i + j:
+                a.append(i)
+                a.append(j)
+                return a
+
+
+ls2 = gdbh(8)
+ls3 = gdbh(152)
+print(ls2)
+print(ls3)
+</code></pre><blockquote>
+<p>运行结果：</p>
+</blockquote>
+<pre><code>[3, 5, 5, 3]
+[3, 149, 13, 139, 43, 109, 73, 79, 79, 73, 109, 43, 139, 13, 149, 3]
+Process finished with exit code 0   
+</code></pre><blockquote>
+<p>2.编写一个判断字符串是否是回文的函数</p>
+</blockquote>
+<pre><code>s = input(&apos;请输入一个字符串：&apos;)
+if not s:
+    print(&apos;请不要输入空字符串！&apos;)
+    s = input(&apos;请重新输入一个字符串：&apos;)
+
+a = len(s)
+i = 0
+count = 1
+while i &lt;= (a/2):
+    if s[i] == s[a-i-1]:
+        count = 1
+        i += 1
+    else:
+        count = 0
+        break
+
+if count == 1:
+    print(&apos;您所输入的字符串是回文&apos;)
+
+else:
+    print(&apos;您所输入的字符串不是回文&apos;)
+</code></pre><blockquote>
+<p>运行结果：</p>
+</blockquote>
+<pre><code>请输入一个字符串：&gt;? 
+请不要输入空字符串！
+请重新输入一个字符串：&gt;? www
+您所输入的字符串是回文
+exit()
+Process finished with exit code 0
+</code></pre><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p>
+<p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Lee's Blog 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Lee's Blog 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python-第三章：Python函数与模块/" rel="tag"># Python 第三章：Python函数与模块</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/08/Python-BasicKnowledge/" rel="next" title="Python语言基础">
+                <i class="fa fa-chevron-left"></i> Python语言基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -353,6 +630,16 @@
 
 
           
+
+   
+
+  
+    <div class="comments" id="comments">
+    </div>
+	
+  
+
+
 
         </div>
         
@@ -373,8 +660,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -465,6 +761,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是函数"><span class="nav-number">1.</span> <span class="nav-text">什么是函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#函数的定义格式"><span class="nav-number">1.0.1.</span> <span class="nav-text">函数的定义格式</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#模块及其应用"><span class="nav-number">2.</span> <span class="nav-text">模块及其应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#模块的定义及引用"><span class="nav-number">2.0.1.</span> <span class="nav-text">模块的定义及引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模块的分类"><span class="nav-number">2.0.2.</span> <span class="nav-text">模块的分类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模块的使用"><span class="nav-number">2.0.3.</span> <span class="nav-text">模块的使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包"><span class="nav-number">3.</span> <span class="nav-text">包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#练习"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#END"><span class="nav-number">5.</span> <span class="nav-text">END</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -628,6 +940,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
