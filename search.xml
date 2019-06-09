@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python语言基础]]></title>
+    <url>%2F2019%2F06%2F08%2FPython-BasicKnowledge%2F</url>
+    <content type="text"><![CDATA[常亮import math print(math.pi) 结果:3.141592653589793 基本数据类型 数字 int(整型)【32位操作系统，整数是32位，取值范围为-2^31~2^31-1;64位操作系统，整数是64位，取值范围为-2^63~2^63-1】 long(长整型) float（浮点型） bool（布尔） 字符串 列表、元祖、集合、字典 变量变量的命名 变量名只能包含字母、数字、下划线。变量名可以字母、下划线开头，不能以数字开头。 变量名不能白喊空格，可以使用下划线进行分割 不能讲关键字作为变量名 运算符与表达式1.算术运算符2.比较（关系）运算符3.赋值运算符4.逻辑运算符5.按位运算符6.成员运算符7.身份运算符 程序控制语句 顺序控制语句 选择控制语句 循环控制语句 if-elif-else语句 【例】根据年龄段收取费用：4岁以下免费4~18岁收费50元18以上收费100元 age=eval(input(&quot;输入您的年龄:&quot;)) if age&lt;4: price=0 elif age&lt;18: price=50 else : price=100 print(&quot;您的年龄为&quot;&quot;需要缴纳&quot;+str(price)+&quot;元&quot;) 运行结果：输入您的年龄:12您的年龄为需要缴纳50元 for循环 【例】 list=[&quot;www&quot;,&quot;ljcn&quot;,&quot;xyz&quot;] for i in list: print(i) 运行结果： C:\python3.7\python.exe F:/Pyworkspace/test01/test01.py www ljcn xyz Process finished with exit code 0 while循环i=eval(input(&quot;请输入一位数：&quot;)) while i&lt;6: print(i) i+=1 print(i) 运行结果 ： 请输入一位数：3 3 4 4 5 5 6 Process finished with exit code 0 练习 猜字游戏：提前设定一个100内的整数，根据用户输入给出提示，比实际数大了还是小了。如果用户猜对了，输出“恭喜你猜对了”并结束游戏 secret = 66 print(&apos;------猜数字游戏！-----&apos;) guess = 0 while guess != secret: temp = input(&apos;请输入数字：&apos;) guess = int(temp) if guess &gt; secret: print(&apos;您输入的数字大了！&apos;) elif guess &lt;secret: print(&apos;您输入的数字小了！&apos;) else: print(&apos;恭喜，您猜对了！&apos;) print(&apos;游戏结束，再见！^_^&apos;) 运行结果： ------猜数字游戏！----- 请输入数字一位100以内的数字：33 您输入的数字小了！ 请输入数字一位100以内的数字：99 您输入的数字大了！ 请输入数字一位100以内的数字：66 恭喜，您猜对了！ 游戏结束，再见！^_^ Process finished with exit code 0 2.使用while循环，打印十个100以内的随机数，并在循环结束后打印最大值和最小值 import numpy as np num=0 while num&lt;1: num+=1 list=np.random.randint(1,100,size=10) print(&quot;————随机生成10个1-100的数————&quot;) print(list) print(&quot;————生成有序集合————&quot;) list2=sorted(list) print(list2) print(&quot;————打印最大值————&quot;) print(list2[9]) 运行结果： ————随机生成10个1-100的数———— [89 22 57 44 65 47 63 66 57 10] ————生成有序集合———— [10, 22, 44, 47, 57, 57, 63, 65, 66, 89] ————打印最大值———— 89 Process finished with exit code 0 END 更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python 第二章：Python语言基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python概述]]></title>
+    <url>%2F2019%2F06%2F08%2FPython-Summarize%2F</url>
+    <content type="text"><![CDATA[Python语言类型Python是一种计算进程序设计语言，是一种解释型、面向对象、动态数据类型的高级程序设计语言。最初，被设计用于编写自动化脚本（shell）。Python的创始人是荷兰人——Guido van Rossum（吉多 范罗苏姆），于1989年开始写Python语言的编译器 Python的运用领域 Web开发 网络爬虫 计算与数据分析 人工智能 自动化运维 云计算 网络编程 游戏开发 Python语言特点Python语言的优点 简单 易学 开源 可移植性强 解释性 可扩展性、可嵌入性 丰富的第三方库 代码规范（采用强制缩进的方式） Python运行机制Python先把代码（.py文件）编译成字节码文件，交给字节码虚拟机，然后虚拟机一条一条的执行字节码指令，从而完成程序的执行。字节码在Python虚拟机程序里对应的是PyCodeObject对象。.pyc文件是字节码在磁盘上的表现形式。 Python注释 单行注释（# xxx） 多行注释（’’’ xxx ‘’’） 中文注释 “#coding=utf-8” “#coding=gbk” import语句1.import（关键字） module1,module2……（模块） import math import导入模块建议顺序 Python标准库模块 Python第三方模块 自定义模块 2.from-import语句from module import name from math import floor Python编程规范1.缩进2.每个import语句值导入一个模块，最好按标准库、扩展库、自定义库的顺序进行导入3.最好在每个类、函数定义和一段完整的功能代码之后加空格4.如果语句过长，使用续行符“\”或者是“（）”5.用“（）”来避免由于优先级造成的错误6.注释 练习题目：利用input输入三个数值，并求和（float函数可以将字符串转换成单精度浮点数） 输入数字 Python 3 通过 input() 获取的任何内容都是 str（字符串）类型。 str1 = input(&apos;请输入第1个数：&apos;) str2 = input(&apos;请输入第2个数：&apos;) str3 = input(&apos;请输入第3个数：&apos;) 用 int() 函数强制将 str 转换成 int num1 = float(str1) num2 = float(str2) num3= float(str3) 加法运算并打印 print(&apos;{0} + {1} +{2} = {3}&apos;.format(num1, num2,num3,num1 + num2+num3)) 运行结果： 请输入第1个数：1 请输入第2个数：2 请输入第3个数：3 1.0 + 2.0 +3.0 = 6.0 Process finished with exit code 0 END 更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python 第一章：Python概述</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[XShell远程连接阿里云服务器（CentOS）]]></title>
     <url>%2F2019%2F06%2F06%2Fxshell-aliyun%2F</url>
     <content type="text"><![CDATA[XShellXshell是一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及Microsoft Windows 平台的TELNET 协议。Xshell 通过互联网到远程主机的安全连接以及它创新性的设计和特色帮助用户在复杂的网络环境中享受他们的工作。Xshell可以在Windows界面下用来访问远端不同系统下的服务器，从而比较好的达到远程控制终端的目的。除此之外，其还有丰富的外观配色方案以及样式选择。（百度百科） 获取XShellXShell是一款收费软件，现在已经更新到XSHell6了。 你可以免费试用30天 你可以花钱购买 如果只是学习，申请一个家庭/学校免费版的就够了 家庭/学校免费版获取获取地址 填写姓名 填写邮件（会通过邮箱的方式发送下载链接） 选择你的需求 XShell Xftp 两者 远程连接（秘钥连接）有多种连接方式，这里只介绍采用秘钥连接的方式进行演示。其中，秘钥连接有服务器端生成秘钥，XShell导入秘钥文件；另外一种是XShell生成秘钥，服务器导入秘钥文件。 第一种，XShell生成秘钥（一连接远程主机，进行SSH用户身份验证） 浏览-&gt;用户秘钥-&gt;生成 生成后记得保存*.pem文件 服务器端导入秘钥文件 第二种，服务器端生成秘钥文件，XShell导入秘钥文件进行连接登录 远程连接-&gt;秘钥管理 XShell导入秘钥文件 预览-&gt;文件 输入密码 连接成功 END 更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
