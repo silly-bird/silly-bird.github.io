@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+  <meta name="keywords" content="java电商项目,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Lee's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="前台页面 /estore/WebRoot/orders_detail.jsp /estore/WebRoot/orders.jsp /estore/WebRoot/orders_submit.jsp /estore/WebRoot/pay_success.jsp">
+<meta name="keywords" content="java电商项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java商城项目（六）——订单与支付">
+<meta property="og:url" content="http://yoursite.com/2019/06/20/estoresix/index.html">
+<meta property="og:site_name" content="Lee&#39;s Blog">
+<meta property="og:description" content="前台页面 /estore/WebRoot/orders_detail.jsp /estore/WebRoot/orders.jsp /estore/WebRoot/orders_submit.jsp /estore/WebRoot/pay_success.jsp">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg">
+<meta property="og:updated_time" content="2019-06-30T03:15:04.050Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java商城项目（六）——订单与支付">
+<meta name="twitter:description" content="前台页面 /estore/WebRoot/orders_detail.jsp /estore/WebRoot/orders.jsp /estore/WebRoot/orders_submit.jsp /estore/WebRoot/pay_success.jsp">
+<meta name="twitter:image" content="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/20/estoresix/">
+
+
+
+
+
+  <title>java商城项目（六）——订单与支付 | Lee's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/silly-bird" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lee's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/estoresix/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lee's Blog">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lee's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java商城项目（六）——订单与支付</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T00:00:00+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/20/estoresix/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/20/estoresix/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/06/20/estoresix/" class="leancloud_visitors" data-flag-title="java商城项目（六）——订单与支付">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前台页面"><a href="#前台页面" class="headerlink" title="前台页面"></a>前台页面</h3><ul>
+<li>/estore/WebRoot/orders_detail.jsp</li>
+<li>/estore/WebRoot/orders.jsp</li>
+<li>/estore/WebRoot/orders_submit.jsp</li>
+<li>/estore/WebRoot/pay_success.jsp</li>
+</ul>
+<a id="more"></a>
+<h4 id="entity"><a href="#entity" class="headerlink" title="entity"></a>entity</h4><h5 id="Orders-java"><a href="#Orders-java" class="headerlink" title="Orders.java"></a>Orders.java</h5><pre><code>package xyz.ljcn.entity;
+
+import java.util.Date;
+import java.util.List;
+
+public class Orders {
+    private String id; // 订单编号
+    private Integer uid;
+    private Double totalprice;
+    private String address;
+    private Integer status; // 1:待付款 2：已付款 3：已过期
+    private Date createtime;
+
+    // 订单 -- 订单明细 1：n 因此可以在订单对象中添加订单明细的集合
+    private List&lt;OrdersItem&gt; list;
+
+    public List&lt;OrdersItem&gt; getList() {
+        return list;
+    }
+
+    public void setList(List&lt;OrdersItem&gt; list) {
+        this.list = list;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
+
+    public Double getTotalprice() {
+        return totalprice;
+    }
+
+    public void setTotalprice(Double totalprice) {
+        this.totalprice = totalprice;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Orders [id=&quot; + id + &quot;, uid=&quot; + uid + &quot;, totalprice=&quot; + totalprice + &quot;, address=&quot; + address + &quot;, status=&quot;
+                + status + &quot;, createtime=&quot; + createtime + &quot;, list=&quot; + list + &quot;]&quot;;
+    }
+
+    public Orders() {
+        super();
+    }
+
+    public Orders(String id, Integer uid, Double totalprice, String address, Integer status, Date createtime) {
+        super();
+        this.id = id;
+        this.uid = uid;
+        this.totalprice = totalprice;
+        this.address = address;
+        this.status = status;
+        this.createtime = createtime;
+    }
+
+}
+</code></pre><h5 id="OrdersItem"><a href="#OrdersItem" class="headerlink" title="OrdersItem"></a>OrdersItem</h5><pre><code>package xyz.ljcn.entity;
+
+public class OrdersItem {
+    private String oid;
+    private Integer gid;
+    private Integer buynum;
+    // 订单明细和商品之间是 1:1关系，因此可以在订单明细对象中添加商品对象
+    private Goods goods;
+
+    public Goods getGoods() {
+        return goods;
+    }
+
+    public void setGoods(Goods goods) {
+        this.goods = goods;
+    }
+
+    public OrdersItem() {
+        super();
+    }
+
+    public OrdersItem(String oid, Integer gid, Integer buynum) {
+        super();
+        this.oid = oid;
+        this.gid = gid;
+        this.buynum = buynum;
+    }
+
+    public String getOid() {
+        return oid;
+    }
+
+    public void setOid(String oid) {
+        this.oid = oid;
+    }
+
+    public Integer getGid() {
+        return gid;
+    }
+
+    public void setGid(Integer gid) {
+        this.gid = gid;
+    }
+
+    public Integer getBuynum() {
+        return buynum;
+    }
+
+    public void setBuynum(Integer buynum) {
+        this.buynum = buynum;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;OrdersItem [oid=&quot; + oid + &quot;, gid=&quot; + gid + &quot;, buynum=&quot; + buynum
+                + &quot;, goods=&quot; + goods + &quot;]&quot;;
+    }
+}
+</code></pre><h4 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h4><h5 id="OrdersServlet"><a href="#OrdersServlet" class="headerlink" title="OrdersServlet"></a>OrdersServlet</h5><pre><code>package xyz.ljcn.servlet;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.MapListHandler;
+import org.apache.commons.lang3.StringUtils;
+
+import com.github.wxpay.sdk.MyConfig;
+import com.github.wxpay.sdk.WXPay;
+import com.google.gson.Gson;
+
+import redis.clients.jedis.Jedis;
+import xyz.ljcn.constants.Constants;
+import xyz.ljcn.entity.Cart;
+import xyz.ljcn.entity.Orders;
+import xyz.ljcn.entity.User;
+import xyz.ljcn.service.CartService;
+import xyz.ljcn.service.OrdersService;
+import xyz.ljcn.service.Impl.OrdersServiceProxy;
+import xyz.ljcn.utils.BeanFactory;
+import xyz.ljcn.utils.JDBCUtils;
+import xyz.ljcn.utils.JedisUtils;
+
+@SuppressWarnings(&quot;all&quot;)
+@WebServlet(&quot;/orders&quot;)
+public class OrdersServlet extends BaseServlet {
+    CartService cartService = BeanFactory.getBean(CartService.class);
+    //OrdersService service = BeanFactory.getBean(OrdersService.class);
+    // 使用代理类
+    OrdersService service = OrdersServiceProxy.createOrdersServiceProxy();
+    public void getStatus(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // 判断是否登录
+        User user = isLogin(req, resp);
+        if ( user != null ) {
+    WXPay wxpay = null;
+            try {
+                wxpay = new WXPay();
+                Map&lt;String, String&gt; data = new HashMap&lt;String, String&gt;();
+        String oid = req.getParameter(&quot;id&quot;);
+        data.put(&quot;out_trade_no&quot;, oid);
+        Map&lt;String, String&gt; result = wxpay.orderQuery(data);
+        // 获取交易状态
+        String trade_state = result.get(&quot;trade_state&quot;);
+        if ( &quot;SUCCESS&quot;.equalsIgnoreCase(trade_state) ) {
+            // 修改订单状态为已支付
+            Integer uid = user.getId();
+            service.changeStatus(oid, uid, Constants.STATUS_ORDER.PAY);
+        }
+    resp.getWriter().write(trade_state);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        } else {
+            resp.getWriter().write(&quot;nologin&quot;);
+        }
+    }
+
+    public void getPayUrl(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // 判断是否登录
+        User user = isLogin(req, resp);
+        if ( user != null ) {
+            // 订单id
+            String id = req.getParameter(&quot;id&quot;);
+    try {
+        Orders orders = service.get(id, user.getId());
+        // 计算价格总共多少分
+        Double totalprice = orders.getTotalprice() * 100;
+        String total_fee = totalprice.intValue() + &quot;&quot;;
+
+                WXPay wxpay = new WXPay();
+                Map&lt;String, String&gt; data = new HashMap&lt;String, String&gt;();
+        data.put(&quot;body&quot;, &quot;xxx-扫码支付中心&quot;);//微信支付实现参照后面的博客
+        data.put(&quot;out_trade_no&quot;, id);
+        //data.put(&quot;device_info&quot;, &quot;&quot;);
+        //data.put(&quot;fee_type&quot;, &quot;CNY&quot;);
+        data.put(&quot;total_fee&quot;, total_fee);
+        data.put(&quot;spbill_create_ip&quot;, &quot;127.0.0.1&quot;);
+        data.put(&quot;notify_url&quot;, &quot;http://www.example.com/wxpay/notify&quot;);
+        data.put(&quot;trade_type&quot;, &quot;NATIVE&quot;);  // 此处指定为扫码支付
+        //data.put(&quot;product_id&quot;, &quot;12&quot;);
+
+        Map&lt;String, String&gt; result = wxpay.unifiedOrder(data);
+        String code_url = result.get(&quot;code_url&quot;);
+    resp.getWriter().write(code_url);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void detail(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // 判断是否登录
+        User user = isLogin(req, resp);
+        if ( user != null ) {
+            // 订单号
+            String oid = req.getParameter(&quot;id&quot;);
+            Integer uid = user.getId();
+            // 为了保证安全性，在对用户数据进行操作时，需要把用户的id也作为sql的条件
+            Orders orders = service.get(oid, uid);
+            req.setAttribute(&quot;orders&quot;, orders);
+            req.getRequestDispatcher(&quot;/orders_detail.jsp&quot;).forward(req, resp);
+        }
+    }
+
+    public void cancel(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // 判断是否登录
+        User user = isLogin(req, resp);
+        if ( user != null ) {
+            // 订单号
+            String oid = req.getParameter(&quot;id&quot;);
+            Integer uid = user.getId();
+            // 为了保证安全性，在对用户数据进行操作时，需要把用户的id也作为sql的条件
+            service.cancel(oid, uid);
+        }
+    }
+
+    public void query(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // 判断是否登录
+        User user = isLogin(req, resp);
+        if ( user != null ) {
+            List&lt;Orders&gt; oList = service.query(user.getId());
+            req.setAttribute(&quot;oList&quot;, oList);
+            req.getRequestDispatcher(&quot;/orders.jsp&quot;).forward(req, resp);
+        }
+    }
+
+    public void addOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // 判断是否登录
+        User user = isLogin(req, resp);
+        if ( user != null ) {
+
+            // 获取收货地址信息
+            String pp = req.getParameter(&quot;pp&quot;);
+            String cc = req.getParameter(&quot;cc&quot;);
+            String dd = req.getParameter(&quot;dd&quot;);
+            String detailAddress = req.getParameter(&quot;detailAddress&quot;);
+            String zipcode = req.getParameter(&quot;zipcode&quot;);
+            String name = req.getParameter(&quot;name&quot;);
+            String tel = req.getParameter(&quot;tel&quot;);
+
+            String address = pp + cc + dd + &quot; &quot; + detailAddress + &quot; 收件人：&quot; + name + &quot; 手机号：&quot; + tel;
+            Integer uid = user.getId();
+
+            service.addOrders(uid, address);
+
+            // 跳转到查询订单列表页面
+            resp.sendRedirect(req.getContextPath() + &quot;/orders?method=query&quot;);
+        }
+    }
+
+    public void loadSSX(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            // 将省市县的数据保存到redis缓存中，请求地址作为key
+            String uri = req.getRequestURI(); // uri中不包含请求参数
+            // 获取请求参数
+            String queryString = req.getQueryString();
+            if ( StringUtils.isNotBlank(queryString) ) {
+                uri += &quot;?&quot; + queryString;
+            }
+
+            Jedis j = JedisUtils.getJedis();
+            String json = j.get(uri);
+            if ( StringUtils.isBlank(json) ) {
+                String pid = req.getParameter(&quot;pid&quot;);
+                QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+                String sql = &quot;select * from `province_city_district` where pid=?&quot;;
+                List&lt;Map&lt;String, Object&gt;&gt; listMap = qr.query(sql, new MapListHandler(), pid);
+                Gson gson = new Gson();
+                json = gson.toJson(listMap);
+
+                j.set(uri, json);
+            }
+
+            resp.getWriter().write(json);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(&quot;...&quot;);
+        }
+    }
+
+    public void toOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        User user = isLogin(req, resp);
+
+        if ( user != null ) {
+            Integer uid = user.getId();
+
+            Cart cart = new Cart();
+            cart.setUid(uid);
+
+            List&lt;Cart&gt; cList = cartService.queryWithGoods(cart);
+            req.setAttribute(&quot;cList&quot;, cList);
+            req.getRequestDispatcher(&quot;/orders_submit.jsp&quot;).forward(req, resp);
+        }
+    }
+}
+</code></pre><h5 id="OrdersService"><a href="#OrdersService" class="headerlink" title="OrdersService"></a>OrdersService</h5><pre><code>package xyz.ljcn.service;
+
+import java.util.List;
+
+import xyz.ljcn.entity.Orders;
+
+
+
+public interface OrdersService {
+
+    void addOrders(Integer uid, String address);
+
+    List&lt;Orders&gt; query(Integer id);
+
+    void cancel(String oid, Integer uid);
+
+    Orders get(String oid, Integer uid);
+
+    void changeStatus(String oid, Integer uid, int pay);
+
+}
+</code></pre><h5 id="OrdersServiceImpl"><a href="#OrdersServiceImpl" class="headerlink" title="OrdersServiceImpl"></a>OrdersServiceImpl</h5><pre><code>package xyz.ljcn.service.Impl;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import xyz.ljcn.constants.Constants;
+import xyz.ljcn.dao.CartDAO;
+import xyz.ljcn.dao.GoodsDAO;
+import xyz.ljcn.dao.OrdersDAO;
+import xyz.ljcn.entity.Cart;
+import xyz.ljcn.entity.Goods;
+import xyz.ljcn.entity.Orders;
+import xyz.ljcn.entity.OrdersItem;
+import xyz.ljcn.service.OrdersService;
+import xyz.ljcn.utils.BeanFactory;
+import xyz.ljcn.utils.UUIDUtils;
+
+
+public class OrdersServiceImpl implements OrdersService {
+    OrdersDAO dao = BeanFactory.getBean(OrdersDAO.class);
+    CartDAO cartDAO = BeanFactory.getBean(CartDAO.class);
+    GoodsDAO goodsDAO = BeanFactory.getBean(GoodsDAO.class);
+
+    public void addOrders(Integer uid, String address) {
+        // 根据已有信息，构造出订单对象
+        Orders orders = new Orders();
+        orders.setUid(uid);
+        orders.setAddress(address);
+
+        // 生成随机32位订单编号
+        String id = UUIDUtils.getUUID();
+        orders.setId(id);
+
+        // 计算总金额
+        // 查询购物车信息，包含商品信息
+        Cart cart = new Cart();
+        cart.setUid(uid);
+        List&lt;Cart&gt; cList = cartDAO.queryWithGoods(cart);
+
+        // 计算总金额，并构建订单明细数据
+        double price = 0; // 总金额
+        // 订单明细
+        List&lt;OrdersItem&gt; items = new ArrayList&lt;&gt;();
+        for (Cart c : cList) {
+            price += c.getGoods().getEstoreprice() * c.getBuynum();
+            OrdersItem item = new OrdersItem(id, c.getGid(), c.getBuynum());
+            items.add(item);
+        }
+        orders.setTotalprice(price);
+
+        // 订单状态：1待付款  2已付款 3已过期   4已取消
+        orders.setStatus(Constants.STATUS_ORDER.UNPAY);
+        orders.setCreatetime(new Date());
+
+        // 添加订单数据
+        dao.addOrders(orders);
+        // 添加订单明细
+        dao.addOrdersItem(items);
+        // 清空购物车
+        cartDAO.clear(uid);
+    }
+    @Override
+    public List&lt;Orders&gt; query(Integer id) {
+
+        return dao.query(id);
+    }
+    @Override
+    public void cancel(String oid, Integer uid) {
+        dao.cancel(oid, uid);
+
+    }
+    public Orders get(String oid, Integer uid) {
+        // 查询订单
+        Orders orders = dao.get(oid, uid);
+
+        // 查询订单明细List
+        List&lt;OrdersItem&gt; list = dao.getItems(oid);
+        orders.setList(list);
+
+        // 遍历List,查询商品信息
+        Goods goods = new Goods();
+        for (OrdersItem item : list) {
+            goods.setId(item.getGid());
+            Goods goods2 = goodsDAO.query(goods).get(0);
+            item.setGoods(goods2);
+        }
+
+        return orders;
+    }
+
+    public void changeStatus(String oid, Integer uid, int status) {
+        dao.changeStatus(oid, uid, status);
+    }
+}
+</code></pre><h5 id="OrdersServiceProxy"><a href="#OrdersServiceProxy" class="headerlink" title="OrdersServiceProxy"></a>OrdersServiceProxy</h5><pre><code>package xyz.ljcn.service.Impl;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import xyz.ljcn.service.OrdersService;
+import xyz.ljcn.utils.BeanFactory;
+import xyz.ljcn.utils.JDBCUtils;
+
+
+
+public class OrdersServiceProxy {
+    private static OrdersService service = BeanFactory.getBean(OrdersService.class);
+
+    public static OrdersService createOrdersServiceProxy() {
+        return (OrdersService)Proxy.newProxyInstance(
+                service.getClass().getClassLoader(), 
+                service.getClass().getInterfaces(), 
+                new InvocationHandler() {
+                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                        String methodName = method.getName();
+                        Object returnValue = null;
+                        if ( methodName.startsWith(&quot;select&quot;)
+                                || methodName.startsWith(&quot;query&quot;)
+                                || methodName.startsWith(&quot;find&quot;)
+                                || methodName.startsWith(&quot;get&quot;)) {
+                            // 性能统计相关的业务
+
+                            returnValue = method.invoke(service, args);
+
+                        }
+                        // 进行统一的事务管理
+                        else {
+                            /*
+                             * 事务处理的细节：
+                             * 1、手动开启事务
+                             * 2、必须使用同一个连接对象来完成，因为提交及回滚事务都是通过连接对象来完成
+                             * 3、在catch中回滚事务，并且尽可能保证catch顶级异常Exception
+                             * 4、在finally中提交事务
+                             */
+                            Connection conn = null;
+                            try {
+                                conn = JDBCUtils.getConnection();
+                                System.out.println(conn);
+                                conn.setAutoCommit(false);
+
+                                // 核心业务调用
+                                returnValue = method.invoke(service, args);
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                try {
+                                    conn.rollback();
+                                } catch (SQLException e1) {
+                                    e1.printStackTrace();
+                                }
+                            } finally {
+                                try {
+                                    conn.commit();
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
+                                }
+                                /*try {
+                                    // 关闭连接：实际上连接并没有真正关闭，而是还回连接池中。
+                                    conn.close();
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
+                                }*/
+                            }
+                        }
+
+                        return returnValue;
+                    }
+                });
+    }
+}
+</code></pre><h3 id="dao"><a href="#dao" class="headerlink" title="dao"></a>dao</h3><h5 id="OrdersDAO"><a href="#OrdersDAO" class="headerlink" title="OrdersDAO"></a>OrdersDAO</h5><pre><code>package xyz.ljcn.dao;
+
+import java.util.List;
+
+import xyz.ljcn.entity.Orders;
+import xyz.ljcn.entity.OrdersItem;
+
+
+
+public interface OrdersDAO {
+
+    void addOrders(Orders orders);
+
+    void addOrdersItem(List&lt;OrdersItem&gt; items);
+
+    List&lt;Orders&gt; query(Integer id);
+
+    void cancel(String oid, Integer uid);
+
+    Orders get(String oid, Integer uid);
+
+    List&lt;OrdersItem&gt; getItems(String oid);
+
+    void changeStatus(String oid, Integer uid, int status);
+
+}
+</code></pre><h5 id="OrdersDAOImpl"><a href="#OrdersDAOImpl" class="headerlink" title="OrdersDAOImpl"></a>OrdersDAOImpl</h5><pre><code>package xyz.ljcn.dao.Impl;
+
+import java.util.List;
+
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+import xyz.ljcn.constants.Constants;
+import xyz.ljcn.dao.OrdersDAO;
+import xyz.ljcn.entity.Orders;
+import xyz.ljcn.entity.OrdersItem;
+import xyz.ljcn.utils.JDBCUtils;
+
+
+
+public class OrdersDAOImpl implements OrdersDAO {
+
+    public void addOrders(Orders orders) {
+        try {
+            //QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+            // 后期开发中，所有的非查询操作，都不可以指定数据源，因为每个更新操作，都可能是事务的一部分
+            QueryRunner qr = new QueryRunner();
+            String sql = &quot;insert into orders values(?,?,?,?,?,?)&quot;;
+            //qr.update(sql);
+            qr.update(JDBCUtils.getConnection(), sql, orders.getId(), orders.getUid(), orders.getTotalprice(),
+                    orders.getAddress(), orders.getStatus(), orders.getCreatetime());
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(&quot;...&quot;);
+        }
+    }
+
+    public void addOrdersItem(List&lt;OrdersItem&gt; items) {
+        try {
+            QueryRunner qr = new QueryRunner();
+            String sql = &quot;insert into ordersitem values(?,?,?)&quot;;
+            /*for (OrdersItem item : items) {
+                qr.update(conn, sql, item.getOid(), item.getGid(), item.getBuynum());
+            }*/
+
+            /*
+             * 批量操作，需要接收一个二维数组，其中：
+             *     高维(1维)：操作次数，一般是集合的size
+             *     低维(2维)：参数个数，即?的个数
+             * 
+             */
+            Object[][] params = new Object[items.size()][3];
+
+            // 初始化二维数组数据
+            for (int i = 0; i &lt; params.length; i++) {
+                params[i][0] = items.get(i).getOid();
+                params[i][1] = items.get(i).getGid();
+                params[i][2] = items.get(i).getBuynum();
+            }
+
+            qr.batch(JDBCUtils.getConnection(), sql, params);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(&quot;...&quot;);
+        }
+    }
+
+    @Override
+    public List&lt;Orders&gt; query(Integer id) {
+        try {
+            QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+            String sql = &quot;select * from orders where uid=? order by createtime desc&quot;;
+            return qr.query(sql, new BeanListHandler&lt;Orders&gt;(Orders.class), id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(&quot;...&quot;);
+        }
+    }
+
+    public void cancel(String oid, Integer uid) {
+        try {
+            QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+            String sql = &quot;update orders set status=? where id=? and uid=?&quot;;
+            qr.update(sql, Constants.STATUS_ORDER.CANCEL, oid, uid);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(&quot;...&quot;);
+        }
+    }
+
+    @Override
+    public Orders get(String oid, Integer uid) {
+        try {
+            QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+            String sql = &quot;select * from orders where id=? and uid=?&quot;;
+            return qr.query(sql, new BeanHandler&lt;Orders&gt;(Orders.class), oid, uid);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(&quot;...&quot;);
+        }
+    }
+
+    @Override
+    public List&lt;OrdersItem&gt; getItems(String oid) {
+        try {
+            QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+            String sql = &quot;select * from ordersitem where oid=?&quot;;
+            return qr.query(sql, new BeanListHandler&lt;OrdersItem&gt;(OrdersItem.class), oid);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(&quot;...&quot;);
+        }
+    }
+
+    public void changeStatus(String oid, Integer uid, int status) {
+        try {
+            QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+            String sql = &quot;update orders set status=? where id=? and uid=?&quot;;
+            qr.update(sql, status, oid, uid);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(&quot;...&quot;);
+        }
+    }
+}
+</code></pre><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p>
+<p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Lee's Blog 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Lee's Blog 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java电商项目/" rel="tag"># java电商项目</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/19/centos7-network-service-failed/" rel="next" title="centos7.x网络服务无法开启">
+                <i class="fa fa-chevron-left"></i> centos7.x网络服务无法开启
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+   
+
+  
+    <div class="comments" id="comments">
+    </div>
+	
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/head.gif" alt="Lee's Blog">
+            
+              <p class="site-author-name" itemprop="name">Lee's Blog</p>
+              <p class="site-description motion-element" itemprop="description">不破不立</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/silly-bird" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2747067773@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/silly-bird/" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-book"></i>博客园</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前台页面"><span class="nav-number">1.</span> <span class="nav-text">前台页面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#entity"><span class="nav-number">1.1.</span> <span class="nav-text">entity</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Orders-java"><span class="nav-number">1.1.1.</span> <span class="nav-text">Orders.java</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#OrdersItem"><span class="nav-number">1.1.2.</span> <span class="nav-text">OrdersItem</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#servlet"><span class="nav-number">1.2.</span> <span class="nav-text">servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#OrdersServlet"><span class="nav-number">1.2.1.</span> <span class="nav-text">OrdersServlet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#OrdersService"><span class="nav-number">1.2.2.</span> <span class="nav-text">OrdersService</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#OrdersServiceImpl"><span class="nav-number">1.2.3.</span> <span class="nav-text">OrdersServiceImpl</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#OrdersServiceProxy"><span class="nav-number">1.2.4.</span> <span class="nav-text">OrdersServiceProxy</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dao"><span class="nav-number">2.</span> <span class="nav-text">dao</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#OrdersDAO"><span class="nav-number">2.0.1.</span> <span class="nav-text">OrdersDAO</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#OrdersDAOImpl"><span class="nav-number">2.0.2.</span> <span class="nav-text">OrdersDAOImpl</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#END"><span class="nav-number">3.</span> <span class="nav-text">END</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lee's Blog</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script> 
+
+    
+  
+  <script src="/js/src/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'M2KefGUIARvt1zHxRWejyMlQ-gzGzoHsz',
+        appKey: 'PjTyO1LckbmqMwoKBthCITvJ',
+        placeholder: '客官！来了确定不说点什么吗？',
+        avatar:'wavatar',
+        guest_info:['nick'] ,  //评论者只需要提供评论的昵称即可
+        pageSize:'10' || 10,
+    });
+    //增加以下六行代码去除 power by valine
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+  </script>
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+ 
+<script src="/live2dw/lib/L2Dwidget.min.js?bd2294fafea3389ee458f1d9be5a2157"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

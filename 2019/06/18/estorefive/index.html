@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+  <meta name="keywords" content="java电商项目,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Lee's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="前台页面 goods.jsp goods_detail.jsp cart.jsp buyorcart.jsp">
+<meta name="keywords" content="java电商项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java商城项目（五）——商品查询显示和购物车实现">
+<meta property="og:url" content="http://yoursite.com/2019/06/18/estorefive/index.html">
+<meta property="og:site_name" content="Lee&#39;s Blog">
+<meta property="og:description" content="前台页面 goods.jsp goods_detail.jsp cart.jsp buyorcart.jsp">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg">
+<meta property="og:updated_time" content="2019-06-30T02:54:44.228Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java商城项目（五）——商品查询显示和购物车实现">
+<meta name="twitter:description" content="前台页面 goods.jsp goods_detail.jsp cart.jsp buyorcart.jsp">
+<meta name="twitter:image" content="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/18/estorefive/">
+
+
+
+
+
+  <title>java商城项目（五）——商品查询显示和购物车实现 | Lee's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/silly-bird" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lee's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/18/estorefive/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lee's Blog">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lee's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java商城项目（五）——商品查询显示和购物车实现</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-18T00:00:00+08:00">
+                2019-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/18/estorefive/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/18/estorefive/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/06/18/estorefive/" class="leancloud_visitors" data-flag-title="java商城项目（五）——商品查询显示和购物车实现">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前台页面"><a href="#前台页面" class="headerlink" title="前台页面"></a>前台页面</h3><ul>
+<li>goods.jsp</li>
+<li>goods_detail.jsp</li>
+<li>cart.jsp</li>
+<li>buyorcart.jsp</li>
+</ul>
+<a id="more"></a>
+<h3 id="后台代码实现"><a href="#后台代码实现" class="headerlink" title="后台代码实现"></a>后台代码实现</h3><h4 id="entity"><a href="#entity" class="headerlink" title="entity"></a>entity</h4><h5 id="Goods-java"><a href="#Goods-java" class="headerlink" title="Goods.java"></a>Goods.java</h5><pre><code>package xyz.ljcn.entity;
+
+import java.util.Date;
+
+public class Goods {
+private Integer id;
+private Integer cid;
+private String name;
+private Double marketprice;
+private Double estoreprice;
+private Integer num;
+private String imgurl;
+private Integer ishot;
+private Integer status;
+private Date createtime;
+private String description;
+
+public Integer getId() {
+    return id;
+}
+
+public void setId(Integer id) {
+    this.id = id;
+}
+
+public Integer getCid() {
+    return cid;
+}
+
+public void setCid(Integer cid) {
+    this.cid = cid;
+}
+
+public String getName() {
+    return name;
+}
+
+public void setName(String name) {
+    this.name = name;
+}
+
+public Double getMarketprice() {
+    return marketprice;
+}
+
+public void setMarketprice(Double marketprice) {
+    this.marketprice = marketprice;
+}
+
+public Double getEstoreprice() {
+    return estoreprice;
+}
+
+public void setEstoreprice(Double estoreprice) {
+    this.estoreprice = estoreprice;
+}
+
+public Integer getNum() {
+    return num;
+}
+
+public void setNum(Integer num) {
+    this.num = num;
+}
+
+public String getImgurl() {
+    return imgurl;
+}
+
+public void setImgurl(String imgurl) {
+    this.imgurl = imgurl;
+}
+
+public Integer getIshot() {
+    return ishot;
+}
+
+public void setIshot(Integer ishot) {
+    this.ishot = ishot;
+}
+
+public Integer getStatus() {
+    return status;
+}
+
+public void setStatus(Integer status) {
+    this.status = status;
+}
+
+public Date getCreatetime() {
+    return createtime;
+}
+
+public void setCreatetime(Date createtime) {
+    this.createtime = createtime;
+}
+
+public String getDescription() {
+    return description;
+}
+
+public void setDescription(String description) {
+    this.description = description;
+}
+
+@Override
+public String toString() {
+    return &quot;Goods [id=&quot; + id + &quot;, cid=&quot; + cid + &quot;, name=&quot; + name
+            + &quot;, marketprice=&quot; + marketprice + &quot;, estoreprice=&quot;
+            + estoreprice + &quot;, num=&quot; + num + &quot;, imgurl=&quot; + imgurl
+            + &quot;, ishot=&quot; + ishot + &quot;, status=&quot; + status + &quot;, createtime=&quot;
+            + createtime + &quot;, description=&quot; + description + &quot;]&quot;;
+}
+
+public Goods() {
+    super();
+}
+
+public Goods(Integer id, Integer cid, String name, Double marketprice,
+        Double estoreprice, Integer num, String imgurl, Integer ishot,
+        Integer status, Date createtime, String description) {
+    super();
+    this.id = id;
+    this.cid = cid;
+    this.name = name;
+    this.marketprice = marketprice;
+    this.estoreprice = estoreprice;
+    this.num = num;
+    this.imgurl = imgurl;
+    this.ishot = ishot;
+    this.status = status;
+    this.createtime = createtime;
+    this.description = description;
+ }
+
+}
+</code></pre><h5 id="Cart-java"><a href="#Cart-java" class="headerlink" title="Cart.java"></a>Cart.java</h5><pre><code>package xyz.ljcn.entity;
+
+public class Cart {
+private Integer uid;
+private Integer gid;
+private Integer buynum;
+
+/*
+ * 购物项和商品的关系？
+ * 购物项 ===&gt; 商品      1:1
+ * 商品 ====&gt; 购物项  1:n
+ * 当前是购物项对象，因此可以在该对象中添加商品对象的引用
+ */
+private Goods goods;
+
+public Goods getGoods() {
+    return goods;
+}
+
+public void setGoods(Goods goods) {
+    this.goods = goods;
+}
+
+public Integer getUid() {
+    return uid;
+}
+
+public void setUid(Integer uid) {
+    this.uid = uid;
+}
+
+public Integer getGid() {
+    return gid;
+}
+
+public void setGid(Integer gid) {
+    this.gid = gid;
+}
+
+public Integer getBuynum() {
+    return buynum;
+}
+
+public void setBuynum(Integer buynum) {
+    this.buynum = buynum;
+}
+
+@Override
+public String toString() {
+    return &quot;Cart [uid=&quot; + uid + &quot;, gid=&quot; + gid + &quot;, buynum=&quot; + buynum
+            + &quot;, goods=&quot; + goods + &quot;]&quot;;
+ }
+
+}
+</code></pre><h4 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h4><h5 id="GoodsServlet-java"><a href="#GoodsServlet-java" class="headerlink" title="GoodsServlet.java"></a>GoodsServlet.java</h5><pre><code>package xyz.ljcn.servlet;
+
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.lang3.StringUtils;
+
+import xyz.ljcn.entity.Goods;
+import xyz.ljcn.service.GoodsService;
+import xyz.ljcn.utils.BeanFactory;
+
+
+
+@SuppressWarnings(&quot;all&quot;)
+@WebServlet(&quot;/goods&quot;)
+public class GoodsServlet extends BaseServlet {
+GoodsService service = BeanFactory.getBean(GoodsService.class);
+
+public void query(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    Goods goods = new Goods();
+
+    try {
+        BeanUtils.populate(goods, req.getParameterMap());
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    List&lt;Goods&gt; gList = service.query(goods);
+    req.setAttribute(&quot;gList&quot;, gList);
+
+    if ( StringUtils.equals(req.getParameter(&quot;target&quot;), &quot;detail&quot;) ) {
+        req.getRequestDispatcher(&quot;/goods_detail.jsp&quot;).forward(req, resp);
+    } else {
+        req.getRequestDispatcher(&quot;/goods.jsp&quot;).forward(req, resp);
+    }
+ }
+}
+</code></pre><h5 id="CartServlet-java"><a href="#CartServlet-java" class="headerlink" title="CartServlet.java"></a>CartServlet.java</h5><pre><code>package xyz.ljcn.servlet;
+
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import xyz.ljcn.entity.Cart;
+import xyz.ljcn.entity.User;
+import xyz.ljcn.service.CartService;
+import xyz.ljcn.utils.BeanFactory;
+
+
+
+@SuppressWarnings(&quot;all&quot;)
+@WebServlet(&quot;/cart&quot;)
+public class CartServlet extends BaseServlet {
+CartService service = BeanFactory.getBean(CartService.class);
+public void del(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    User user = isLogin(req, resp);
+
+    if ( user != null ) {
+        int gid = Integer.parseInt(req.getParameter(&quot;gid&quot;));
+        Integer uid = user.getId();
+
+        service.del(uid, gid);
+        //resp.sendRedirect(req.getContextPath() + &quot;/cart?method=query&quot;);
+    } else {
+        resp.getWriter().write(&quot;nologin&quot;);
+    }
+}
+
+public void changeNum(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    User user = isLogin(req, resp);
+
+    if ( user != null ) {
+        int buynum = Integer.parseInt(req.getParameter(&quot;buynum&quot;));
+        int gid = Integer.parseInt(req.getParameter(&quot;gid&quot;));
+        Integer uid = user.getId();
+
+        Cart cart = new Cart();
+        cart.setUid(uid);
+        cart.setGid(gid);
+        cart.setBuynum(buynum);
+
+        service.changeNum(cart);
+        //resp.sendRedirect(req.getContextPath() + &quot;/cart?method=query&quot;);
+    } else {
+        resp.getWriter().write(&quot;nologin&quot;);
+    }
+
+
+}
+
+public void goodsNum(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    int goodsNum = service.goodsNum(req.getParameter(&quot;uid&quot;));
+    resp.getWriter().write(goodsNum+&quot;&quot;);
+}
+
+
+public void query(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    // 1、判断是否登录
+    User user = (User)req.getSession().getAttribute(&quot;loginUser&quot;);
+    if ( user == null ) {
+        // 登录成功之后，跳转到之前所在的页面
+
+        // 从哪个页面跳转过来的
+        String referer = req.getHeader(&quot;Referer&quot;);
+        if ( referer != null ) {
+            referer = URLEncoder.encode(referer, &quot;UTF-8&quot;);
+            resp.sendRedirect(req.getContextPath() + &quot;/login.jsp?redirect=&quot; + referer);
+        } else {
+            resp.sendRedirect(req.getContextPath() + &quot;/login.jsp&quot;);
+        }
+
+        return ;
+    }
+    Cart cart = new Cart();
+    cart.setUid(user.getId());
+    List&lt;Cart&gt; cList = service.queryWithGoods(cart);
+    req.setAttribute(&quot;cList&quot;, cList);
+    req.getRequestDispatcher(&quot;/cart.jsp&quot;).forward(req, resp);
+}
+
+public void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    // 1、判断是否登录
+    User user = (User)req.getSession().getAttribute(&quot;loginUser&quot;);
+    if ( user == null ) {
+        // 从哪个页面跳转过来的
+        String referer = req.getHeader(&quot;Referer&quot;);
+        System.out.println(referer);
+        referer = URLEncoder.encode(referer, &quot;UTF-8&quot;);
+        resp.sendRedirect(req.getContextPath() + &quot;/login.jsp?redirect=&quot; + referer);
+        return ;
+    }
+
+    // 2、获取商品id和购买数量
+    String gid = req.getParameter(&quot;gid&quot;);
+    String buynum = req.getParameter(&quot;buynum&quot;);
+    Integer uid = user.getId();
+
+    Cart cart = new Cart();
+    cart.setGid(Integer.parseInt(gid));
+    cart.setUid(uid);
+    cart.setBuynum(Integer.parseInt(buynum));
+
+    // 3、调用业务层
+    service.add(cart);
+
+    // 4、跳转到中间页
+    resp.sendRedirect(req.getContextPath() + &quot;/buyorcart.jsp&quot;);
+ }
+}
+</code></pre><h4 id="service"><a href="#service" class="headerlink" title="service"></a>service</h4><h5 id="GoodsService-java"><a href="#GoodsService-java" class="headerlink" title="GoodsService.java"></a>GoodsService.java</h5><pre><code>package xyz.ljcn.service;
+
+import java.util.List;
+
+import xyz.ljcn.entity.Goods;
+
+
+
+public interface GoodsService {
+
+List&lt;Goods&gt; query(Goods goods);
+
+ }
+</code></pre><h5 id="CartService-java"><a href="#CartService-java" class="headerlink" title="CartService.java"></a>CartService.java</h5><pre><code>package xyz.ljcn.service;
+
+import java.util.List;
+
+import xyz.ljcn.entity.Cart;
+
+
+public interface CartService {
+
+List&lt;Cart&gt; query(Cart cart);
+
+void add(Cart cart);
+
+List&lt;Cart&gt; queryWithGoods(Cart cart);
+
+int goodsNum(String uid);
+
+void changeNum(Cart cart);
+
+void del(Integer uid, int gid);
+
+}
+</code></pre><h4 id="serviceImpl"><a href="#serviceImpl" class="headerlink" title="serviceImpl"></a>serviceImpl</h4><h5 id="GoodsServiceImpl-java"><a href="#GoodsServiceImpl-java" class="headerlink" title="GoodsServiceImpl.java"></a>GoodsServiceImpl.java</h5><pre><code>package xyz.ljcn.service.Impl;
+
+import java.util.List;
+
+import xyz.ljcn.dao.GoodsDAO;
+import xyz.ljcn.entity.Goods;
+import xyz.ljcn.service.GoodsService;
+import xyz.ljcn.utils.BeanFactory;
+
+public class GoodsServiceImpl implements GoodsService {
+
+GoodsDAO dao = BeanFactory.getBean(GoodsDAO.class);
+
+public List&lt;Goods&gt; query(Goods goods) {
+    return dao.query(goods);
+   }
+
+ }
+</code></pre><h5 id="CartServiceImpl-java"><a href="#CartServiceImpl-java" class="headerlink" title="CartServiceImpl.java"></a>CartServiceImpl.java</h5><pre><code>package xyz.ljcn.service.Impl;
+
+import java.util.List;
+
+import xyz.ljcn.dao.CartDAO;
+import xyz.ljcn.dao.GoodsDAO;
+import xyz.ljcn.entity.Cart;
+import xyz.ljcn.service.CartService;
+import xyz.ljcn.utils.BeanFactory;
+
+
+
+public class CartServiceImpl implements CartService {
+CartDAO dao = BeanFactory.getBean(CartDAO.class);
+GoodsDAO goodsDao = BeanFactory.getBean(GoodsDAO.class);
+
+public List&lt;Cart&gt; query(Cart cart) {
+    return dao.query(cart);
+}
+
+public void add(Cart cart) {
+    // 1、查询购买记录
+    List&lt;Cart&gt; cList = dao.query(cart);
+
+    // 没有购买记录，新增
+    if ( cList == null || cList.size() == 0 ) {
+        dao.add(cart);
+    }
+    // 有购买记录，修改购买数量
+    else {
+        int oldNum = cList.get(0).getBuynum();
+        int newNum = oldNum + cart.getBuynum();
+
+        cart.setBuynum(newNum);
+
+        dao.update(cart);
+    }
+
+}
+
+@Override
+public List&lt;Cart&gt; queryWithGoods(Cart cart) {
+    return dao.queryWithGoods(cart);
+}
+
+@Override
+public int goodsNum(String uid) {
+    return dao.goodsNum(uid);
+}
+
+@Override
+public void changeNum(Cart cart) {
+    dao.changeNum(cart);
+}
+
+@Override
+public void del(Integer uid, int gid) {
+    dao.del(uid, gid);
+}
+
+}
+</code></pre><h4 id="dao"><a href="#dao" class="headerlink" title="dao"></a>dao</h4><h5 id="CategoryDAO"><a href="#CategoryDAO" class="headerlink" title="CategoryDAO"></a>CategoryDAO</h5><pre><code>package xyz.ljcn.dao;
+
+import java.util.List;
+
+import xyz.ljcn.entity.Category;
+
+
+
+public interface CategoryDAO {
+
+    List&lt;Category&gt; query();
+
+}
+</code></pre><h5 id="GoodsDAO"><a href="#GoodsDAO" class="headerlink" title="GoodsDAO"></a>GoodsDAO</h5><pre><code>package xyz.ljcn.dao;
+
+import java.util.List;
+
+import xyz.ljcn.entity.Goods;
+
+
+
+public interface GoodsDAO {
+
+    List&lt;Goods&gt; query(Goods goods);
+
+}
+</code></pre><h4 id="daoImpl"><a href="#daoImpl" class="headerlink" title="daoImpl"></a>daoImpl</h4><h5 id="CategoryDAOImpl"><a href="#CategoryDAOImpl" class="headerlink" title="CategoryDAOImpl"></a>CategoryDAOImpl</h5><pre><code>package xyz.ljcn.dao.Impl;
+
+import java.util.List;
+
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+
+import xyz.ljcn.dao.CategoryDAO;
+import xyz.ljcn.entity.Category;
+import xyz.ljcn.utils.JDBCUtils;
+
+
+
+public class CategoryDAOImpl implements CategoryDAO {
+
+    public List&lt;Category&gt; query() {
+        try {
+            QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+            String sql = &quot;select * from category &quot;;
+            return qr.query(sql, new BeanListHandler&lt;Category&gt;(Category.class));
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(&quot;...&quot;);
+        }
+    }
+
+}
+</code></pre><h5 id="GoodsDAOImpl"><a href="#GoodsDAOImpl" class="headerlink" title="GoodsDAOImpl"></a>GoodsDAOImpl</h5><pre><code>package xyz.ljcn.dao.Impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.lang3.StringUtils;
+
+import xyz.ljcn.dao.GoodsDAO;
+import xyz.ljcn.entity.Goods;
+import xyz.ljcn.utils.JDBCUtils;
+
+
+
+public class GoodsDAOImpl implements GoodsDAO {
+    public List&lt;Goods&gt; query(Goods goods) {
+        try {
+            QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+            String sql = &quot;select * from goods where 1=1&quot;;
+
+            List&lt;Object&gt; list = new ArrayList&lt;&gt;();
+            if ( goods.getId() != null ) {
+                sql += &quot; and id=? &quot;;
+                list.add(goods.getId());
+            }
+
+            if ( goods.getCid() != null ) {
+                sql += &quot; and cid=? &quot;;
+                list.add(goods.getCid());
+            }
+
+            //if ( goods.getName() != null &amp;&amp; !&quot;&quot;.equals(goods.getName()) )
+            if ( StringUtils.isNotBlank(goods.getName()) ) {
+                sql += &quot; and name like ? &quot;;
+                list.add(&quot;%&quot; + goods.getName() + &quot;%&quot;);
+            }
+
+            //...
+            Object[] params = list.toArray();
+            return qr.query(sql, new BeanListHandler&lt;Goods&gt;(Goods.class), params);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(&quot;...&quot;);
+        }
+    }
+
+}
+</code></pre><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p>
+<p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Lee's Blog 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Lee's Blog 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java电商项目/" rel="tag"># java电商项目</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/17/estorefour/" rel="next" title="java商城项目（四）——登录实现">
+                <i class="fa fa-chevron-left"></i> java商城项目（四）——登录实现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/19/centos7-network-service-failed/" rel="prev" title="centos7.x网络服务无法开启">
+                centos7.x网络服务无法开启 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+   
+
+  
+    <div class="comments" id="comments">
+    </div>
+	
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/head.gif" alt="Lee's Blog">
+            
+              <p class="site-author-name" itemprop="name">Lee's Blog</p>
+              <p class="site-description motion-element" itemprop="description">不破不立</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/silly-bird" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2747067773@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/silly-bird/" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-book"></i>博客园</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前台页面"><span class="nav-number">1.</span> <span class="nav-text">前台页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后台代码实现"><span class="nav-number">2.</span> <span class="nav-text">后台代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#entity"><span class="nav-number">2.1.</span> <span class="nav-text">entity</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Goods-java"><span class="nav-number">2.1.1.</span> <span class="nav-text">Goods.java</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Cart-java"><span class="nav-number">2.1.2.</span> <span class="nav-text">Cart.java</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#servlet"><span class="nav-number">2.2.</span> <span class="nav-text">servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#GoodsServlet-java"><span class="nav-number">2.2.1.</span> <span class="nav-text">GoodsServlet.java</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CartServlet-java"><span class="nav-number">2.2.2.</span> <span class="nav-text">CartServlet.java</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#service"><span class="nav-number">2.3.</span> <span class="nav-text">service</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#GoodsService-java"><span class="nav-number">2.3.1.</span> <span class="nav-text">GoodsService.java</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CartService-java"><span class="nav-number">2.3.2.</span> <span class="nav-text">CartService.java</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#serviceImpl"><span class="nav-number">2.4.</span> <span class="nav-text">serviceImpl</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#GoodsServiceImpl-java"><span class="nav-number">2.4.1.</span> <span class="nav-text">GoodsServiceImpl.java</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CartServiceImpl-java"><span class="nav-number">2.4.2.</span> <span class="nav-text">CartServiceImpl.java</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dao"><span class="nav-number">2.5.</span> <span class="nav-text">dao</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CategoryDAO"><span class="nav-number">2.5.1.</span> <span class="nav-text">CategoryDAO</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#GoodsDAO"><span class="nav-number">2.5.2.</span> <span class="nav-text">GoodsDAO</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#daoImpl"><span class="nav-number">2.6.</span> <span class="nav-text">daoImpl</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CategoryDAOImpl"><span class="nav-number">2.6.1.</span> <span class="nav-text">CategoryDAOImpl</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#GoodsDAOImpl"><span class="nav-number">2.6.2.</span> <span class="nav-text">GoodsDAOImpl</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#END"><span class="nav-number">3.</span> <span class="nav-text">END</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lee's Blog</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script> 
+
+    
+  
+  <script src="/js/src/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'M2KefGUIARvt1zHxRWejyMlQ-gzGzoHsz',
+        appKey: 'PjTyO1LckbmqMwoKBthCITvJ',
+        placeholder: '客官！来了确定不说点什么吗？',
+        avatar:'wavatar',
+        guest_info:['nick'] ,  //评论者只需要提供评论的昵称即可
+        pageSize:'10' || 10,
+    });
+    //增加以下六行代码去除 power by valine
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+  </script>
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+ 
+<script src="/live2dw/lib/L2Dwidget.min.js?bd2294fafea3389ee458f1d9be5a2157"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
