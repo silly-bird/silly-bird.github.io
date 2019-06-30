@@ -48,17 +48,15 @@
     <link href="http://yoursite.com/2019/06/19/centos7-network-service-failed/"/>
     <id>http://yoursite.com/2019/06/19/centos7-network-service-failed/</id>
     <published>2019-06-18T16:00:00.000Z</published>
-    <updated>2019-06-19T07:43:58.343Z</updated>
+    <updated>2019-06-30T03:20:40.843Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h3><pre><code>[root@localhost /]# systemctl restart network、</code></pre><blockquote><p>Job for network.service failed because the control process exited with error code. See “systemctl status network.service” and “journalctl -xe” for details.</p></blockquote><pre><code>[root@localhost /]# systemctl status network.service</code></pre><blockquote><p>network.service - LSB: Bring up/down networking<br>   Loaded: loaded (/etc/rc.d/init.d/network; bad; vendor preset: disabled)<br>   Active: failed (Result: exit-code) since 三 2019-06-19 22: 54 :05 CST; 3min 47s ago<br>     Docs: man:systemd-sysv-generator(8)<br>  Process: 9300 ExecStart=/etc/rc.d/init.d/network start (code=exited, status=1/FAILURE)</p><p>6月 19 22 :54 :05 localhost.localdomain network[9300]: RTNETLINK answers: File exists<br>6月 19 22 :54 :05 localhost.localdomain network[9300]: RTNETLINK answers: File exists<br>6月 19 22 :54 :05 localhost.localdomain network[9300]: RTNETLINK answers: File exists<br>6月 19 22: 54 :05 localhost.localdomain network[9300]: RTNETLINK answers: File exists<br>6月 19 22: 54 :05 localhost.localdomain network[9300]: RTNETLINK answers: File exists<br>6月 19 22 :54 :05 localhost.localdomain network[9300]: RTNETLINK answers: File exists<br>6月 19 22 :54 :05 localhost.localdomain systemd[1]: network.service: control process…1<br>6月 19 22 :54 :05 localhost.localdomain systemd[1]: Failed to start LSB: Bring up/do….<br>6月 19 22 :54 :05 localhost.localdomain systemd[1]: Unit network.service entered fai….<br>6月 19 22 :54 :05 localhost.localdomain systemd[1]: network.service failed.<br>Hint: Some lines were ellipsized, use -l to show in full.</p></blockquote><h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><pre><code>[root@localhost /]# ip a</code></pre><p>或者</p><pre><code>[root@localhost /]# ip addr</code></pre><p>查看mac地址</p><blockquote><p>1: lo: &lt;LOOPBACK,UP,LOWER_UPmtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000<br>    link/loopback 00 : 00: 00 :00 :00 :   00 brd 00 :00 :00 :00 :00 :00<br>    inet 127.0.0.1/8 scope host lo<br>       valid_lft forever preferred_lft forever<br>    inet6 ::1/128 scope host<br>       valid_lft forever preferred_lft forever<br>2: ens33: &lt;BROADCAST,MULTICASTmtu 1500 qdisc noop state DOWN group default qlen 1000<br>    link/ether <strong>00: 0c :29 : e2 :42 : 80</strong> brd ff :ff : ff : ff : ff : ff<br>3: virbr0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UPmtu 1500 qdisc noqueue state DOWN group default qlen 1000<br>    link/ether 52 :54 :00 :27 :7f :88 brd ff :ff :ff :ff :ff :ff<br>    inet 192.168.122.1/24 brd 192.168.122.255 scope global virbr0<br>       valid_lft forever preferred_lft forever<br>4: virbr0-nic: &lt;BROADCAST,MULTICASTmtu 1500 qdisc pfifo_fast master virbr0 state DOWN group default qlen 1000<br>    link/ether 52 :54 :00 :27 :7f :88 brd ff :ff :ff :ff :ff :ff</p></blockquote><p>注：粗体部分即为mac地址 </p><h5 id="查看及修改文件"><a href="#查看及修改文件" class="headerlink" title="查看及修改文件"></a>查看及修改文件</h5><pre><code>[root@localhost /]# cd /etc/sysconfig/network-scripts/</code></pre><p>具体的文件名ifcfg-XXX，例：</p><pre><code>[ljc@localhost network-scripts]$ vi ifcfg-ens33</code></pre><p>修改HWADDR，若没有就添加</p><pre><code>HWADDR=mac地址</code></pre><p>保存，退出</p><h5 id="重启网络服务"><a href="#重启网络服务" class="headerlink" title="重启网络服务"></a>重启网络服务</h5><pre><code>[ljc@localhost network-scripts]$ service network restart</code></pre><p>结果：</p><blockquote><p>Restarting network (via systemctl):                        [  确定  ]</p></blockquote><pre><code>[root@localhost network-scripts]# ping www.baidu.com</code></pre><blockquote><p>PING <a href="http://www.a.shifen.com" target="_blank" rel="noopener">www.a.shifen.com</a> (183.232.231.172) 56(84) bytes of data.<br>64 bytes from 183.232.231.172 (183.232.231.172): icmp_seq=1 ttl=54 time=62.5 ms<br>64 bytes from 183.232.231.172 (183.232.231.172): icmp_seq=2 ttl=54 time=150 ms<br>64 bytes from 183.232.231.172 (183.232.231.172): icmp_seq=3 ttl=54 time=86.3 ms<br>64 bytes from 183.232.231.172 (183.232.231.172): icmp_seq=4 ttl=54 time=156 ms<br>64 bytes from 183.232.231.172 (183.232.231.172): icmp_seq=5 ttl=54 time=86.0 ms</p></blockquote><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h3><pre><code>[root@localhost /]# systemctl restart network、</code></pre><blockquote><p>Job for network.service failed because the control process exited with error code. See “systemctl status network.service” and “journalctl -xe” for details.<br><a id="more"></a><br>    [root@localhost /]# systemctl status network.service</p></blockquote><blockquote><p>network.service - LSB: Bring up/down networking<br>   Loaded: loaded (/etc/rc.d/init.d/network; bad; vendor preset: disabled)<br>   Active: failed (Result: exit-code) since 三 2019-06-19 22: 54 :05 CST; 3min 47s ago<br>     Docs: man:systemd-sysv-generator(8)<br>  Process: 9300 ExecStart=/etc/rc.d/init.d/network start (code=exited, status=1/FAILURE)</p><p>6月 19 22 :54 :05 localhost.localdomain network[9300]: RTNETLINK answers: File exists<br>6月 19 22 :54 :05 localhost.localdomain network[9300]: RTNETLINK answers: File exists<br>6月 19 22 :54 :05 localhost.localdomain network[9300]: RTNETLINK answers: File exists<br>6月 19 22: 54 :05 localhost.localdomain network[9300]: RTNETLINK answers: File exists<br>6月 19 22: 54 :05 localhost.localdomain network[9300]: RTNETLINK answers: File exists<br>6月 19 22 :54 :05 localhost.localdomain network[9300]: RTNETLINK answers: File exists<br>6月 19 22 :54 :05 localhost.localdomain systemd[1]: network.service: control process…1<br>6月 19 22 :54 :05 localhost.localdomain systemd[1]: Failed to start LSB: Bring up/do….<br>6月 19 22 :54 :05 localhost.localdomain systemd[1]: Unit network.service entered fai….<br>6月 19 22 :54 :05 localhost.localdomain systemd[1]: network.service failed.<br>Hint: Some lines were ellipsized, use -l to show in full.</p></blockquote><h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><pre><code>[root@localhost /]# ip a</code></pre><p>或者</p><pre><code>[root@localhost /]# ip addr</code></pre><p>查看mac地址</p><blockquote><p>1: lo: &lt;LOOPBACK,UP,LOWER_UPmtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000<br>    link/loopback 00 : 00: 00 :00 :00 :   00 brd 00 :00 :00 :00 :00 :00<br>    inet 127.0.0.1/8 scope host lo<br>       valid_lft forever preferred_lft forever<br>    inet6 ::1/128 scope host<br>       valid_lft forever preferred_lft forever<br>2: ens33: &lt;BROADCAST,MULTICASTmtu 1500 qdisc noop state DOWN group default qlen 1000<br>    link/ether <strong>00: 0c :29 : e2 :42 : 80</strong> brd ff :ff : ff : ff : ff : ff<br>3: virbr0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UPmtu 1500 qdisc noqueue state DOWN group default qlen 1000<br>    link/ether 52 :54 :00 :27 :7f :88 brd ff :ff :ff :ff :ff :ff<br>    inet 192.168.122.1/24 brd 192.168.122.255 scope global virbr0<br>       valid_lft forever preferred_lft forever<br>4: virbr0-nic: &lt;BROADCAST,MULTICASTmtu 1500 qdisc pfifo_fast master virbr0 state DOWN group default qlen 1000<br>    link/ether 52 :54 :00 :27 :7f :88 brd ff :ff :ff :ff :ff :ff</p></blockquote><p>注：粗体部分即为mac地址 </p><h5 id="查看及修改文件"><a href="#查看及修改文件" class="headerlink" title="查看及修改文件"></a>查看及修改文件</h5><pre><code>[root@localhost /]# cd /etc/sysconfig/network-scripts/</code></pre><p>具体的文件名ifcfg-XXX，例：</p><pre><code>[ljc@localhost network-scripts]$ vi ifcfg-ens33</code></pre><p>修改HWADDR，若没有就添加</p><pre><code>HWADDR=mac地址</code></pre><p>保存，退出</p><h5 id="重启网络服务"><a href="#重启网络服务" class="headerlink" title="重启网络服务"></a>重启网络服务</h5><pre><code>[ljc@localhost network-scripts]$ service network restart</code></pre><p>结果：</p><blockquote><p>Restarting network (via systemctl):                        [  确定  ]</p></blockquote><pre><code>[root@localhost network-scripts]# ping www.baidu.com</code></pre><blockquote><p>PING <a href="http://www.a.shifen.com" target="_blank" rel="noopener">www.a.shifen.com</a> (183.232.231.172) 56(84) bytes of data.<br>64 bytes from 183.232.231.172 (183.232.231.172): icmp_seq=1 ttl=54 time=62.5 ms<br>64 bytes from 183.232.231.172 (183.232.231.172): icmp_seq=2 ttl=54 time=150 ms<br>64 bytes from 183.232.231.172 (183.232.231.172): icmp_seq=3 ttl=54 time=86.3 ms<br>64 bytes from 183.232.231.172 (183.232.231.172): icmp_seq=4 ttl=54 time=156 ms<br>64 bytes from 183.232.231.172 (183.232.231.172): icmp_seq=5 ttl=54 time=86.0 ms</p></blockquote><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h3 id=&quot;错误信息&quot;&gt;&lt;a href=&quot;#错误信息&quot; class=&quot;headerlink&quot; title=&quot;错误信息&quot;&gt;&lt;/a&gt;错误信息&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;[root@localhost /]# systemctl restart network、
-&lt;/code&gt;
-      
+      &lt;h3 id=&quot;错误信息&quot;&gt;&lt;a href=&quot;#错误信息&quot; class=&quot;headerlink&quot; title=&quot;错误信息&quot;&gt;&lt;/a&gt;错误信息&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;[root@localhost /]# systemctl restart network、
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;Job for network.service failed because the control process exited with error code. See “systemctl status network.service” and “journalctl -xe” for details.&lt;br&gt;
     
     </summary>
     
@@ -166,27 +164,6 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://yoursite.com/2019/06/14/java-reflection/"/>
-    <id>http://yoursite.com/2019/06/14/java-reflection/</id>
-    <published>2019-06-14T01:37:59.620Z</published>
-    <updated>2019-06-14T06:52:17.246Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Java-reflection"><a href="#Java-reflection" class="headerlink" title="Java reflection"></a>Java reflection</h3><p>Reflection（反射）是被视为动态语言的关键，反射机制允许程序在执行期间借助于reflection API获取任何类的内部信息，并直接操作任意对象的内部属性和方法。</p><h3 id="Java反射机制提供的功能"><a href="#Java反射机制提供的功能" class="headerlink" title="Java反射机制提供的功能"></a>Java反射机制提供的功能</h3><ul><li>在运行时判断任意一个对象所属的类</li><li>在运行时构造任意类的对象</li><li>在运行时判断任意一个类所具有的成员变量和方法</li><li>在运行时调用任意一个类的成员变量和方法</li><li>生成动态代理</li></ul><h3 id="反射相关的API"><a href="#反射相关的API" class="headerlink" title="反射相关的API"></a>反射相关的API</h3><ul><li>java.lang.Class 代表一个类</li><li>java.lang.reflec.Method 代表类的方法</li><li>java.lang.reflect.Field 代表类的成员变量</li><li>java.lang.reflect.Constructor 代表类的构造方法</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;Java-reflection&quot;&gt;&lt;a href=&quot;#Java-reflection&quot; class=&quot;headerlink&quot; title=&quot;Java reflection&quot;&gt;&lt;/a&gt;Java reflection&lt;/h3&gt;&lt;p&gt;Reflection（反射）是被视为
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>java商城项目（一）</title>
     <link href="http://yoursite.com/2019/06/13/estoreone/"/>
     <id>http://yoursite.com/2019/06/13/estoreone/</id>
@@ -209,24 +186,27 @@
   </entry>
   
   <entry>
-    <title>java商城项目（一）</title>
+    <title>tomcat端口问题</title>
     <link href="http://yoursite.com/2019/06/13/java-errors/"/>
     <id>http://yoursite.com/2019/06/13/java-errors/</id>
     <published>2019-06-12T16:00:00.000Z</published>
-    <updated>2019-06-14T08:05:45.313Z</updated>
+    <updated>2019-06-30T03:23:18.017Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>eclipse/myeclipse+mysql+tomcat7以上+jdk1.8+Redis<br><a id="more"></a></p><h3 id="项目目录结构"><a href="#项目目录结构" class="headerlink" title="项目目录结构"></a>项目目录结构</h3><p><img src="https://i.loli.net/2019/06/13/5d0237eaeb19e80735.png" alt></p><h3 id="导入项目出现的错误"><a href="#导入项目出现的错误" class="headerlink" title="导入项目出现的错误"></a>导入项目出现的错误</h3><h6 id="eclipse-Target-runtime-Apache-Tomcat-v8-0-is-not-defined"><a href="#eclipse-Target-runtime-Apache-Tomcat-v8-0-is-not-defined" class="headerlink" title="eclipse Target runtime Apache Tomcat v8.0 is not defined."></a>eclipse Target runtime Apache Tomcat v8.0 is not defined.</h6><p><img src="https://i.loli.net/2019/06/13/5d0238ae22bd469197.png" alt></p><blockquote><p>【项目】→【右键】→【build path】→【configure build path】→【libraries】 这里把你的tomcat 改成（Edit）你用的版本 然后 【项目】→【右键】→【Properties】→【Targeted-Runtimes】 把你的tomcat打勾，然后，保存关闭 。</p></blockquote><hr><blockquote><p>或者点击这个Problems，右击错误描述Delete</p></blockquote><h6 id="Java-compiler-level-does-not-match-the-version-of-the-installed-Java-project-facet"><a href="#Java-compiler-level-does-not-match-the-version-of-the-installed-Java-project-facet" class="headerlink" title="Java compiler level does not match the version of the installed Java project facet."></a>Java compiler level does not match the version of the installed Java project facet.</h6><blockquote><p>点击错误描述，右击选择Quick Fix选择合适的版本</p></blockquote><h6 id="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样"><a href="#项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样" class="headerlink" title="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样"></a>项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样</h6><blockquote><p>tomcat服务器的端口号和安装的Oracle数据库的某个服务端口冲突<br>解决办法有二：<br>1.更改tomcat端口号：tomcat文件→conf→server.xml<br><img src="https://i.loli.net/2019/06/13/5d023c201546437357.png" alt></p></blockquote><pre><code>` &lt;Connector port=&quot;8090&quot; redirectPort=&quot;8443&quot; protocol=&quot;HTTP/1.1&quot; connectionTimeout=&quot;20000&quot; URIEncoding=&quot;utf-8&quot;/&gt;`</code></pre><blockquote><p>2.关闭oracle端口号Ctrl+Alt+Delete，打开任务管理器→服务→找到相关端口关闭 </p></blockquote><h6 id="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）-项目名-显示网络异常"><a href="#项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）-项目名-显示网络异常" class="headerlink" title="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常"></a>项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常</h6><p>出现类似如下错误：<br><img src="https://i.loli.net/2019/06/13/5d023e1189e9215670.png" alt></p><blockquote><p>确保项目正常打开<br><img src="https://i.loli.net/2019/06/13/5d023ed83ddd851128.png" alt><br>但是浏览器不能正常显示项目的页面<br>先用IDE（集成开发环境里）的浏览器打开，以myeclipse为例<br>window→Show View→Web Brower<br>会在项目启动时在IDE中显示项目地址，可能主机名称不是localhost，是一些其他的名称</p></blockquote><h3 id="项目运行结果"><a href="#项目运行结果" class="headerlink" title="项目运行结果"></a>项目运行结果</h3><p><img src="https://i.loli.net/2019/06/13/5d0240a16986349610.png" alt></p><p><img src="https://i.loli.net/2019/06/13/5d0241401e5a793512.png" alt></p><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="导入项目出现的错误"><a href="#导入项目出现的错误" class="headerlink" title="导入项目出现的错误"></a>导入项目出现的错误</h3><h6 id="eclipse-Target-runtime-Apache-Tomcat-v8-0-is-not-defined"><a href="#eclipse-Target-runtime-Apache-Tomcat-v8-0-is-not-defined" class="headerlink" title="eclipse Target runtime Apache Tomcat v8.0 is not defined."></a>eclipse Target runtime Apache Tomcat v8.0 is not defined.</h6><p><img src="https://i.loli.net/2019/06/13/5d0238ae22bd469197.png" alt></p><blockquote><p>【项目】→【右键】→【build path】→【configure build path】→【libraries】 这里把你的tomcat 改成（Edit）你用的版本 然后 【项目】→【右键】→【Properties】→【Targeted-Runtimes】 把你的tomcat打勾，然后，保存关闭 。</p></blockquote><hr><blockquote><p>或者点击这个Problems，右击错误描述Delete</p></blockquote><h6 id="Java-compiler-level-does-not-match-the-version-of-the-installed-Java-project-facet"><a href="#Java-compiler-level-does-not-match-the-version-of-the-installed-Java-project-facet" class="headerlink" title="Java compiler level does not match the version of the installed Java project facet."></a>Java compiler level does not match the version of the installed Java project facet.</h6><blockquote><p>点击错误描述，右击选择Quick Fix选择合适的版本</p></blockquote><h6 id="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样"><a href="#项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样" class="headerlink" title="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样"></a>项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样</h6><blockquote><p>tomcat服务器的端口号和安装的Oracle数据库的某个服务端口冲突<br>解决办法有二：<br>1.更改tomcat端口号：tomcat文件→conf→server.xml<br><img src="https://i.loli.net/2019/06/13/5d023c201546437357.png" alt></p></blockquote><pre><code>` &lt;Connector port=&quot;8090&quot; redirectPort=&quot;8443&quot; protocol=&quot;HTTP/1.1&quot; connectionTimeout=&quot;20000&quot; URIEncoding=&quot;utf-8&quot;/&gt;`</code></pre><blockquote><p>2.关闭oracle端口号Ctrl+Alt+Delete，打开任务管理器→服务→找到相关端口关闭 </p></blockquote><h6 id="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）-项目名-显示网络异常"><a href="#项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）-项目名-显示网络异常" class="headerlink" title="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常"></a>项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常</h6><p>出现类似如下错误：<br><img src="https://i.loli.net/2019/06/13/5d023e1189e9215670.png" alt></p><blockquote><p>确保项目正常打开<br><img src="https://i.loli.net/2019/06/13/5d023ed83ddd851128.png" alt><br>但是浏览器不能正常显示项目的页面<br>先用IDE（集成开发环境里）的浏览器打开，以myeclipse为例<br>window→Show View→Web Brower<br>会在项目启动时在IDE中显示项目地址，可能主机名称不是localhost，是一些其他的名称</p></blockquote><h3 id="项目运行结果"><a href="#项目运行结果" class="headerlink" title="项目运行结果"></a>项目运行结果</h3><p>浏览器输入项目的地址，正确显示页面，如下<br><img src="https://i.loli.net/2019/06/13/5d0240a16986349610.png" alt></p><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;运行环境&quot;&gt;&lt;a href=&quot;#运行环境&quot; class=&quot;headerlink&quot; title=&quot;运行环境&quot;&gt;&lt;/a&gt;运行环境&lt;/h3&gt;&lt;p&gt;eclipse/myeclipse+mysql+tomcat7以上+jdk1.8+Redis&lt;br&gt;
+      
+      
+        &lt;h3 id=&quot;导入项目出现的错误&quot;&gt;&lt;a href=&quot;#导入项目出现的错误&quot; class=&quot;headerlink&quot; title=&quot;导入项目出现的错误&quot;&gt;&lt;/a&gt;导入项目出现的错误&lt;/h3&gt;&lt;h6 id=&quot;eclipse-Target-runtime-Apache-Tomcat-
+      
     
     </summary>
     
       <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
     
     
-      <category term="java电商项目" scheme="http://yoursite.com/tags/java%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/"/>
+      <category term="tomcat" scheme="http://yoursite.com/tags/tomcat/"/>
     
   </entry>
   
@@ -492,6 +472,35 @@ print(math.pi)
     
     
       <category term="基本数据类型" scheme="http://yoursite.com/tags/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ajax学习</title>
+    <link href="http://yoursite.com/2019/04/24/Ajax/"/>
+    <id>http://yoursite.com/2019/04/24/Ajax/</id>
+    <published>2019-04-23T16:00:00.000Z</published>
+    <updated>2019-04-24T14:43:27.350Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="什么是Ajax？"><a href="#什么是Ajax？" class="headerlink" title="什么是Ajax？"></a><strong>什么是Ajax？</strong></h3><ul><li>Ajax 即“Asynchronous Javascript And XML”（异步 JavaScript 和 XML），是指一种创建交互式网页应用的网页开发技术。</li><li>Ajax = 异步 JavaScript 和 XML 或者是 HTML（标准通用标记语言的子集）。</li><li>Ajax 是一种用于创建快速动态网页的技术。</li><li>Ajax 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。</li><li>通过在后台与服务器进行少量数据交换，Ajax 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</li><li><em>传统的网页（不使用 Ajax）如果需要更新内容，必须重载整个网页页面。</em></li></ul><a id="more"></a><hr><hr><h3 id="使用流程"><a href="#使用流程" class="headerlink" title="使用流程"></a>使用流程</h3><hr><h5 id="创建ajax引擎对象"><a href="#创建ajax引擎对象" class="headerlink" title="创建ajax引擎对象"></a>创建ajax引擎对象</h5><pre><code>var ajax;if(window.XMLHttpRequest){    ajax=new XMLHttpRequest();}else if(window.ActiveXObject(&quot;Msxml2.XMLHTTP&quot;));                            </code></pre><h5 id="复写onreadystatechange函数"><a href="#复写onreadystatechange函数" class="headerlink" title="复写onreadystatechange函数"></a>复写onreadystatechange函数</h5><p>  <code>ajax.onreadystatechange(){}</code>    </p><h5 id="判断ajax状态码"><a href="#判断ajax状态码" class="headerlink" title="判断ajax状态码"></a>判断ajax状态码</h5><ul><li>0 （未初始化）还没有调用send()方法</li><li>1 （载入）已调用send()方法，正在发送请求</li><li>2 （载入完成）send()方法执行完成，已经接收到全部响应内容</li><li>3 （交互）正在解析响应内容</li><li>4 （完成）响应内容解析完成，可以在客户端调用了<br><code>if(ajax.readyState==4){}</code>    </li></ul><h5 id="判断响应状态码"><a href="#判断响应状态码" class="headerlink" title="判断响应状态码"></a>判断响应状态码</h5><ul><li>200 请求成功</li><li>404 资源未找到</li><li>500 内部服务器错误<br><code>if(ajax.status==200){}</code></li></ul><h5 id="获取响应内容"><a href="#获取响应内容" class="headerlink" title="获取响应内容"></a>获取响应内容</h5><pre><code>var result=ajax.responseText;</code></pre><h5 id="处理响应内容"><a href="#处理响应内容" class="headerlink" title="处理响应内容"></a>处理响应内容</h5><h5 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h5><ul><li>get方式<pre><code>ajax.open(&quot;get&quot;, &quot;AjaxTest?name=ljc&amp;pwd=123&quot;);    ajax.send(null);</code></pre></li><li><p>post方式</p><pre><code>ajax.open(&quot;post&quot;, &quot;AjaxTest&quot;);ajax.setRequestHeader(&quot;Content-Type&quot;,&quot;application/x-www-form-urlencoded&quot;);ajax.send(&quot;name=ljc&amp;pwd=123&quot;);</code></pre></li></ul><hr><hr><h3 id="部分代码"><a href="#部分代码" class="headerlink" title="部分代码"></a>部分代码</h3><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;function ajaxReq(){    //创建ajax对象    var ajax;    if(window.XMLHttpRequest){        ajax=new XMLHttpRequest();    }else if(window.ActiveXObject(&quot;Msxml2.XMLHTTP&quot;));    //复写onreadystatechange函数    ajax.onreadystatechange(){        //判断ajax状态码        if(ajax.readyState==4){            //判断响应状态码            if(ajax.status==200){                //获取响应内容                var result=ajax.responseText;                //处理响应内容                alert(result);            }        }    }    //发送请求        //get方式         ajax.open(&quot;get&quot;, &quot;AjaxTest?name=ljc&amp;pwd=123&quot;);            ajax.send(null);        //post方式        //ajax.open(&quot;post&quot;, &quot;AjaxTest&quot;);        //ajax.setRequestHeader(&quot;Content-Type&quot;,&quot;application/x-www-form-urlencoded&quot;);        //ajax.send(&quot;name=ljc&amp;pwd=123&quot;);}&lt;/script&gt;</code></pre><hr>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;什么是Ajax？&quot;&gt;&lt;a href=&quot;#什么是Ajax？&quot; class=&quot;headerlink&quot; title=&quot;什么是Ajax？&quot;&gt;&lt;/a&gt;&lt;strong&gt;什么是Ajax？&lt;/strong&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Ajax 即“Asynchronous Javascript And XML”（异步 JavaScript 和 XML），是指一种创建交互式网页应用的网页开发技术。&lt;/li&gt;
+&lt;li&gt;Ajax = 异步 JavaScript 和 XML 或者是 HTML（标准通用标记语言的子集）。&lt;/li&gt;
+&lt;li&gt;Ajax 是一种用于创建快速动态网页的技术。&lt;/li&gt;
+&lt;li&gt;Ajax 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。&lt;/li&gt;
+&lt;li&gt;通过在后台与服务器进行少量数据交换，Ajax 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;传统的网页（不使用 Ajax）如果需要更新内容，必须重载整个网页页面。&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Ajax" scheme="http://yoursite.com/categories/Ajax/"/>
+    
+    
+      <category term="Ajax" scheme="http://yoursite.com/tags/Ajax/"/>
     
   </entry>
   

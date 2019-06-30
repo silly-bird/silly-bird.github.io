@@ -88,7 +88,7 @@
 <meta property="og:description" content="错误信息[root@localhost /]# systemctl restart network、  Job for network.service failed because the control process exited with error code. See “systemctl status network.service” and “journalctl -xe” for d">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg">
-<meta property="og:updated_time" content="2019-06-19T07:43:58.343Z">
+<meta property="og:updated_time" content="2019-06-30T03:20:40.843Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7.x网络服务无法开启">
 <meta name="twitter:description" content="错误信息[root@localhost /]# systemctl restart network、  Job for network.service failed because the control process exited with error code. See “systemctl status network.service” and “journalctl -xe” for d">
@@ -382,10 +382,9 @@
       
         <h3 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h3><pre><code>[root@localhost /]# systemctl restart network、
 </code></pre><blockquote>
-<p>Job for network.service failed because the control process exited with error code. See “systemctl status network.service” and “journalctl -xe” for details.</p>
+<p>Job for network.service failed because the control process exited with error code. See “systemctl status network.service” and “journalctl -xe” for details.<br><a id="more"></a><br>    [root@localhost /]# systemctl status network.service</p>
 </blockquote>
-<pre><code>[root@localhost /]# systemctl status network.service
-</code></pre><blockquote>
+<blockquote>
 <p>network.service - LSB: Bring up/down networking<br>   Loaded: loaded (/etc/rc.d/init.d/network; bad; vendor preset: disabled)<br>   Active: failed (Result: exit-code) since 三 2019-06-19 22: 54 :05 CST; 3min 47s ago<br>     Docs: man:systemd-sysv-generator(8)<br>  Process: 9300 ExecStart=/etc/rc.d/init.d/network start (code=exited, status=1/FAILURE)</p>
 <p>6月 19 22 :54 :05 localhost.localdomain network[9300]: RTNETLINK answers: File exists<br>6月 19 22 :54 :05 localhost.localdomain network[9300]: RTNETLINK answers: File exists<br>6月 19 22 :54 :05 localhost.localdomain network[9300]: RTNETLINK answers: File exists<br>6月 19 22: 54 :05 localhost.localdomain network[9300]: RTNETLINK answers: File exists<br>6月 19 22: 54 :05 localhost.localdomain network[9300]: RTNETLINK answers: File exists<br>6月 19 22 :54 :05 localhost.localdomain network[9300]: RTNETLINK answers: File exists<br>6月 19 22 :54 :05 localhost.localdomain systemd[1]: network.service: control process…1<br>6月 19 22 :54 :05 localhost.localdomain systemd[1]: Failed to start LSB: Bring up/do….<br>6月 19 22 :54 :05 localhost.localdomain systemd[1]: Unit network.service entered fai….<br>6月 19 22 :54 :05 localhost.localdomain systemd[1]: network.service failed.<br>Hint: Some lines were ellipsized, use -l to show in full.</p>
 </blockquote>
@@ -572,7 +571,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -594,7 +593,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
