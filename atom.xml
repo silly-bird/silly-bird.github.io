@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-08T08:46:28.607Z</updated>
+  <updated>2019-07-11T02:03:04.409Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL在命令提示符中无法连接</title>
+    <link href="http://yoursite.com/2019/07/11/mysql_cmd/"/>
+    <id>http://yoursite.com/2019/07/11/mysql_cmd/</id>
+    <published>2019-07-10T16:00:00.000Z</published>
+    <updated>2019-07-11T02:03:04.409Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h4><blockquote><p>‘mysql’ 不是内部或外部命令，也不是可运行的程序<br>或批处理文件。</p></blockquote><p><img src="https://i.loli.net/2019/07/11/5d26949bb3f4979888.png" alt></p><a id="more"></a><h4 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h4><blockquote><p>没有配置mysql的环境变量，类似jdk环境变量的配置</p></blockquote><p><img src="https://i.loli.net/2019/07/11/5d2696d68790789655.png" alt></p><p><img src="https://i.loli.net/2019/07/11/5d2696ff5c66a93963.png" alt></p><p><img src="https://i.loli.net/2019/07/11/5d26979a23bdc35057.png" alt></p><h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><p><img src="https://i.loli.net/2019/07/11/5d26986d020b732530.png" alt></p><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;错误信息&quot;&gt;&lt;a href=&quot;#错误信息&quot; class=&quot;headerlink&quot; title=&quot;错误信息&quot;&gt;&lt;/a&gt;错误信息&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;‘mysql’ 不是内部或外部命令，也不是可运行的程序&lt;br&gt;或批处理文件。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/07/11/5d26949bb3f4979888.png&quot; alt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://yoursite.com/categories/MySQL/"/>
+    
+    
+      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL5.5 ---2003错误</title>
+    <link href="http://yoursite.com/2019/07/11/mysql5.5-2003/"/>
+    <id>http://yoursite.com/2019/07/11/mysql5.5-2003/</id>
+    <published>2019-07-10T16:00:00.000Z</published>
+    <updated>2019-07-11T02:02:58.812Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h4><p><img src="https://i.loli.net/2019/07/11/5d268f0b4aa0069750.png" alt><br><a id="more"></a></p><h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><blockquote><p>找到MySQL的安装目录<br>找到bin目录下的mysqld.exe</p></blockquote><p><img src="https://i.loli.net/2019/07/11/5d26901b8e05611527.png" alt></p><blockquote><p>双击运行，在MySQL5.5 Command Line Client,输入账号密码就可以使用了</p></blockquote><p><img src="https://i.loli.net/2019/07/11/5d2690e8aad1e52748.png" alt></p><h4 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h4><blockquote><p>出现这个问题是在我卸载了MySQL57后出现的，在任务管理器-&gt;服务 中找不到MySQL（MySQL5.5）。MySQL57依旧存在，可能注册表没有删除干净造成。<br>每次开启后问题依旧在，还需要按上述步骤开启mysqld.exe</p></blockquote><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;错误信息&quot;&gt;&lt;a href=&quot;#错误信息&quot; class=&quot;headerlink&quot; title=&quot;错误信息&quot;&gt;&lt;/a&gt;错误信息&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/07/11/5d268f0b4aa0069750.png&quot; alt&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://yoursite.com/categories/MySQL/"/>
+    
+    
+      <category term="MySQL5.5" scheme="http://yoursite.com/tags/MySQL5-5/"/>
+    
+      <category term="MySQL 2003错误" scheme="http://yoursite.com/tags/MySQL-2003%E9%94%99%E8%AF%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>FTP文件夹错误</title>
@@ -187,28 +236,6 @@
   </entry>
   
   <entry>
-    <title>java商城项目（一）</title>
-    <link href="http://yoursite.com/2019/06/13/estoreone/"/>
-    <id>http://yoursite.com/2019/06/13/estoreone/</id>
-    <published>2019-06-12T16:00:00.000Z</published>
-    <updated>2019-06-13T12:28:50.789Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>eclipse/myeclipse+mysql+tomcat7以上+jdk1.8+Redis<br><a id="more"></a></p><h3 id="项目目录结构"><a href="#项目目录结构" class="headerlink" title="项目目录结构"></a>项目目录结构</h3><p><img src="https://i.loli.net/2019/06/13/5d0237eaeb19e80735.png" alt></p><h3 id="导入项目出现的错误"><a href="#导入项目出现的错误" class="headerlink" title="导入项目出现的错误"></a>导入项目出现的错误</h3><h6 id="eclipse-Target-runtime-Apache-Tomcat-v8-0-is-not-defined"><a href="#eclipse-Target-runtime-Apache-Tomcat-v8-0-is-not-defined" class="headerlink" title="eclipse Target runtime Apache Tomcat v8.0 is not defined."></a>eclipse Target runtime Apache Tomcat v8.0 is not defined.</h6><p><img src="https://i.loli.net/2019/06/13/5d0238ae22bd469197.png" alt></p><blockquote><p>【项目】→【右键】→【build path】→【configure build path】→【libraries】 这里把你的tomcat 改成（Edit）你用的版本 然后 【项目】→【右键】→【Properties】→【Targeted-Runtimes】 把你的tomcat打勾，然后，保存关闭 。</p></blockquote><hr><blockquote><p>或者点击这个Problems，右击错误描述Delete</p></blockquote><h6 id="Java-compiler-level-does-not-match-the-version-of-the-installed-Java-project-facet"><a href="#Java-compiler-level-does-not-match-the-version-of-the-installed-Java-project-facet" class="headerlink" title="Java compiler level does not match the version of the installed Java project facet."></a>Java compiler level does not match the version of the installed Java project facet.</h6><blockquote><p>点击错误描述，右击选择Quick Fix选择合适的版本</p></blockquote><h6 id="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样"><a href="#项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样" class="headerlink" title="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样"></a>项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样</h6><blockquote><p>tomcat服务器的端口号和安装的Oracle数据库的某个服务端口冲突<br>解决办法有二：<br>1.更改tomcat端口号：tomcat文件→conf→server.xml<br><img src="https://i.loli.net/2019/06/13/5d023c201546437357.png" alt></p></blockquote><pre><code>` &lt;Connector port=&quot;8090&quot; redirectPort=&quot;8443&quot; protocol=&quot;HTTP/1.1&quot; connectionTimeout=&quot;20000&quot; URIEncoding=&quot;utf-8&quot;/&gt;`</code></pre><blockquote><p>2.关闭oracle端口号Ctrl+Alt+Delete，打开任务管理器→服务→找到相关端口关闭 </p></blockquote><h6 id="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）-项目名-显示网络异常"><a href="#项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）-项目名-显示网络异常" class="headerlink" title="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常"></a>项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常</h6><p>出现类似如下错误：<br><img src="https://i.loli.net/2019/06/13/5d023e1189e9215670.png" alt></p><blockquote><p>确保项目正常打开<br><img src="https://i.loli.net/2019/06/13/5d023ed83ddd851128.png" alt><br>但是浏览器不能正常显示项目的页面<br>先用IDE（集成开发环境里）的浏览器打开，以myeclipse为例<br>window→Show View→Web Brower<br>会在项目启动时在IDE中显示项目地址，可能主机名称不是localhost，是一些其他的名称</p></blockquote><h3 id="项目运行结果"><a href="#项目运行结果" class="headerlink" title="项目运行结果"></a>项目运行结果</h3><p><img src="https://i.loli.net/2019/06/13/5d0240a16986349610.png" alt></p><p><img src="https://i.loli.net/2019/06/13/5d0241401e5a793512.png" alt></p><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;运行环境&quot;&gt;&lt;a href=&quot;#运行环境&quot; class=&quot;headerlink&quot; title=&quot;运行环境&quot;&gt;&lt;/a&gt;运行环境&lt;/h3&gt;&lt;p&gt;eclipse/myeclipse+mysql+tomcat7以上+jdk1.8+Redis&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
-    
-    
-      <category term="java电商项目" scheme="http://yoursite.com/tags/java%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/"/>
-    
-  </entry>
-  
-  <entry>
     <title>tomcat端口问题</title>
     <link href="http://yoursite.com/2019/06/13/java-errors/"/>
     <id>http://yoursite.com/2019/06/13/java-errors/</id>
@@ -230,6 +257,28 @@
     
     
       <category term="tomcat" scheme="http://yoursite.com/tags/tomcat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java商城项目（一）</title>
+    <link href="http://yoursite.com/2019/06/13/estoreone/"/>
+    <id>http://yoursite.com/2019/06/13/estoreone/</id>
+    <published>2019-06-12T16:00:00.000Z</published>
+    <updated>2019-06-13T12:28:50.789Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>eclipse/myeclipse+mysql+tomcat7以上+jdk1.8+Redis<br><a id="more"></a></p><h3 id="项目目录结构"><a href="#项目目录结构" class="headerlink" title="项目目录结构"></a>项目目录结构</h3><p><img src="https://i.loli.net/2019/06/13/5d0237eaeb19e80735.png" alt></p><h3 id="导入项目出现的错误"><a href="#导入项目出现的错误" class="headerlink" title="导入项目出现的错误"></a>导入项目出现的错误</h3><h6 id="eclipse-Target-runtime-Apache-Tomcat-v8-0-is-not-defined"><a href="#eclipse-Target-runtime-Apache-Tomcat-v8-0-is-not-defined" class="headerlink" title="eclipse Target runtime Apache Tomcat v8.0 is not defined."></a>eclipse Target runtime Apache Tomcat v8.0 is not defined.</h6><p><img src="https://i.loli.net/2019/06/13/5d0238ae22bd469197.png" alt></p><blockquote><p>【项目】→【右键】→【build path】→【configure build path】→【libraries】 这里把你的tomcat 改成（Edit）你用的版本 然后 【项目】→【右键】→【Properties】→【Targeted-Runtimes】 把你的tomcat打勾，然后，保存关闭 。</p></blockquote><hr><blockquote><p>或者点击这个Problems，右击错误描述Delete</p></blockquote><h6 id="Java-compiler-level-does-not-match-the-version-of-the-installed-Java-project-facet"><a href="#Java-compiler-level-does-not-match-the-version-of-the-installed-Java-project-facet" class="headerlink" title="Java compiler level does not match the version of the installed Java project facet."></a>Java compiler level does not match the version of the installed Java project facet.</h6><blockquote><p>点击错误描述，右击选择Quick Fix选择合适的版本</p></blockquote><h6 id="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样"><a href="#项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样" class="headerlink" title="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样"></a>项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样</h6><blockquote><p>tomcat服务器的端口号和安装的Oracle数据库的某个服务端口冲突<br>解决办法有二：<br>1.更改tomcat端口号：tomcat文件→conf→server.xml<br><img src="https://i.loli.net/2019/06/13/5d023c201546437357.png" alt></p></blockquote><pre><code>` &lt;Connector port=&quot;8090&quot; redirectPort=&quot;8443&quot; protocol=&quot;HTTP/1.1&quot; connectionTimeout=&quot;20000&quot; URIEncoding=&quot;utf-8&quot;/&gt;`</code></pre><blockquote><p>2.关闭oracle端口号Ctrl+Alt+Delete，打开任务管理器→服务→找到相关端口关闭 </p></blockquote><h6 id="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）-项目名-显示网络异常"><a href="#项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）-项目名-显示网络异常" class="headerlink" title="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常"></a>项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常</h6><p>出现类似如下错误：<br><img src="https://i.loli.net/2019/06/13/5d023e1189e9215670.png" alt></p><blockquote><p>确保项目正常打开<br><img src="https://i.loli.net/2019/06/13/5d023ed83ddd851128.png" alt><br>但是浏览器不能正常显示项目的页面<br>先用IDE（集成开发环境里）的浏览器打开，以myeclipse为例<br>window→Show View→Web Brower<br>会在项目启动时在IDE中显示项目地址，可能主机名称不是localhost，是一些其他的名称</p></blockquote><h3 id="项目运行结果"><a href="#项目运行结果" class="headerlink" title="项目运行结果"></a>项目运行结果</h3><p><img src="https://i.loli.net/2019/06/13/5d0240a16986349610.png" alt></p><p><img src="https://i.loli.net/2019/06/13/5d0241401e5a793512.png" alt></p><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;运行环境&quot;&gt;&lt;a href=&quot;#运行环境&quot; class=&quot;headerlink&quot; title=&quot;运行环境&quot;&gt;&lt;/a&gt;运行环境&lt;/h3&gt;&lt;p&gt;eclipse/myeclipse+mysql+tomcat7以上+jdk1.8+Redis&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="java电商项目" scheme="http://yoursite.com/tags/java%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/"/>
     
   </entry>
   
@@ -256,6 +305,28 @@
   </entry>
   
   <entry>
+    <title>Python概述</title>
+    <link href="http://yoursite.com/2019/06/08/Python-Summarize/"/>
+    <id>http://yoursite.com/2019/06/08/Python-Summarize/</id>
+    <published>2019-06-07T16:00:00.000Z</published>
+    <updated>2019-06-08T10:00:30.227Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Python语言类型"><a href="#Python语言类型" class="headerlink" title="Python语言类型"></a>Python语言类型</h3><p>Python是一种计算进程序设计语言，是一种解释型、面向对象、动态数据类型的高级程序设计语言。<br>最初，被设计用于编写自动化脚本（shell）。<br>Python的创始人是荷兰人——Guido van Rossum（吉多 范罗苏姆），于1989年开始写Python语言的编译器</p><a id="more"></a><h3 id="Python的运用领域"><a href="#Python的运用领域" class="headerlink" title="Python的运用领域"></a>Python的运用领域</h3><ul><li>Web开发</li><li>网络爬虫</li><li>计算与数据分析</li><li>人工智能</li><li>自动化运维</li><li>云计算</li><li>网络编程</li><li>游戏开发</li></ul><h3 id="Python语言特点"><a href="#Python语言特点" class="headerlink" title="Python语言特点"></a>Python语言特点</h3><h5 id="Python语言的优点"><a href="#Python语言的优点" class="headerlink" title="Python语言的优点"></a>Python语言的优点</h5><ol><li>简单</li><li>易学</li><li>开源</li><li>可移植性强</li><li>解释性</li><li>可扩展性、可嵌入性</li><li>丰富的第三方库</li><li>代码规范（采用强制缩进的方式）</li></ol><h5 id="Python运行机制"><a href="#Python运行机制" class="headerlink" title="Python运行机制"></a>Python运行机制</h5><p>Python先把代码（.py文件）编译成字节码文件，交给字节码虚拟机，然后虚拟机一条一条的执行字节码指令，从而完成程序的执行。<br>字节码在Python虚拟机程序里对应的是PyCodeObject对象。.pyc文件是字节码在磁盘上的表现形式。</p><h5 id="Python注释"><a href="#Python注释" class="headerlink" title="Python注释"></a>Python注释</h5><ul><li>单行注释（# xxx）</li><li>多行注释（’’’ xxx ‘’’）</li><li>中文注释<ul><li>“#coding=utf-8”</li><li>“#coding=gbk”</li></ul></li></ul><h5 id="import语句"><a href="#import语句" class="headerlink" title="import语句"></a>import语句</h5><p>1.import（关键字） module1,module2……（模块）</p><pre><code>import math</code></pre><ul><li>import导入模块建议顺序<ul><li>Python标准库模块</li><li>Python第三方模块</li><li>自定义模块</li></ul></li></ul><p>2.from-import语句<br>from module import name</p><pre><code>from math import floor</code></pre><h5 id="Python编程规范"><a href="#Python编程规范" class="headerlink" title="Python编程规范"></a>Python编程规范</h5><p>1.缩进<br>2.每个import语句值导入一个模块，最好按标准库、扩展库、自定义库的顺序进行导入<br>3.最好在每个类、函数定义和一段完整的功能代码之后加空格<br>4.如果语句过长，使用续行符“\”或者是“（）”<br>5.用“（）”来避免由于优先级造成的错误<br>6.注释</p><h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><p><strong>题目：利用input输入三个数值，并求和（float函数可以将字符串转换成单精度浮点数）</strong></p><pre><code> 输入数字 Python 3 通过 input() 获取的任何内容都是 str（字符串）类型。str1 = input(&apos;请输入第1个数：&apos;)str2 = input(&apos;请输入第2个数：&apos;)str3 = input(&apos;请输入第3个数：&apos;)用 int() 函数强制将 str 转换成 intnum1 = float(str1)num2 = float(str2)num3= float(str3)加法运算并打印print(&apos;{0} + {1} +{2} = {3}&apos;.format(num1, num2,num3,num1 + num2+num3))</code></pre><p><strong>运行结果：</strong></p><pre><code>请输入第1个数：1请输入第2个数：2请输入第3个数：3 1.0 + 2.0 +3.0 = 6.0Process finished with exit code 0</code></pre><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Python语言类型&quot;&gt;&lt;a href=&quot;#Python语言类型&quot; class=&quot;headerlink&quot; title=&quot;Python语言类型&quot;&gt;&lt;/a&gt;Python语言类型&lt;/h3&gt;&lt;p&gt;Python是一种计算进程序设计语言，是一种解释型、面向对象、动态数据类型的高级程序设计语言。&lt;br&gt;最初，被设计用于编写自动化脚本（shell）。&lt;br&gt;Python的创始人是荷兰人——Guido van Rossum（吉多 范罗苏姆），于1989年开始写Python语言的编译器&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+    
+    
+      <category term="Python 第一章：Python概述" scheme="http://yoursite.com/tags/Python-%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9APython%E6%A6%82%E8%BF%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python语言基础</title>
     <link href="http://yoursite.com/2019/06/08/Python-BasicKnowledge/"/>
     <id>http://yoursite.com/2019/06/08/Python-BasicKnowledge/</id>
@@ -278,28 +349,6 @@ print(math.pi)
     
     
       <category term="Python 第二章：Python语言基础" scheme="http://yoursite.com/tags/Python-%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9APython%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python概述</title>
-    <link href="http://yoursite.com/2019/06/08/Python-Summarize/"/>
-    <id>http://yoursite.com/2019/06/08/Python-Summarize/</id>
-    <published>2019-06-07T16:00:00.000Z</published>
-    <updated>2019-06-08T10:00:30.227Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Python语言类型"><a href="#Python语言类型" class="headerlink" title="Python语言类型"></a>Python语言类型</h3><p>Python是一种计算进程序设计语言，是一种解释型、面向对象、动态数据类型的高级程序设计语言。<br>最初，被设计用于编写自动化脚本（shell）。<br>Python的创始人是荷兰人——Guido van Rossum（吉多 范罗苏姆），于1989年开始写Python语言的编译器</p><a id="more"></a><h3 id="Python的运用领域"><a href="#Python的运用领域" class="headerlink" title="Python的运用领域"></a>Python的运用领域</h3><ul><li>Web开发</li><li>网络爬虫</li><li>计算与数据分析</li><li>人工智能</li><li>自动化运维</li><li>云计算</li><li>网络编程</li><li>游戏开发</li></ul><h3 id="Python语言特点"><a href="#Python语言特点" class="headerlink" title="Python语言特点"></a>Python语言特点</h3><h5 id="Python语言的优点"><a href="#Python语言的优点" class="headerlink" title="Python语言的优点"></a>Python语言的优点</h5><ol><li>简单</li><li>易学</li><li>开源</li><li>可移植性强</li><li>解释性</li><li>可扩展性、可嵌入性</li><li>丰富的第三方库</li><li>代码规范（采用强制缩进的方式）</li></ol><h5 id="Python运行机制"><a href="#Python运行机制" class="headerlink" title="Python运行机制"></a>Python运行机制</h5><p>Python先把代码（.py文件）编译成字节码文件，交给字节码虚拟机，然后虚拟机一条一条的执行字节码指令，从而完成程序的执行。<br>字节码在Python虚拟机程序里对应的是PyCodeObject对象。.pyc文件是字节码在磁盘上的表现形式。</p><h5 id="Python注释"><a href="#Python注释" class="headerlink" title="Python注释"></a>Python注释</h5><ul><li>单行注释（# xxx）</li><li>多行注释（’’’ xxx ‘’’）</li><li>中文注释<ul><li>“#coding=utf-8”</li><li>“#coding=gbk”</li></ul></li></ul><h5 id="import语句"><a href="#import语句" class="headerlink" title="import语句"></a>import语句</h5><p>1.import（关键字） module1,module2……（模块）</p><pre><code>import math</code></pre><ul><li>import导入模块建议顺序<ul><li>Python标准库模块</li><li>Python第三方模块</li><li>自定义模块</li></ul></li></ul><p>2.from-import语句<br>from module import name</p><pre><code>from math import floor</code></pre><h5 id="Python编程规范"><a href="#Python编程规范" class="headerlink" title="Python编程规范"></a>Python编程规范</h5><p>1.缩进<br>2.每个import语句值导入一个模块，最好按标准库、扩展库、自定义库的顺序进行导入<br>3.最好在每个类、函数定义和一段完整的功能代码之后加空格<br>4.如果语句过长，使用续行符“\”或者是“（）”<br>5.用“（）”来避免由于优先级造成的错误<br>6.注释</p><h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><p><strong>题目：利用input输入三个数值，并求和（float函数可以将字符串转换成单精度浮点数）</strong></p><pre><code> 输入数字 Python 3 通过 input() 获取的任何内容都是 str（字符串）类型。str1 = input(&apos;请输入第1个数：&apos;)str2 = input(&apos;请输入第2个数：&apos;)str3 = input(&apos;请输入第3个数：&apos;)用 int() 函数强制将 str 转换成 intnum1 = float(str1)num2 = float(str2)num3= float(str3)加法运算并打印print(&apos;{0} + {1} +{2} = {3}&apos;.format(num1, num2,num3,num1 + num2+num3))</code></pre><p><strong>运行结果：</strong></p><pre><code>请输入第1个数：1请输入第2个数：2请输入第3个数：3 1.0 + 2.0 +3.0 = 6.0Process finished with exit code 0</code></pre><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Python语言类型&quot;&gt;&lt;a href=&quot;#Python语言类型&quot; class=&quot;headerlink&quot; title=&quot;Python语言类型&quot;&gt;&lt;/a&gt;Python语言类型&lt;/h3&gt;&lt;p&gt;Python是一种计算进程序设计语言，是一种解释型、面向对象、动态数据类型的高级程序设计语言。&lt;br&gt;最初，被设计用于编写自动化脚本（shell）。&lt;br&gt;Python的创始人是荷兰人——Guido van Rossum（吉多 范罗苏姆），于1989年开始写Python语言的编译器&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
-    
-    
-      <category term="Python 第一章：Python概述" scheme="http://yoursite.com/tags/Python-%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9APython%E6%A6%82%E8%BF%B0/"/>
     
   </entry>
   
@@ -451,50 +500,6 @@ print(math.pi)
     
     
       <category term="MyBatis（1）" scheme="http://yoursite.com/tags/MyBatis%EF%BC%881%EF%BC%89/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java中浅谈&quot;equals&quot;和&quot;==&quot;</title>
-    <link href="http://yoursite.com/2019/05/12/equals%20%E5%92%8C%20==/"/>
-    <id>http://yoursite.com/2019/05/12/equals 和 ==/</id>
-    <published>2019-05-11T16:00:00.000Z</published>
-    <updated>2019-05-12T10:12:53.974Z</updated>
-    
-    <content type="html"><![CDATA[<p>“equals”和“==”怎么区分使用，什么时候使用equals（）？什么时候使用 “==” ？</p><a id="more"></a><h3 id="“-”使用场景"><a href="#“-”使用场景" class="headerlink" title="“==”使用场景"></a>“==”使用场景</h3><p>  如果两个变量是基本数据类型，可以直接使用“==”运算符来比较数值是否相等。<br>  如果是引用数据类型（对象），这里涉及两块内存，对象存储在对内存中，变量占用另外一块内存。如果要比较两个对象是否指向同一个对象，看这两个对象是否指向同一块存储空间<br>    <code>例如：  String s=new String();</code></p><pre><code>`new String()占用一块内存    变量s占用一块内存`</code></pre><p><em>此时，变量s所对应内存中存储的数值就是对象占用的那块地址的首地址</em></p><blockquote><p>基本数据类型：byte、int、long、short、float、double、char、boolean（比较值）<br>引用数据类型：类（包括对象）、接口、数组（比较的是他们在内存中的存放地址）</p></blockquote><h3 id="equals使用场景"><a href="#equals使用场景" class="headerlink" title="equals使用场景"></a>equals使用场景</h3><p>equals是Object提供的方法，每个类都继承至Object，所以都具有equals方法。<br><strong>  没有覆盖的equals底层也是使用“==”运算符比较两个对象 </strong></p><pre><code>boolean equals（Object object）{       return this==object； }</code></pre><h3 id="“-”和equals比较"><a href="#“-”和equals比较" class="headerlink" title="“==”和equals比较"></a>“==”和equals比较</h3><p>相比较“==”运算符，equals方法可以被覆盖，<strong>可以通过覆盖，让他比较数据内容而不是引用</strong>比较堆中内容是否相等</p><p>new 两个对象：</p><pre><code>String s1=new Strig(&quot;www.ljcn.xyz&quot;);String s2=new Strig(&quot;www.ljcn.xyz&quot;);</code></pre><p>这是俩个不同的对象，首地址不同<br>s1=s2；返回false<br>s1.equals(s2);返回true</p><h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>如果编写的类希望比较该类创建的两个实例对象的内容是否相同，需覆盖equals方法！</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;“equals”和“==”怎么区分使用，什么时候使用equals（）？什么时候使用 “==” ？&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
-    
-    
-      <category term="equals和==" scheme="http://yoursite.com/tags/equals%E5%92%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基本数据类型转换</title>
-    <link href="http://yoursite.com/2019/04/25/%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/"/>
-    <id>http://yoursite.com/2019/04/25/数值类型转换/</id>
-    <published>2019-04-24T16:00:00.000Z</published>
-    <updated>2019-04-25T09:21:04.198Z</updated>
-    
-    <content type="html"><![CDATA[<hr><a id="more"></a><h3 id="java八种基本数据类型"><a href="#java八种基本数据类型" class="headerlink" title="java八种基本数据类型"></a>java八种基本数据类型</h3><p><img src="https://i.loli.net/2019/04/25/5cc17599de30d.png" alt></p><h3 id="基本数据类型转换"><a href="#基本数据类型转换" class="headerlink" title="基本数据类型转换"></a>基本数据类型转换</h3><pre><code>if(两个操作数中有一个是double类型){    另一个操作数就会转换成double类型；}else if（两个操作数中有一个是float类型）{    另一个操作数就会转换成float类型；}else if（两个操作数中有一个是long类型）{    另一个操作数就会转换成flong类型；}else{    两个操作数都被转换成int类型；}</code></pre><p><img src="https://i.loli.net/2019/04/25/5cc1796f5ce65.png" alt><br><em>蓝色箭头代表无精度丢失的转换<br>黄色箭头表示可能有精度丢失的转换</em></p><h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><p>例如，将double类型的数值转换成int类型，需要通过强制类型转换（cast）实现。</p><pre><code>double test=1.111；int test2=（int）test；</code></pre><p><strong>注意</strong>：如果试图将一个数值从一种数据类型强制转换成另外一种数据类型，同时超过了目标类型的表示范围，结果会截取成完全不同的数值。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-    
-    </summary>
-    
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
-    
-    
-      <category term="基本数据类型" scheme="http://yoursite.com/tags/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
     
   </entry>
   
