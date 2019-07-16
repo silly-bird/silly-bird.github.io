@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+  <meta name="keywords" content="MySQL,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Lee's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="数据库管理系统​    关系型数据库:mysql,oracle,sqlserver,db2 ​    oracle有表空间，支持分区，mysql不支持 ​    非关系型数据库：redis key-value,存储在内存中，做缓存">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL基础知识（DQL）">
+<meta property="og:url" content="http://yoursite.com/2019/07/16/MySQL_DQL/index.html">
+<meta property="og:site_name" content="Lee&#39;s Blog">
+<meta property="og:description" content="数据库管理系统​    关系型数据库:mysql,oracle,sqlserver,db2 ​    oracle有表空间，支持分区，mysql不支持 ​    非关系型数据库：redis key-value,存储在内存中，做缓存">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-16T09:15:57.031Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL基础知识（DQL）">
+<meta name="twitter:description" content="数据库管理系统​    关系型数据库:mysql,oracle,sqlserver,db2 ​    oracle有表空间，支持分区，mysql不支持 ​    非关系型数据库：redis key-value,存储在内存中，做缓存">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/16/MySQL_DQL/">
+
+
+
+
+
+  <title>MySQL基础知识（DQL） | Lee's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/silly-bird" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lee's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/16/MySQL_DQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lee's Blog">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lee's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL基础知识（DQL）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-16T00:00:00+08:00">
+                2019-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/16/MySQL_DQL/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/16/MySQL_DQL/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/07/16/MySQL_DQL/" class="leancloud_visitors" data-flag-title="MySQL基础知识（DQL）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="数据库管理系统"><a href="#数据库管理系统" class="headerlink" title="数据库管理系统"></a>数据库管理系统</h2><p>​    关系型数据库:mysql,oracle,sqlserver,db2</p>
+<p>​    oracle有表空间，支持分区，mysql不支持</p>
+<p>​    非关系型数据库：redis key-value,存储在内存中，做缓存</p>
+<a id="more"></a>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><p>​    结构化查询语言</p>
+<p>​    DDL：create  drop, alter</p>
+<p>​    DML:insert,update,delete</p>
+<p>​    DQL：select</p>
+<p>​    DCL：作为了解，用来做权限相关操作</p>
+<h2 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h2><p>select 【DISTINCT】 结果集 from 表名 where 行条件 group by 分组字段 having 分组筛选的条件 order by 排序字段 limit 分页条件</p>
+<h3 id="where"><a href="#where" class="headerlink" title="where"></a>where</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">比较运算符</span><br><span class="line"></span><br><span class="line">l  =、!=、&lt;&gt;、&lt;、&lt;=、&gt;、&gt;=；</span><br><span class="line"></span><br><span class="line">l  BETWEEN…AND；</span><br><span class="line"></span><br><span class="line">l  IN(<span class="keyword">set</span>)；</span><br><span class="line"></span><br><span class="line">l  <span class="keyword">IS</span> <span class="literal">NULL</span>；  </span><br><span class="line"></span><br><span class="line">关系运算符</span><br><span class="line"></span><br><span class="line">l  <span class="keyword">AND</span>；</span><br><span class="line"></span><br><span class="line">l  <span class="keyword">OR</span>；</span><br><span class="line"></span><br><span class="line">l  <span class="keyword">NOT</span>；</span><br><span class="line"></span><br><span class="line">算术运算符:</span><br><span class="line"></span><br><span class="line">    +  -  *  /  %</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>创建stu表</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&gt; #创建表stu</span><br><span class="line">&gt; CREATE TABLE stu (</span><br><span class="line">&gt; 	sid	CHAR(6),</span><br><span class="line">&gt; 	sname		VARCHAR(50),</span><br><span class="line">&gt; 	age		INT,</span><br><span class="line">&gt; 	gender	VARCHAR(50)</span><br><span class="line">&gt; );</span><br><span class="line">&gt; #添加数据</span><br><span class="line">&gt; INSERT INTO stu VALUES('S_1001', 'liuYi', 35, 'male');</span><br><span class="line">&gt; INSERT INTO stu VALUES('S_1002', 'chenEr', 15, 'female');</span><br><span class="line">&gt; INSERT INTO stu VALUES('S_1003', 'zhangSan', 95, 'male');</span><br><span class="line">&gt; INSERT INTO stu VALUES('S_1004', 'liSi', 65, 'female');</span><br><span class="line">&gt; INSERT INTO stu VALUES('S_1005', 'wangWu', 55, 'male');</span><br><span class="line">&gt; INSERT INTO stu VALUES('S_1006', 'zhaoLiu', 75, 'female');</span><br><span class="line">&gt; INSERT INTO stu VALUES('S_1007', 'sunQi', 25, 'male');</span><br><span class="line">&gt; INSERT INTO stu VALUES('S_1008', 'zhouBa', 45, 'female');</span><br><span class="line">&gt; INSERT INTO stu VALUES('S_1009', 'wuJiu', 85, 'male');</span><br><span class="line">&gt; INSERT INTO stu VALUES('S_1010', 'zhengShi', 5, 'female');</span><br><span class="line">&gt; INSERT INTO stu VALUES('S_1011', 'xxx', NULL, NULL);</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+</blockquote>
+<p>(1)查询性别为女，并且年龄小于50的记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> stu s <span class="keyword">where</span> s.gender=<span class="string">'female'</span> <span class="keyword">and</span> s.age&lt;<span class="number">50</span></span><br></pre></td></tr></table></figure>
+<p>(2)查询学号为S_1001，或者姓名为liSi的记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> stu s <span class="keyword">where</span> s.sid=<span class="string">'s_1001'</span> <span class="keyword">or</span> s.sname=<span class="string">'lisi'</span></span><br></pre></td></tr></table></figure>
+<p>(3)查询学号为S _ 1001 ，S _ 1002，S _ 1003的记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> stu s <span class="keyword">where</span> s.sid=<span class="string">'s_1001'</span> <span class="keyword">or</span> s.sid=<span class="string">'s_1002'</span> <span class="keyword">or</span> s.sid=<span class="string">'s_1003'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 或者</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> stu s <span class="keyword">where</span> s.sid <span class="keyword">in</span> (<span class="string">'S_1001'</span>,<span class="string">'S_1002'</span>,<span class="string">'S_1003'</span>)</span><br></pre></td></tr></table></figure>
+<p>(4)查询学号不是S_1001，S_1002，S_1003的记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> stu s <span class="keyword">where</span> s.sid <span class="keyword">not</span> <span class="keyword">in</span> (<span class="string">'S_1001'</span>,<span class="string">'S_1002'</span>,<span class="string">'S_1003'</span>);</span><br></pre></td></tr></table></figure>
+<p>(5)查询年龄为null的记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> stu s <span class="keyword">where</span> s.age <span class="keyword">is</span> <span class="literal">NULL</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 注意</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> stu s <span class="keyword">where</span> s.age =<span class="literal">null</span><span class="comment">-- 是错误写法</span></span><br></pre></td></tr></table></figure>
+<p>(6)查询年龄在20到40之间的学生记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> stu s <span class="keyword">where</span> s.age &gt;=<span class="number">20</span> <span class="keyword">and</span> s.age&lt;=<span class="number">40</span></span><br><span class="line"><span class="comment">--- 或者</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> stu s <span class="keyword">where</span> s.age <span class="keyword">BETWEEN</span> <span class="number">20</span> <span class="keyword">and</span> <span class="number">40</span></span><br></pre></td></tr></table></figure>
+<p>(7)　查询性别非男的学生记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> stu s <span class="keyword">where</span> <span class="keyword">not</span> s.gender = <span class="string">'male'</span></span><br></pre></td></tr></table></figure>
+<p>(8) 查询姓名不为null的学生记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> stu s <span class="keyword">where</span> s.sname <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+<h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><p>聚合函数是用来做纵向运算的函数：</p>
+<p>l  COUNT()：统计指定列不为NULL的记录行数；</p>
+<p>l  MAX()：计算指定列的最大值，如果指定列是字符串类型，那么使用字符串排序运算；</p>
+<p>l  MIN()：计算指定列的最小值，如果指定列是字符串类型，那么使用字符串排序运算；</p>
+<p>l  SUM()：计算指定列的数值和，如果指定列类型不是数值类型，那么计算结果为0；</p>
+<p>l  AVG()：计算指定列的平均值，如果指定列类型不是数值类型，那么计算结果为0；</p>
+<p>(1)　COUNT</p>
+<p>当需要纵向统计时可以使用COUNT()。</p>
+<p>l  查询emp表中记录数：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> emp</span><br></pre></td></tr></table></figure>
+<p>l  查询emp表中有佣金的人数：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> emp e <span class="keyword">where</span> e.comm <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">null</span> <span class="keyword">and</span> e.comm !=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>注意，因为count()函数中给出的是comm列，那么只统计comm列非NULL的行数。</p>
+<p>l  查询emp表中月薪大于2500的人数：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> emp e <span class="keyword">where</span> e.sal&gt;<span class="number">2500</span></span><br></pre></td></tr></table></figure>
+<p>l  统计月薪与佣金之和大于2500元的人数：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> emp e <span class="keyword">where</span> e.sal+<span class="keyword">IFNULL</span>(e.comm,<span class="number">0</span>) &gt;<span class="number">2500</span></span><br></pre></td></tr></table></figure>
+<p>l  查询有佣金的人数，以及有领导的人数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT count(*) from emp WHERE sal&gt;0 AND mgr is  not null</span><br></pre></td></tr></table></figure>
+<p>(2)　SUM和AVG</p>
+<ul>
+<li><p>当需要纵向求和时使用sum()函数。</p>
+<ul>
+<li>查询所有雇员月薪和：<br><code>SELECT sum(sal) from emp</code></li>
+</ul>
+<ul>
+<li><p>查询所有雇员月薪和，以及所有雇员佣金和：</p>
+<p> <code>SELECT sum(sal) 总工资,sum(comm) 总奖金 from emp</code></p>
+</li>
+<li><p>查询所有雇员月薪+佣金和：</p>
+<p>  <code>SELECT empno, sum(sal+comm)  from emp GROUP BY empno</code></p>
+</li>
+<li><p>统计所有员工平均工资：</p>
+<p><code>SELECT empno, avg(sal)  from emp GROUP BY empno</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>(3)　MAX和MIN</p>
+<p>l  查询最高工资和最低工资：</p>
+<h3 id="group-by"><a href="#group-by" class="headerlink" title="group by"></a>group by</h3><p>​    分组</p>
+<p>​    分组后面跟的是列名</p>
+<p>​    其结果集可以使用聚合函数</p>
+<pre><code>* 注意 分组查询的结果集，除了聚合函数外，如果想查看其它的字段，那么该字段必须为分组条件的字段
+</code></pre><p>每个部门的总工资</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">sum</span>(e.sal),e.deptno <span class="keyword">from</span> emp e <span class="keyword">GROUP</span> <span class="keyword">BY</span> e.deptno</span><br></pre></td></tr></table></figure>
+<h3 id="having"><a href="#having" class="headerlink" title="having"></a>having</h3><p>​    对分组之后的组进行筛选，其后跟的条件必须为对聚合函数的筛选</p>
+<ul>
+<li><p>注意 和where之间的区别</p>
+</li>
+<li><p>where是分组之前进行筛选</p>
+<ul>
+<li>eg:把工资超过2000的人进行分组</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>having是对分组之后整组筛选</li>
+</ul>
+<p>   找出除了实习生（低于1500），平均工资高于2500的部门</p>
+   <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> e.deptno ,<span class="keyword">AVG</span>( e.sal)<span class="keyword">from</span> emp e <span class="keyword">where</span> e.sal&gt;<span class="number">1500</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> e.deptno  <span class="keyword">HAVING</span> <span class="keyword">AVG</span>( e.sal)&gt;<span class="number">2500</span></span><br></pre></td></tr></table></figure>
+<p>   ​    </p>
+<h3 id="order-by-字段名"><a href="#order-by-字段名" class="headerlink" title="order by  字段名"></a>order by  字段名</h3><p>​    排序</p>
+<p>​    升序 asc (默认)</p>
+<p>​    降序  desc</p>
+<h3 id="DISTINCT-字段名"><a href="#DISTINCT-字段名" class="headerlink" title="DISTINCT 字段名"></a>DISTINCT 字段名</h3><p>对结果集进行去重</p>
+<h3 id="limit-（方言-只能用于mysql）"><a href="#limit-（方言-只能用于mysql）" class="headerlink" title="limit （方言:只能用于mysql）"></a>limit （方言:只能用于mysql）</h3><p>​    <strong>分页</strong></p>
+<ul>
+<li>了解：orecle使用的是rowNum这个伪列进行分页</li>
+</ul>
+<blockquote>
+<p>pageSize :每页存放多少记录数</p>
+<p>pageIndex:当前页</p>
+<p>limit (pageIndex-1)*pageSize,pageSize</p>
+</blockquote>
+<h1 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h1><p>作用：确保数据的完整性，保证用户添加到表中的数据是正确的</p>
+<h2 id="主键约束（PRIMARY-KEY）"><a href="#主键约束（PRIMARY-KEY）" class="headerlink" title="主键约束（PRIMARY KEY）"></a>主键约束（PRIMARY KEY）</h2><p>​    保证每一行记录的是唯一的，并且是有效的</p>
+<ul>
+<li><p>特点：唯一性，非空.</p>
+</li>
+<li><p>了解联合主键</p>
+</li>
+<li><p>自增长（mysql独有，oracle使用序列的对象） auto_increment，注意其自动增长的值是从最后一次插入到值开始</p>
+</li>
+<li><p>uuid 用来作为主键来标识该行的唯一性</p>
+</li>
+<li><p>第一种添加方式</p>
+</li>
+</ul>
+   <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> student(</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">	<span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">50</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>   第二种添加方式 方便添加联合主键</p>
+   <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> student(</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">int</span>,</span><br><span class="line">	<span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">50</span>),</span><br><span class="line">	primary <span class="keyword">key</span>(<span class="keyword">id</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="唯一约束-unique"><a href="#唯一约束-unique" class="headerlink" title="唯一约束(unique)"></a>唯一约束(unique)</h2><p>保证每一列记录的是唯一的，可以为null</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">table</span> t_user2(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">int</span> PRIMARY <span class="keyword">KEY</span> auto_increment,</span><br><span class="line">username <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">UNIQUE</span></span><br><span class="line"></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>思考：两个null和唯一有冲突吗？</p>
+<p>​    不冲突，语序有多个null</p>
+<h2 id="非空约束-（not-null）"><a href="#非空约束-（not-null）" class="headerlink" title="非空约束 （not  null）"></a>非空约束 （not  null）</h2><p>表明该字段不能为空</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">table</span> t_user2(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">int</span> PRIMARY <span class="keyword">KEY</span> auto_increment,</span><br><span class="line">username <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="默认值约束（default）"><a href="#默认值约束（default）" class="headerlink" title="默认值约束（default）"></a>默认值约束（default）</h2><p>当没有给该列赋值时，采用默认值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">table</span> t_user2(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">int</span> PRIMARY <span class="keyword">KEY</span> auto_increment,</span><br><span class="line">username <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">default</span> <span class="string">'张三'</span></span><br><span class="line"></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h1 id="表与表之间的关系"><a href="#表与表之间的关系" class="headerlink" title="表与表之间的关系"></a>表与表之间的关系</h1><p>一对一 ：一个人有一个身份证</p>
+<ul>
+<li>第一种在user表中引入对应身份证表的ID</li>
+<li>直接设为一张表（开发常用）</li>
+</ul>
+<p>一对多：一个老师对应多个学生</p>
+<ul>
+<li>在多的那个表中引入对一这个表中id</li>
+</ul>
+<h3 id="外键约束"><a href="#外键约束" class="headerlink" title="外键约束"></a>外键约束</h3><p>​    保证从表中的关联值必须要是主表中存在的值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> student(</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">	<span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">50</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">	sex <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">default</span> <span class="string">'男'</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">#成绩表（从表）</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> score(</span><br><span class="line">        <span class="keyword">id</span> <span class="built_in">int</span>,</span><br><span class="line">        score <span class="built_in">int</span>,</span><br><span class="line">        <span class="keyword">sid</span> <span class="built_in">int</span> , </span><br><span class="line">        <span class="keyword">CONSTRAINT</span> fk_score_sid <span class="keyword">foreign</span> <span class="keyword">key</span>(<span class="keyword">sid</span>) <span class="keyword">references</span> student(<span class="keyword">id</span>)</span><br><span class="line">);</span><br><span class="line"><span class="comment">-- 外键列的数据类型一定要与主键的类型一致</span></span><br><span class="line">CONSTRAINT 约束名 foreign key(从键) references 主表(主键)</span><br></pre></td></tr></table></figure>
+<p>多对多：两个一对多，一个老师对应多个学生，一个学生也有多个老师</p>
+<p>如何解决：需要创建第三张表,中间表中至少两个字段，这两个字段分别作为外键指向各自一方的主键.</p>
+<h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><p>1.设有成绩表如下所示<br>    1.查询两门及两门以上不及格的学生姓名<br>    2.查询学生平均分<br>    3.查询姓名是张三的学生 成绩和<br>    4.将学生信息按照 分数倒序<br>    5.获取学生信息中 分数最低的学生姓名和分数最高的学生姓名<br>    6.查询两门及两门以上不及格同学的平均分。<br>    编号    姓名    科目    分数<br>    1     张三     数学  90<br>    2     张三     语文     50<br>    3     张三     地理     40<br>    4     李四     语文     55<br>    5     李四     政治     45<br>    6     王五     政治     30<br>    7     李四     数学     80<br>    8     王五     语文     70</p>
+<p>2.写出 SQL语句的格式 : 插入 ，更新 ，删除<br>  表名 user<br>  name    tel    content    date<br>  张三    13333663366     大专毕业    2006-10-11<br>  张三    13612312331     本科毕业    2006-10-15<br>  张四    021-55665566 中专毕业    2006-10-15<br>  (a).有一新记录(小王 13254748547 高中毕业 2007-05-06)请用SQL语句新增至表中</p>
+<pre><code>INSERT INTO user VALUES (&apos;小王&apos;,13254748547,&apos;高中毕业&apos;,&apos;2017-05-06&apos;);
+</code></pre><p>  (b).请用sql语句把张三的时间更新成为当前系统时间 </p>
+<pre><code>UPDATE user SET date=NOW();
+</code></pre><p>  (c).请写出删除名为张四的全部记录</p>
+<pre><code>DELETE from user WHERE `name`=&apos;张三&apos;;
+</code></pre><p>3.写出 SQL语句的格式 :对emp表进行查询操作<br>  1.找出奖金高于工资的雇员 </p>
+<pre><code>SELECT * FROM emp WHERE comm&gt;sal;
+</code></pre><p>  2.找出奖金高于工资60%的雇员</p>
+<pre><code>SELECT * FROM emp WHERE comm&gt;(sal*0.6);
+</code></pre><p>  3.找出部门10中所有经理和部门20中所有店员的信息</p>
+<pre><code>SELECT * FROM emp where deptno=10 AND job=&apos;MANAGER&apos; or deptno=20 AND job !=&apos;MANAGER&apos; ;
+</code></pre><p>  4.薪资大于或等于2000的所有员工的信息。</p>
+<pre><code>SELECT * FROM emp where sal&gt;2000 ;
+</code></pre><p>  5.查询没有奖金或者奖金低于100的员工信息</p>
+<pre><code>SELECT * FROM emp where comm&lt;100 OR comm IS NULL;
+</code></pre><p>  6.查询姓名不带”R”的员工姓名</p>
+<pre><code>SELECT * FROM emp where ename NOT LIKE &apos;%R%&apos;;
+</code></pre><p>  7.显示员工的姓名和入职时间，根据入职时间，将最老的员工排放在最前面。</p>
+<pre><code>SELECT ename,hiredate FROM emp ORDER BY  hiredate ASC;
+</code></pre><p>  8.显示所有员工的姓名、工作和工资，按照工作的降序排序，若工作相同则按工资升序排序。</p>
+<pre><code>SELECT ename,job ,sal FROM emp ORDER BY  job  DESC ,sal ASC;
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Lee's Blog 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Lee's Blog 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/11/mysql_cmd/" rel="next" title="MySQL在命令提示符中无法连接">
+                <i class="fa fa-chevron-left"></i> MySQL在命令提示符中无法连接
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+   
+
+  
+    <div class="comments" id="comments">
+    </div>
+	
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/head.gif" alt="Lee's Blog">
+            
+              <p class="site-author-name" itemprop="name">Lee's Blog</p>
+              <p class="site-description motion-element" itemprop="description">不破不立</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/silly-bird" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2747067773@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/silly-bird/" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-book"></i>博客园</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库管理系统"><span class="nav-number">1.</span> <span class="nav-text">数据库管理系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL"><span class="nav-number">2.</span> <span class="nav-text">SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DQL"><span class="nav-number">3.</span> <span class="nav-text">DQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#where"><span class="nav-number">3.1.</span> <span class="nav-text">where</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚合函数"><span class="nav-number">3.2.</span> <span class="nav-text">聚合函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#group-by"><span class="nav-number">3.3.</span> <span class="nav-text">group by</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#having"><span class="nav-number">3.4.</span> <span class="nav-text">having</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#order-by-字段名"><span class="nav-number">3.5.</span> <span class="nav-text">order by  字段名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DISTINCT-字段名"><span class="nav-number">3.6.</span> <span class="nav-text">DISTINCT 字段名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#limit-（方言-只能用于mysql）"><span class="nav-number">3.7.</span> <span class="nav-text">limit （方言:只能用于mysql）</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#约束"><span class="nav-number"></span> <span class="nav-text">约束</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主键约束（PRIMARY-KEY）"><span class="nav-number">1.</span> <span class="nav-text">主键约束（PRIMARY KEY）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#唯一约束-unique"><span class="nav-number">2.</span> <span class="nav-text">唯一约束(unique)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非空约束-（not-null）"><span class="nav-number">3.</span> <span class="nav-text">非空约束 （not  null）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认值约束（default）"><span class="nav-number">4.</span> <span class="nav-text">默认值约束（default）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表与表之间的关系"><span class="nav-number"></span> <span class="nav-text">表与表之间的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外键约束"><span class="nav-number">0.1.</span> <span class="nav-text">外键约束</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作业"><span class="nav-number">1.</span> <span class="nav-text">作业</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lee's Blog</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script> 
+
+    
+  
+  <script src="/js/src/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'M2KefGUIARvt1zHxRWejyMlQ-gzGzoHsz',
+        appKey: 'PjTyO1LckbmqMwoKBthCITvJ',
+        placeholder: '客官！来了确定不说点什么吗？',
+        avatar:'wavatar',
+        guest_info:['nick'] ,  //评论者只需要提供评论的昵称即可
+        pageSize:'10' || 10,
+    });
+    //增加以下六行代码去除 power by valine
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+  </script>
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+ 
+<script src="/live2dw/lib/L2Dwidget.min.js?bd2294fafea3389ee458f1d9be5a2157"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
