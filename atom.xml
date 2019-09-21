@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-21T04:03:49.200Z</updated>
+  <updated>2019-09-21T04:05:57.741Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,18 +21,14 @@
     <link href="http://yoursite.com/2019/09/21/String&amp;StringBuffer&amp;StringBuilder/"/>
     <id>http://yoursite.com/2019/09/21/String&amp;StringBuffer&amp;StringBuilder/</id>
     <published>2019-09-20T16:00:00.000Z</published>
-    <updated>2019-09-21T04:03:49.200Z</updated>
+    <updated>2019-09-21T04:05:57.741Z</updated>
     
-    <content type="html"><![CDATA[<a id="more"></a><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><blockquote><p><code>String</code> 类中使用 <code>final</code> 关键字修饰字符数组<br>所以<code>String</code> 对象是不可变的</p></blockquote><h3 id="StringBuilder-与-StringBuffer"><a href="#StringBuilder-与-StringBuffer" class="headerlink" title="StringBuilder 与 StringBuffer"></a>StringBuilder 与 StringBuffer</h3><blockquote><p><code>StringBuilder</code> 与 <code>StringBuffer</code> 继承自 <code>AbstractStringBuilder</code>类<br>没有用 final 关键字修饰，所以这两种对象都是可变的</p></blockquote><h3 id="线程安全性"><a href="#线程安全性" class="headerlink" title="线程安全性"></a>线程安全性</h3><blockquote><p><code>String</code> 中的对象是不可变的，线程安全。<br><code>StringBuffer</code> 对方法加了同步锁或者对调用的方法加了同步锁，线程安全</p><p> <code>StringBuilder</code> 并没有对方法进行加同步锁，所以是非线程安全</p></blockquote><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li>操作少量的数据: String</li><li>单线程操作字符串缓冲区下操作大量数据: StringBuilder</li><li>多线程操作字符串缓冲区下操作大量数据: StringBuffer</li></ul><hr><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p><strong><br>更多精彩内容，欢迎扫码关注微信公众号</strong><br><img src="https://i.loli.net/2019/05/22/5ce53d3bbfd3511773.jpg" alt="8454929096314a5.jpg"></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><blockquote><p><code>String</code> 类中使用 <code>final</code> 关键字修饰字符数组<br>所以<code>String</code> 对象是不可变的<br><a id="more"></a></p></blockquote><h3 id="StringBuilder-与-StringBuffer"><a href="#StringBuilder-与-StringBuffer" class="headerlink" title="StringBuilder 与 StringBuffer"></a>StringBuilder 与 StringBuffer</h3><blockquote><p><code>StringBuilder</code> 与 <code>StringBuffer</code> 继承自 <code>AbstractStringBuilder</code>类<br>没有用 final 关键字修饰，所以这两种对象都是可变的</p></blockquote><h3 id="线程安全性"><a href="#线程安全性" class="headerlink" title="线程安全性"></a>线程安全性</h3><blockquote><p><code>String</code> 中的对象是不可变的，线程安全。<br><code>StringBuffer</code> 对方法加了同步锁或者对调用的方法加了同步锁，线程安全</p><p> <code>StringBuilder</code> 并没有对方法进行加同步锁，所以是非线程安全</p></blockquote><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li>操作少量的数据: String</li><li>单线程操作字符串缓冲区下操作大量数据: StringBuilder</li><li>多线程操作字符串缓冲区下操作大量数据: StringBuffer</li></ul><hr><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p><strong><br>更多精彩内容，欢迎扫码关注微信公众号</strong><br><img src="https://i.loli.net/2019/05/22/5ce53d3bbfd3511773.jpg" alt="8454929096314a5.jpg"></p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h3 id=&quot;String&quot;&gt;&lt;a href=&quot;#String&quot; class=&quot;headerlink&quot; title=&quot;String&quot;&gt;&lt;/a&gt;String&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;String&lt;/code&gt; 类中使
-      
+      &lt;h3 id=&quot;String&quot;&gt;&lt;a href=&quot;#String&quot; class=&quot;headerlink&quot; title=&quot;String&quot;&gt;&lt;/a&gt;String&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;String&lt;/code&gt; 类中使用 &lt;code&gt;final&lt;/code&gt; 关键字修饰字符数组&lt;br&gt;所以&lt;code&gt;String&lt;/code&gt; 对象是不可变的&lt;br&gt;
     
     </summary>
     
