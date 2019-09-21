@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-18T07:27:40.098Z</updated>
+  <updated>2019-09-21T04:03:49.200Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>String、StringBuilder 与 StringBuffer 简述</title>
+    <link href="http://yoursite.com/2019/09/21/String&amp;StringBuffer&amp;StringBuilder/"/>
+    <id>http://yoursite.com/2019/09/21/String&amp;StringBuffer&amp;StringBuilder/</id>
+    <published>2019-09-20T16:00:00.000Z</published>
+    <updated>2019-09-21T04:03:49.200Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><blockquote><p><code>String</code> 类中使用 <code>final</code> 关键字修饰字符数组<br>所以<code>String</code> 对象是不可变的</p></blockquote><h3 id="StringBuilder-与-StringBuffer"><a href="#StringBuilder-与-StringBuffer" class="headerlink" title="StringBuilder 与 StringBuffer"></a>StringBuilder 与 StringBuffer</h3><blockquote><p><code>StringBuilder</code> 与 <code>StringBuffer</code> 继承自 <code>AbstractStringBuilder</code>类<br>没有用 final 关键字修饰，所以这两种对象都是可变的</p></blockquote><h3 id="线程安全性"><a href="#线程安全性" class="headerlink" title="线程安全性"></a>线程安全性</h3><blockquote><p><code>String</code> 中的对象是不可变的，线程安全。<br><code>StringBuffer</code> 对方法加了同步锁或者对调用的方法加了同步锁，线程安全</p><p> <code>StringBuilder</code> 并没有对方法进行加同步锁，所以是非线程安全</p></blockquote><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li>操作少量的数据: String</li><li>单线程操作字符串缓冲区下操作大量数据: StringBuilder</li><li>多线程操作字符串缓冲区下操作大量数据: StringBuffer</li></ul><hr><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p><strong><br>更多精彩内容，欢迎扫码关注微信公众号</strong><br><img src="https://i.loli.net/2019/05/22/5ce53d3bbfd3511773.jpg" alt="8454929096314a5.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;String&quot;&gt;&lt;a href=&quot;#String&quot; class=&quot;headerlink&quot; title=&quot;String&quot;&gt;&lt;/a&gt;String&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;String&lt;/code&gt; 类中使
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="String" scheme="http://yoursite.com/tags/String/"/>
+    
+      <category term="StringBuffer" scheme="http://yoursite.com/tags/StringBuffer/"/>
+    
+      <category term="StringBuilder" scheme="http://yoursite.com/tags/StringBuilder/"/>
+    
+  </entry>
   
   <entry>
     <title>length、length（）、size（）</title>
@@ -337,6 +368,28 @@
   </entry>
   
   <entry>
+    <title>java商城项目（一）</title>
+    <link href="http://yoursite.com/2019/06/13/estoreone/"/>
+    <id>http://yoursite.com/2019/06/13/estoreone/</id>
+    <published>2019-06-12T16:00:00.000Z</published>
+    <updated>2019-06-13T12:28:50.789Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>eclipse/myeclipse+mysql+tomcat7以上+jdk1.8+Redis<br><a id="more"></a></p><h3 id="项目目录结构"><a href="#项目目录结构" class="headerlink" title="项目目录结构"></a>项目目录结构</h3><p><img src="https://i.loli.net/2019/06/13/5d0237eaeb19e80735.png" alt></p><h3 id="导入项目出现的错误"><a href="#导入项目出现的错误" class="headerlink" title="导入项目出现的错误"></a>导入项目出现的错误</h3><h6 id="eclipse-Target-runtime-Apache-Tomcat-v8-0-is-not-defined"><a href="#eclipse-Target-runtime-Apache-Tomcat-v8-0-is-not-defined" class="headerlink" title="eclipse Target runtime Apache Tomcat v8.0 is not defined."></a>eclipse Target runtime Apache Tomcat v8.0 is not defined.</h6><p><img src="https://i.loli.net/2019/06/13/5d0238ae22bd469197.png" alt></p><blockquote><p>【项目】→【右键】→【build path】→【configure build path】→【libraries】 这里把你的tomcat 改成（Edit）你用的版本 然后 【项目】→【右键】→【Properties】→【Targeted-Runtimes】 把你的tomcat打勾，然后，保存关闭 。</p></blockquote><hr><blockquote><p>或者点击这个Problems，右击错误描述Delete</p></blockquote><h6 id="Java-compiler-level-does-not-match-the-version-of-the-installed-Java-project-facet"><a href="#Java-compiler-level-does-not-match-the-version-of-the-installed-Java-project-facet" class="headerlink" title="Java compiler level does not match the version of the installed Java project facet."></a>Java compiler level does not match the version of the installed Java project facet.</h6><blockquote><p>点击错误描述，右击选择Quick Fix选择合适的版本</p></blockquote><h6 id="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样"><a href="#项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样" class="headerlink" title="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样"></a>项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样</h6><blockquote><p>tomcat服务器的端口号和安装的Oracle数据库的某个服务端口冲突<br>解决办法有二：<br>1.更改tomcat端口号：tomcat文件→conf→server.xml<br><img src="https://i.loli.net/2019/06/13/5d023c201546437357.png" alt></p></blockquote><pre><code>` &lt;Connector port=&quot;8090&quot; redirectPort=&quot;8443&quot; protocol=&quot;HTTP/1.1&quot; connectionTimeout=&quot;20000&quot; URIEncoding=&quot;utf-8&quot;/&gt;`</code></pre><blockquote><p>2.关闭oracle端口号Ctrl+Alt+Delete，打开任务管理器→服务→找到相关端口关闭 </p></blockquote><h6 id="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）-项目名-显示网络异常"><a href="#项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）-项目名-显示网络异常" class="headerlink" title="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常"></a>项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常</h6><p>出现类似如下错误：<br><img src="https://i.loli.net/2019/06/13/5d023e1189e9215670.png" alt></p><blockquote><p>确保项目正常打开<br><img src="https://i.loli.net/2019/06/13/5d023ed83ddd851128.png" alt><br>但是浏览器不能正常显示项目的页面<br>先用IDE（集成开发环境里）的浏览器打开，以myeclipse为例<br>window→Show View→Web Brower<br>会在项目启动时在IDE中显示项目地址，可能主机名称不是localhost，是一些其他的名称</p></blockquote><h3 id="项目运行结果"><a href="#项目运行结果" class="headerlink" title="项目运行结果"></a>项目运行结果</h3><p><img src="https://i.loli.net/2019/06/13/5d0240a16986349610.png" alt></p><p><img src="https://i.loli.net/2019/06/13/5d0241401e5a793512.png" alt></p><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;运行环境&quot;&gt;&lt;a href=&quot;#运行环境&quot; class=&quot;headerlink&quot; title=&quot;运行环境&quot;&gt;&lt;/a&gt;运行环境&lt;/h3&gt;&lt;p&gt;eclipse/myeclipse+mysql+tomcat7以上+jdk1.8+Redis&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="java电商项目" scheme="http://yoursite.com/tags/java%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>tomcat端口问题</title>
     <link href="http://yoursite.com/2019/06/13/java-errors/"/>
     <id>http://yoursite.com/2019/06/13/java-errors/</id>
@@ -362,28 +415,6 @@
   </entry>
   
   <entry>
-    <title>java商城项目（一）</title>
-    <link href="http://yoursite.com/2019/06/13/estoreone/"/>
-    <id>http://yoursite.com/2019/06/13/estoreone/</id>
-    <published>2019-06-12T16:00:00.000Z</published>
-    <updated>2019-06-13T12:28:50.789Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>eclipse/myeclipse+mysql+tomcat7以上+jdk1.8+Redis<br><a id="more"></a></p><h3 id="项目目录结构"><a href="#项目目录结构" class="headerlink" title="项目目录结构"></a>项目目录结构</h3><p><img src="https://i.loli.net/2019/06/13/5d0237eaeb19e80735.png" alt></p><h3 id="导入项目出现的错误"><a href="#导入项目出现的错误" class="headerlink" title="导入项目出现的错误"></a>导入项目出现的错误</h3><h6 id="eclipse-Target-runtime-Apache-Tomcat-v8-0-is-not-defined"><a href="#eclipse-Target-runtime-Apache-Tomcat-v8-0-is-not-defined" class="headerlink" title="eclipse Target runtime Apache Tomcat v8.0 is not defined."></a>eclipse Target runtime Apache Tomcat v8.0 is not defined.</h6><p><img src="https://i.loli.net/2019/06/13/5d0238ae22bd469197.png" alt></p><blockquote><p>【项目】→【右键】→【build path】→【configure build path】→【libraries】 这里把你的tomcat 改成（Edit）你用的版本 然后 【项目】→【右键】→【Properties】→【Targeted-Runtimes】 把你的tomcat打勾，然后，保存关闭 。</p></blockquote><hr><blockquote><p>或者点击这个Problems，右击错误描述Delete</p></blockquote><h6 id="Java-compiler-level-does-not-match-the-version-of-the-installed-Java-project-facet"><a href="#Java-compiler-level-does-not-match-the-version-of-the-installed-Java-project-facet" class="headerlink" title="Java compiler level does not match the version of the installed Java project facet."></a>Java compiler level does not match the version of the installed Java project facet.</h6><blockquote><p>点击错误描述，右击选择Quick Fix选择合适的版本</p></blockquote><h6 id="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样"><a href="#项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样" class="headerlink" title="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样"></a>项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样</h6><blockquote><p>tomcat服务器的端口号和安装的Oracle数据库的某个服务端口冲突<br>解决办法有二：<br>1.更改tomcat端口号：tomcat文件→conf→server.xml<br><img src="https://i.loli.net/2019/06/13/5d023c201546437357.png" alt></p></blockquote><pre><code>` &lt;Connector port=&quot;8090&quot; redirectPort=&quot;8443&quot; protocol=&quot;HTTP/1.1&quot; connectionTimeout=&quot;20000&quot; URIEncoding=&quot;utf-8&quot;/&gt;`</code></pre><blockquote><p>2.关闭oracle端口号Ctrl+Alt+Delete，打开任务管理器→服务→找到相关端口关闭 </p></blockquote><h6 id="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）-项目名-显示网络异常"><a href="#项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）-项目名-显示网络异常" class="headerlink" title="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常"></a>项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常</h6><p>出现类似如下错误：<br><img src="https://i.loli.net/2019/06/13/5d023e1189e9215670.png" alt></p><blockquote><p>确保项目正常打开<br><img src="https://i.loli.net/2019/06/13/5d023ed83ddd851128.png" alt><br>但是浏览器不能正常显示项目的页面<br>先用IDE（集成开发环境里）的浏览器打开，以myeclipse为例<br>window→Show View→Web Brower<br>会在项目启动时在IDE中显示项目地址，可能主机名称不是localhost，是一些其他的名称</p></blockquote><h3 id="项目运行结果"><a href="#项目运行结果" class="headerlink" title="项目运行结果"></a>项目运行结果</h3><p><img src="https://i.loli.net/2019/06/13/5d0240a16986349610.png" alt></p><p><img src="https://i.loli.net/2019/06/13/5d0241401e5a793512.png" alt></p><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;运行环境&quot;&gt;&lt;a href=&quot;#运行环境&quot; class=&quot;headerlink&quot; title=&quot;运行环境&quot;&gt;&lt;/a&gt;运行环境&lt;/h3&gt;&lt;p&gt;eclipse/myeclipse+mysql+tomcat7以上+jdk1.8+Redis&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
-    
-    
-      <category term="java电商项目" scheme="http://yoursite.com/tags/java%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Python函数与模块</title>
     <link href="http://yoursite.com/2019/06/09/Python-function-module/"/>
     <id>http://yoursite.com/2019/06/09/Python-function-module/</id>
@@ -402,6 +433,28 @@
     
     
       <category term="Python 第三章：Python函数与模块" scheme="http://yoursite.com/tags/Python-%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9APython%E5%87%BD%E6%95%B0%E4%B8%8E%E6%A8%A1%E5%9D%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python概述</title>
+    <link href="http://yoursite.com/2019/06/08/Python-Summarize/"/>
+    <id>http://yoursite.com/2019/06/08/Python-Summarize/</id>
+    <published>2019-06-07T16:00:00.000Z</published>
+    <updated>2019-06-08T10:00:30.227Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Python语言类型"><a href="#Python语言类型" class="headerlink" title="Python语言类型"></a>Python语言类型</h3><p>Python是一种计算进程序设计语言，是一种解释型、面向对象、动态数据类型的高级程序设计语言。<br>最初，被设计用于编写自动化脚本（shell）。<br>Python的创始人是荷兰人——Guido van Rossum（吉多 范罗苏姆），于1989年开始写Python语言的编译器</p><a id="more"></a><h3 id="Python的运用领域"><a href="#Python的运用领域" class="headerlink" title="Python的运用领域"></a>Python的运用领域</h3><ul><li>Web开发</li><li>网络爬虫</li><li>计算与数据分析</li><li>人工智能</li><li>自动化运维</li><li>云计算</li><li>网络编程</li><li>游戏开发</li></ul><h3 id="Python语言特点"><a href="#Python语言特点" class="headerlink" title="Python语言特点"></a>Python语言特点</h3><h5 id="Python语言的优点"><a href="#Python语言的优点" class="headerlink" title="Python语言的优点"></a>Python语言的优点</h5><ol><li>简单</li><li>易学</li><li>开源</li><li>可移植性强</li><li>解释性</li><li>可扩展性、可嵌入性</li><li>丰富的第三方库</li><li>代码规范（采用强制缩进的方式）</li></ol><h5 id="Python运行机制"><a href="#Python运行机制" class="headerlink" title="Python运行机制"></a>Python运行机制</h5><p>Python先把代码（.py文件）编译成字节码文件，交给字节码虚拟机，然后虚拟机一条一条的执行字节码指令，从而完成程序的执行。<br>字节码在Python虚拟机程序里对应的是PyCodeObject对象。.pyc文件是字节码在磁盘上的表现形式。</p><h5 id="Python注释"><a href="#Python注释" class="headerlink" title="Python注释"></a>Python注释</h5><ul><li>单行注释（# xxx）</li><li>多行注释（’’’ xxx ‘’’）</li><li>中文注释<ul><li>“#coding=utf-8”</li><li>“#coding=gbk”</li></ul></li></ul><h5 id="import语句"><a href="#import语句" class="headerlink" title="import语句"></a>import语句</h5><p>1.import（关键字） module1,module2……（模块）</p><pre><code>import math</code></pre><ul><li>import导入模块建议顺序<ul><li>Python标准库模块</li><li>Python第三方模块</li><li>自定义模块</li></ul></li></ul><p>2.from-import语句<br>from module import name</p><pre><code>from math import floor</code></pre><h5 id="Python编程规范"><a href="#Python编程规范" class="headerlink" title="Python编程规范"></a>Python编程规范</h5><p>1.缩进<br>2.每个import语句值导入一个模块，最好按标准库、扩展库、自定义库的顺序进行导入<br>3.最好在每个类、函数定义和一段完整的功能代码之后加空格<br>4.如果语句过长，使用续行符“\”或者是“（）”<br>5.用“（）”来避免由于优先级造成的错误<br>6.注释</p><h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><p><strong>题目：利用input输入三个数值，并求和（float函数可以将字符串转换成单精度浮点数）</strong></p><pre><code> 输入数字 Python 3 通过 input() 获取的任何内容都是 str（字符串）类型。str1 = input(&apos;请输入第1个数：&apos;)str2 = input(&apos;请输入第2个数：&apos;)str3 = input(&apos;请输入第3个数：&apos;)用 int() 函数强制将 str 转换成 intnum1 = float(str1)num2 = float(str2)num3= float(str3)加法运算并打印print(&apos;{0} + {1} +{2} = {3}&apos;.format(num1, num2,num3,num1 + num2+num3))</code></pre><p><strong>运行结果：</strong></p><pre><code>请输入第1个数：1请输入第2个数：2请输入第3个数：3 1.0 + 2.0 +3.0 = 6.0Process finished with exit code 0</code></pre><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Python语言类型&quot;&gt;&lt;a href=&quot;#Python语言类型&quot; class=&quot;headerlink&quot; title=&quot;Python语言类型&quot;&gt;&lt;/a&gt;Python语言类型&lt;/h3&gt;&lt;p&gt;Python是一种计算进程序设计语言，是一种解释型、面向对象、动态数据类型的高级程序设计语言。&lt;br&gt;最初，被设计用于编写自动化脚本（shell）。&lt;br&gt;Python的创始人是荷兰人——Guido van Rossum（吉多 范罗苏姆），于1989年开始写Python语言的编译器&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+    
+    
+      <category term="Python 第一章：Python概述" scheme="http://yoursite.com/tags/Python-%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9APython%E6%A6%82%E8%BF%B0/"/>
     
   </entry>
   
@@ -432,28 +485,6 @@ print(math.pi)
   </entry>
   
   <entry>
-    <title>Python概述</title>
-    <link href="http://yoursite.com/2019/06/08/Python-Summarize/"/>
-    <id>http://yoursite.com/2019/06/08/Python-Summarize/</id>
-    <published>2019-06-07T16:00:00.000Z</published>
-    <updated>2019-06-08T10:00:30.227Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Python语言类型"><a href="#Python语言类型" class="headerlink" title="Python语言类型"></a>Python语言类型</h3><p>Python是一种计算进程序设计语言，是一种解释型、面向对象、动态数据类型的高级程序设计语言。<br>最初，被设计用于编写自动化脚本（shell）。<br>Python的创始人是荷兰人——Guido van Rossum（吉多 范罗苏姆），于1989年开始写Python语言的编译器</p><a id="more"></a><h3 id="Python的运用领域"><a href="#Python的运用领域" class="headerlink" title="Python的运用领域"></a>Python的运用领域</h3><ul><li>Web开发</li><li>网络爬虫</li><li>计算与数据分析</li><li>人工智能</li><li>自动化运维</li><li>云计算</li><li>网络编程</li><li>游戏开发</li></ul><h3 id="Python语言特点"><a href="#Python语言特点" class="headerlink" title="Python语言特点"></a>Python语言特点</h3><h5 id="Python语言的优点"><a href="#Python语言的优点" class="headerlink" title="Python语言的优点"></a>Python语言的优点</h5><ol><li>简单</li><li>易学</li><li>开源</li><li>可移植性强</li><li>解释性</li><li>可扩展性、可嵌入性</li><li>丰富的第三方库</li><li>代码规范（采用强制缩进的方式）</li></ol><h5 id="Python运行机制"><a href="#Python运行机制" class="headerlink" title="Python运行机制"></a>Python运行机制</h5><p>Python先把代码（.py文件）编译成字节码文件，交给字节码虚拟机，然后虚拟机一条一条的执行字节码指令，从而完成程序的执行。<br>字节码在Python虚拟机程序里对应的是PyCodeObject对象。.pyc文件是字节码在磁盘上的表现形式。</p><h5 id="Python注释"><a href="#Python注释" class="headerlink" title="Python注释"></a>Python注释</h5><ul><li>单行注释（# xxx）</li><li>多行注释（’’’ xxx ‘’’）</li><li>中文注释<ul><li>“#coding=utf-8”</li><li>“#coding=gbk”</li></ul></li></ul><h5 id="import语句"><a href="#import语句" class="headerlink" title="import语句"></a>import语句</h5><p>1.import（关键字） module1,module2……（模块）</p><pre><code>import math</code></pre><ul><li>import导入模块建议顺序<ul><li>Python标准库模块</li><li>Python第三方模块</li><li>自定义模块</li></ul></li></ul><p>2.from-import语句<br>from module import name</p><pre><code>from math import floor</code></pre><h5 id="Python编程规范"><a href="#Python编程规范" class="headerlink" title="Python编程规范"></a>Python编程规范</h5><p>1.缩进<br>2.每个import语句值导入一个模块，最好按标准库、扩展库、自定义库的顺序进行导入<br>3.最好在每个类、函数定义和一段完整的功能代码之后加空格<br>4.如果语句过长，使用续行符“\”或者是“（）”<br>5.用“（）”来避免由于优先级造成的错误<br>6.注释</p><h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><p><strong>题目：利用input输入三个数值，并求和（float函数可以将字符串转换成单精度浮点数）</strong></p><pre><code> 输入数字 Python 3 通过 input() 获取的任何内容都是 str（字符串）类型。str1 = input(&apos;请输入第1个数：&apos;)str2 = input(&apos;请输入第2个数：&apos;)str3 = input(&apos;请输入第3个数：&apos;)用 int() 函数强制将 str 转换成 intnum1 = float(str1)num2 = float(str2)num3= float(str3)加法运算并打印print(&apos;{0} + {1} +{2} = {3}&apos;.format(num1, num2,num3,num1 + num2+num3))</code></pre><p><strong>运行结果：</strong></p><pre><code>请输入第1个数：1请输入第2个数：2请输入第3个数：3 1.0 + 2.0 +3.0 = 6.0Process finished with exit code 0</code></pre><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Python语言类型&quot;&gt;&lt;a href=&quot;#Python语言类型&quot; class=&quot;headerlink&quot; title=&quot;Python语言类型&quot;&gt;&lt;/a&gt;Python语言类型&lt;/h3&gt;&lt;p&gt;Python是一种计算进程序设计语言，是一种解释型、面向对象、动态数据类型的高级程序设计语言。&lt;br&gt;最初，被设计用于编写自动化脚本（shell）。&lt;br&gt;Python的创始人是荷兰人——Guido van Rossum（吉多 范罗苏姆），于1989年开始写Python语言的编译器&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
-    
-    
-      <category term="Python 第一章：Python概述" scheme="http://yoursite.com/tags/Python-%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9APython%E6%A6%82%E8%BF%B0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>XShell远程连接阿里云服务器（CentOS）</title>
     <link href="http://yoursite.com/2019/06/06/xshell-aliyun/"/>
     <id>http://yoursite.com/2019/06/06/xshell-aliyun/</id>
@@ -474,34 +505,6 @@ print(math.pi)
       <category term="XShell" scheme="http://yoursite.com/tags/XShell/"/>
     
       <category term="服务器" scheme="http://yoursite.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android新闻客户端</title>
-    <link href="http://yoursite.com/2019/06/01/Android%E6%96%B0%E9%97%BB%E5%AE%A2%E6%88%B7%E7%AB%AF/"/>
-    <id>http://yoursite.com/2019/06/01/Android新闻客户端/</id>
-    <published>2019-05-31T16:00:00.000Z</published>
-    <updated>2019-06-01T03:11:05.641Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="什么是AppServ"><a href="#什么是AppServ" class="headerlink" title="什么是AppServ"></a>什么是AppServ</h3><p>AppServ 是 PHP 网页架站工具组合包，作者将一些网络上免费的架站资源重新包装成单一的安装程序，以方便初学者快速完成架站，AppServ 所包含的软件有：Apache、Apache Monitor、PHP、MySQL、phpMyAdmin等。为帮助大家能够迅速的在本地试用EcShop软件，我们编写如下文档。如果您的本地机器没有安装过apache、php、mysql等系统，那么用这个软件则可以让你迅速搭建完整的底层环境。（百度百科）</p><a id="more"></a><h3 id="AppServ的获取与安装"><a href="#AppServ的获取与安装" class="headerlink" title="AppServ的获取与安装"></a>AppServ的获取与安装</h3><p><a href="https://www.appserv.org/en/" target="_blank" rel="noopener">下载地址</a></p><p><img src="https://i.loli.net/2019/06/01/5cf1c8259925e65456.png" alt="AppServ官网"></p><h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><ul><li>点击“DOWNLOAD”→解压→双击.exe文件安装</li><li>安装成功效果</li></ul><p><img src="https://i.loli.net/2019/06/01/5cf1c9a43c9a884481.png" alt="安装成功"></p><ul><li>浏览器输入 localhost 检查是否安装成功</li></ul><p><img src="https://i.loli.net/2019/06/01/5cf1ceeab71de77330.png" alt></p><h3 id="AppServ结构简单介绍"><a href="#AppServ结构简单介绍" class="headerlink" title="AppServ结构简单介绍"></a>AppServ结构简单介绍</h3><ul><li><p>AppServ结构</p><ul><li><p>Apache24是Apache的一个服务器</p><ul><li>Apache Web Server的目录结构<ul><li>apache / bin主Apache程序。</li><li>apache / conf Apache配置文件。</li><li>apache / error Apache错误模板（仅在Apache2.x上找到）。</li><li>apache / icons Apache图标。</li><li>apache / logs Apache日志文件。</li><li>apache / modules Apache模块。</li></ul></li></ul></li><li><p>Mysql是数据库（如果本地已安装mysql数据库，确定这里数据库的版本信息，防止因版本冲突造成的不便）</p><ul><li>mysql / bin主MySQL数据库执行文件。</li><li>mysql / data MySQL数据库存储。</li><li>mysql / share MySQL错误消息。</li></ul></li><li><p>php目录结构</p><ul><li>php PHP命令行执行和DLL库。</li><li>用于PHP的php / ext PECL PHP扩展（仅限PHP5）。</li><li>php / extension用于PHP的PECL PHP扩展（仅在PHP 4上找到）。</li><li>用于PHP的php / PEAR PEAR框架组件。</li></ul></li><li><p>www文件存储的目录结构。</p><ul><li>www网页文件的目录根。</li><li>www / cgi-bin CGI文件目录。</li><li>www / phpMyAdmin phpMyAdmin程序目录。</li><li>www / appserv AppServ文件，您可以在安装后将其删除。</li><li>www / index.php AppServ index.php文件，您可以在安装后将其删除。<br><img src="https://i.loli.net/2019/06/01/5cf1caaf4e49e49620.png" alt></li></ul></li></ul></li></ul><h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><h5 id="数据库准备"><a href="#数据库准备" class="headerlink" title="数据库准备"></a>数据库准备</h5><p><img src="https://i.loli.net/2019/06/01/5cf1d026e9abb86178.png" alt></p><p><img src="https://i.loli.net/2019/06/01/5cf1d082dd38a25231.png" alt="数据库主界面"></p><p><em>接下来，设计数据库或者导入已有的数据（这里不做进一步说明）</em></p><h5 id="将数据库中的数据转化为json数据（PHP语言）"><a href="#将数据库中的数据转化为json数据（PHP语言）" class="headerlink" title="将数据库中的数据转化为json数据（PHP语言）"></a>将数据库中的数据转化为json数据（PHP语言）</h5><ul><li>连接数据库的文件xxx.php</li><li>具体用于创建json数据的xxx.php<br><strong>将PHP文件放入www目录下</strong></li></ul><p><img src="https://i.loli.net/2019/06/01/5cf1d253f256391320.png" alt="PHP文件存放目录"></p><ul><li>输入<a href="http://localhost/NewsDemo/getNewsJSON.php" target="_blank" rel="noopener">http://localhost/NewsDemo/getNewsJSON.php</a><br><img src="https://i.loli.net/2019/06/01/5cf1d2ec60ca142524.png" alt="返回的json数据"></li></ul><h3 id="Android客户端实现"><a href="#Android客户端实现" class="headerlink" title="Android客户端实现"></a>Android客户端实现</h3><p>源码：搜索关注微信公众号“<strong>原味工厂</strong>”，或文章结尾扫码关注！回复：<strong>20190601</strong>， 即可获取！</p><h5 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h5><p><img src="https://i.loli.net/2019/06/01/5cf1e7c5e965c79467.png" alt="Android项目结构"></p><h5 id="更改服务器地址"><a href="#更改服务器地址" class="headerlink" title="更改服务器地址"></a>更改服务器地址</h5><p><img src="https://i.loli.net/2019/06/01/5cf1e88c4a21921766.png" alt></p><ul><li><del><a href="http://localhost/NewsDemo/getNewsJSON.php" target="_blank" rel="noopener">http://localhost/NewsDemo/getNewsJSON.php</a></del></li><li><del><a href="http://127.0.0.1/NewsDemo/getNewsJSON.php" target="_blank" rel="noopener">http://127.0.0.1/NewsDemo/getNewsJSON.php</a></del></li><li><del><a href="http://10.0.0.2/NewsDemo/getNewsJSON.php" target="_blank" rel="noopener">http://10.0.0.2/NewsDemo/getNewsJSON.php</a></del></li><li><a href="http://10.0.2.2/NewsDemo/getNewsJSON.php" target="_blank" rel="noopener">http://10.0.2.2/NewsDemo/getNewsJSON.php</a><h3 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h3><h5 id="更改logo效果"><a href="#更改logo效果" class="headerlink" title="更改logo效果"></a>更改logo效果</h5><img src="https://i.loli.net/2019/06/01/5cf1eac357dcc12751.png" alt><h5 id="更改背景图效果"><a href="#更改背景图效果" class="headerlink" title="更改背景图效果"></a>更改背景图效果</h5><img src="https://i.loli.net/2019/06/01/5cf1eaeea972c51390.png" alt><h5 id="若无效果"><a href="#若无效果" class="headerlink" title="若无效果"></a>若无效果</h5><img src="https://i.loli.net/2019/06/01/5cf1ebcc798c919626.png" alt></li></ul><p>检查服务器地址是否正确</p><h5 id="成功返回数据库数据"><a href="#成功返回数据库数据" class="headerlink" title="成功返回数据库数据"></a>成功返回数据库数据</h5><p><img src="https://i.loli.net/2019/06/01/5cf1ec5c038b891770.png" alt></p><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;什么是AppServ&quot;&gt;&lt;a href=&quot;#什么是AppServ&quot; class=&quot;headerlink&quot; title=&quot;什么是AppServ&quot;&gt;&lt;/a&gt;什么是AppServ&lt;/h3&gt;&lt;p&gt;AppServ 是 PHP 网页架站工具组合包，作者将一些网络上免费的架站资源重新包装成单一的安装程序，以方便初学者快速完成架站，AppServ 所包含的软件有：Apache、Apache Monitor、PHP、MySQL、phpMyAdmin等。为帮助大家能够迅速的在本地试用EcShop软件，我们编写如下文档。如果您的本地机器没有安装过apache、php、mysql等系统，那么用这个软件则可以让你迅速搭建完整的底层环境。（百度百科）&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="PHP" scheme="http://yoursite.com/categories/PHP/"/>
-    
-      <category term="Android" scheme="http://yoursite.com/categories/PHP/Android/"/>
-    
-    
-      <category term="AppServ" scheme="http://yoursite.com/tags/AppServ/"/>
-    
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
-      <category term="PHP" scheme="http://yoursite.com/tags/PHP/"/>
     
   </entry>
   
