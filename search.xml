@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[关于PL/SQL执行插入操作卡在初始化问题]]></title>
+    <url>%2F2019%2F10%2F12%2Foracle_lock%2F</url>
+    <content type="text"><![CDATA[问题描述：在PL/SQL中执行insert语句是一直显示在初始化，程序一直在运行 问题可能原因： 表被锁 问题解决： [ ] (1)锁表查询的代码有以下的形式： 12select count(*) from v$locked_object;select * from v$locked_object; [ ] (2)查看哪个表被锁 123select b.owner,b.object_name,a.session_id,a.locked_mode from v$locked_object a,dba_objects b where b.object_id = a.object_id; (3)查看是哪个session引起的 12345select a.OS_USER_NAME, c.owner, c.object_name, b.sid, b.serial#, logon_time from v$locked_object a, v$session b, dba_objects c where a.session_id = b.sid and a.object_id = c.object_id order by b.logon_time; (4)杀掉对应进程执行命令： 1alter system kill session '1084,141'; 需要用户有权限操作其中1084为sid,141为serial#. END更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
+      <categories>
+        <category>Oracle</category>
+      </categories>
+      <tags>
+        <tag>Oracle</tag>
+        <tag>PL/SQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[String、StringBuilder 与 StringBuffer 简述]]></title>
     <url>%2F2019%2F09%2F21%2FString%26StringBuffer%26StringBuilder%2F</url>
     <content type="text"><![CDATA[String String 类中使用 final 关键字修饰字符数组所以String 对象是不可变的 StringBuilder 与 StringBuffer StringBuilder 与 StringBuffer 继承自 AbstractStringBuilder类没有用 final 关键字修饰，所以这两种对象都是可变的 线程安全性 String 中的对象是不可变的，线程安全。StringBuffer 对方法加了同步锁或者对调用的方法加了同步锁，线程安全 StringBuilder 并没有对方法进行加同步锁，所以是非线程安全 总结 操作少量的数据: String 单线程操作字符串缓冲区下操作大量数据: StringBuilder 多线程操作字符串缓冲区下操作大量数据: StringBuffer END更多精彩内容，欢迎扫码关注微信公众号]]></content>
@@ -47,14 +59,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[MyEclipse创建HTML打开和关闭异常（Problem Occurred）]]></title>
-    <url>%2F2019%2F07%2F11%2Fmyeclipse-html%2F</url>
-    <content type="text"><![CDATA[错误信息 错误信息：Problem Occurred 打开HTML文件 补充 JavaWeb项目创建HTML文件 END 更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
+    <title><![CDATA[MySQL在命令提示符中无法连接]]></title>
+    <url>%2F2019%2F07%2F11%2Fmysql_cmd%2F</url>
+    <content type="text"><![CDATA[错误信息 ‘mysql’ 不是内部或外部命令，也不是可运行的程序或批处理文件。 问题原因 没有配置mysql的环境变量，类似jdk环境变量的配置 运行 END 更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
       <categories>
-        <category>MyEclipse</category>
+        <category>MySQL</category>
       </categories>
       <tags>
-        <tag>HTML</tag>
+        <tag>MySQL</tag>
       </tags>
   </entry>
   <entry>
@@ -70,14 +82,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[MySQL在命令提示符中无法连接]]></title>
-    <url>%2F2019%2F07%2F11%2Fmysql_cmd%2F</url>
-    <content type="text"><![CDATA[错误信息 ‘mysql’ 不是内部或外部命令，也不是可运行的程序或批处理文件。 问题原因 没有配置mysql的环境变量，类似jdk环境变量的配置 运行 END 更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
+    <title><![CDATA[MyEclipse创建HTML打开和关闭异常（Problem Occurred）]]></title>
+    <url>%2F2019%2F07%2F11%2Fmyeclipse-html%2F</url>
+    <content type="text"><![CDATA[错误信息 错误信息：Problem Occurred 打开HTML文件 补充 JavaWeb项目创建HTML文件 END 更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
       <categories>
-        <category>MySQL</category>
+        <category>MyEclipse</category>
       </categories>
       <tags>
-        <tag>MySQL</tag>
+        <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
@@ -159,17 +171,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[tomcat端口问题]]></title>
-    <url>%2F2019%2F06%2F13%2Fjava-errors%2F</url>
-    <content type="text"><![CDATA[导入项目出现的错误eclipse Target runtime Apache Tomcat v8.0 is not defined. 【项目】→【右键】→【build path】→【configure build path】→【libraries】 这里把你的tomcat 改成（Edit）你用的版本 然后 【项目】→【右键】→【Properties】→【Targeted-Runtimes】 把你的tomcat打勾，然后，保存关闭 。 或者点击这个Problems，右击错误描述Delete Java compiler level does not match the version of the installed Java project facet. 点击错误描述，右击选择Quick Fix选择合适的版本 项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样 tomcat服务器的端口号和安装的Oracle数据库的某个服务端口冲突解决办法有二：1.更改tomcat端口号：tomcat文件→conf→server.xml ` &lt;Connector port=&quot;8090&quot; redirectPort=&quot;8443&quot; protocol=&quot;HTTP/1.1&quot; connectionTimeout=&quot;20000&quot; URIEncoding=&quot;utf-8&quot;/&gt;` 2.关闭oracle端口号Ctrl+Alt+Delete，打开任务管理器→服务→找到相关端口关闭 项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常出现类似如下错误： 确保项目正常打开但是浏览器不能正常显示项目的页面先用IDE（集成开发环境里）的浏览器打开，以myeclipse为例window→Show View→Web Brower会在项目启动时在IDE中显示项目地址，可能主机名称不是localhost，是一些其他的名称 项目运行结果浏览器输入项目的地址，正确显示页面，如下 END 更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>tomcat</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[java商城项目（一）]]></title>
     <url>%2F2019%2F06%2F13%2Festoreone%2F</url>
     <content type="text"><![CDATA[运行环境eclipse/myeclipse+mysql+tomcat7以上+jdk1.8+Redis 项目目录结构 导入项目出现的错误eclipse Target runtime Apache Tomcat v8.0 is not defined. 【项目】→【右键】→【build path】→【configure build path】→【libraries】 这里把你的tomcat 改成（Edit）你用的版本 然后 【项目】→【右键】→【Properties】→【Targeted-Runtimes】 把你的tomcat打勾，然后，保存关闭 。 或者点击这个Problems，右击错误描述Delete Java compiler level does not match the version of the installed Java project facet. 点击错误描述，右击选择Quick Fix选择合适的版本 项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样 tomcat服务器的端口号和安装的Oracle数据库的某个服务端口冲突解决办法有二：1.更改tomcat端口号：tomcat文件→conf→server.xml ` &lt;Connector port=&quot;8090&quot; redirectPort=&quot;8443&quot; protocol=&quot;HTTP/1.1&quot; connectionTimeout=&quot;20000&quot; URIEncoding=&quot;utf-8&quot;/&gt;` 2.关闭oracle端口号Ctrl+Alt+Delete，打开任务管理器→服务→找到相关端口关闭 项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常出现类似如下错误： 确保项目正常打开但是浏览器不能正常显示项目的页面先用IDE（集成开发环境里）的浏览器打开，以myeclipse为例window→Show View→Web Brower会在项目启动时在IDE中显示项目地址，可能主机名称不是localhost，是一些其他的名称 项目运行结果 END 更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
@@ -178,6 +179,17 @@
       </categories>
       <tags>
         <tag>java电商项目</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[tomcat端口问题]]></title>
+    <url>%2F2019%2F06%2F13%2Fjava-errors%2F</url>
+    <content type="text"><![CDATA[导入项目出现的错误eclipse Target runtime Apache Tomcat v8.0 is not defined. 【项目】→【右键】→【build path】→【configure build path】→【libraries】 这里把你的tomcat 改成（Edit）你用的版本 然后 【项目】→【右键】→【Properties】→【Targeted-Runtimes】 把你的tomcat打勾，然后，保存关闭 。 或者点击这个Problems，右击错误描述Delete Java compiler level does not match the version of the installed Java project facet. 点击错误描述，右击选择Quick Fix选择合适的版本 项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样 tomcat服务器的端口号和安装的Oracle数据库的某个服务端口冲突解决办法有二：1.更改tomcat端口号：tomcat文件→conf→server.xml ` &lt;Connector port=&quot;8090&quot; redirectPort=&quot;8443&quot; protocol=&quot;HTTP/1.1&quot; connectionTimeout=&quot;20000&quot; URIEncoding=&quot;utf-8&quot;/&gt;` 2.关闭oracle端口号Ctrl+Alt+Delete，打开任务管理器→服务→找到相关端口关闭 项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常出现类似如下错误： 确保项目正常打开但是浏览器不能正常显示项目的页面先用IDE（集成开发环境里）的浏览器打开，以myeclipse为例window→Show View→Web Brower会在项目启动时在IDE中显示项目地址，可能主机名称不是localhost，是一些其他的名称 项目运行结果浏览器输入项目的地址，正确显示页面，如下 END 更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>tomcat</tag>
       </tags>
   </entry>
   <entry>
@@ -241,7 +253,7 @@
   </entry>
   <entry>
     <title><![CDATA[AppServ登录phpMyAdmin错误]]></title>
-    <url>%2F2019%2F05%2F31%2FAppServ%232002%2F</url>
+    <url>%2F2019%2F05%2F31%2FAppServ%2F</url>
     <content type="text"><![CDATA[错误信息 #2002——&amp;mdash；服务器没有响应（或本地服务器的套接字没有正确设置）。 问题分析 网上有很多与#2002相关的解决方案，主要的是更改相关配置 AppServ→www→phpMyAdmin→config.sample.inc 造成#2020错误的原因有很多，这种方式只能解决造成这一错误的一种情况 按照网上的方法添加了相关信息，但是问题没有得到解决 问题解决 由于我电脑里还装了MySQL的其他版本，猜想是端口冲突造成的 找到了问题的根源，没有开启MySQL服务 mysql57是服务器内置的MySQL MySQL是自己安装的MySQL版本 其他 开启MySQL57，问题解决 END 更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
       <categories>
         <category>PHP</category>
@@ -253,7 +265,7 @@
   </entry>
   <entry>
     <title><![CDATA[AppServ登录phpMyAdmin错误]]></title>
-    <url>%2F2019%2F05%2F31%2FAppServ%2F</url>
+    <url>%2F2019%2F05%2F31%2FAppServ%232002%2F</url>
     <content type="text"><![CDATA[错误信息 #2002——&amp;mdash；服务器没有响应（或本地服务器的套接字没有正确设置）。 问题分析 网上有很多与#2002相关的解决方案，主要的是更改相关配置 AppServ→www→phpMyAdmin→config.sample.inc 造成#2020错误的原因有很多，这种方式只能解决造成这一错误的一种情况 按照网上的方法添加了相关信息，但是问题没有得到解决 问题解决 由于我电脑里还装了MySQL的其他版本，猜想是端口冲突造成的 找到了问题的根源，没有开启MySQL服务 mysql57是服务器内置的MySQL MySQL是自己安装的MySQL版本 其他 开启MySQL57，问题解决 END 更多精彩内容，欢迎扫码关注“原味工厂”]]></content>
       <categories>
         <category>PHP</category>

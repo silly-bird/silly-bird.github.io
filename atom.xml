@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-21T04:07:40.679Z</updated>
+  <updated>2019-10-12T08:54:06.381Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于PL/SQL执行插入操作卡在初始化问题</title>
+    <link href="http://yoursite.com/2019/10/12/oracle_lock/"/>
+    <id>http://yoursite.com/2019/10/12/oracle_lock/</id>
+    <published>2019-10-11T16:00:00.000Z</published>
+    <updated>2019-10-12T08:54:06.381Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><p>在PL/SQL中执行insert语句是一直显示在初始化，程序一直在运行</p><a id="more"></a><h4 id="问题可能原因："><a href="#问题可能原因：" class="headerlink" title="问题可能原因："></a>问题可能原因：</h4><ul><li style="list-style: none"><input type="checkbox" checked> 表被锁</li></ul><h4 id="问题解决："><a href="#问题解决：" class="headerlink" title="问题解决："></a>问题解决：</h4><ul><li><p>[ ]   (1)锁表查询的代码有以下的形式：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> v$locked_object;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> v$locked_object;</span><br></pre></td></tr></table></figure></li></ul><ul><li><p>[ ] (2)查看哪个表被锁</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> b.owner,b.object_name,a.session_id,a.locked_mode </span><br><span class="line"><span class="keyword">from</span> v$locked_object a,dba_objects b </span><br><span class="line"><span class="keyword">where</span> b.object_id = a.object_id;</span><br></pre></td></tr></table></figure></li></ul><ul><li style="list-style: none"><input type="checkbox"> (3)查看是哪个session引起的</li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.OS_USER_NAME, c.owner, c.object_name, b.sid, b.serial<span class="comment">#, logon_time</span></span><br><span class="line">  <span class="keyword">from</span> v$locked_object a, v$<span class="keyword">session</span> b, dba_objects c</span><br><span class="line"> <span class="keyword">where</span> a.session_id = b.sid</span><br><span class="line">   <span class="keyword">and</span> a.object_id = c.object_id</span><br><span class="line"> <span class="keyword">order</span> <span class="keyword">by</span> b.logon_time;</span><br></pre></td></tr></table></figure><ul><li style="list-style: none"><input type="checkbox"> (4)杀掉对应进程<br>执行命令：</li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">system</span> <span class="keyword">kill</span> <span class="keyword">session</span> <span class="string">'1084,141'</span>;</span><br></pre></td></tr></table></figure><p>需要用户有权限操作<br>其中1084为sid,141为serial#.  </p><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;问题描述：&quot;&gt;&lt;a href=&quot;#问题描述：&quot; class=&quot;headerlink&quot; title=&quot;问题描述：&quot;&gt;&lt;/a&gt;问题描述：&lt;/h4&gt;&lt;p&gt;在PL/SQL中执行insert语句是一直显示在初始化，程序一直在运行&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Oracle" scheme="http://yoursite.com/categories/Oracle/"/>
+    
+    
+      <category term="Oracle" scheme="http://yoursite.com/tags/Oracle/"/>
+    
+      <category term="PL/SQL" scheme="http://yoursite.com/tags/PL-SQL/"/>
+    
+  </entry>
   
   <entry>
     <title>String、StringBuilder 与 StringBuffer 简述</title>
@@ -121,27 +145,27 @@
   </entry>
   
   <entry>
-    <title>MyEclipse创建HTML打开和关闭异常（Problem Occurred）</title>
-    <link href="http://yoursite.com/2019/07/11/myeclipse-html/"/>
-    <id>http://yoursite.com/2019/07/11/myeclipse-html/</id>
+    <title>MySQL在命令提示符中无法连接</title>
+    <link href="http://yoursite.com/2019/07/11/mysql_cmd/"/>
+    <id>http://yoursite.com/2019/07/11/mysql_cmd/</id>
     <published>2019-07-10T16:00:00.000Z</published>
-    <updated>2019-07-15T03:37:41.810Z</updated>
+    <updated>2019-07-11T02:03:04.409Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h4><blockquote><p>错误信息：Problem Occurred</p></blockquote><p><img src="https://i.loli.net/2019/07/11/5d26d43f1259b57485.png" alt><br><a id="more"></a></p><h4 id="打开HTML文件"><a href="#打开HTML文件" class="headerlink" title="打开HTML文件"></a>打开HTML文件</h4><p><img src="https://i.loli.net/2019/07/11/5d26d4db2276279146.png" alt></p><h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><blockquote><p>JavaWeb项目创建HTML文件</p></blockquote><p><img src="https://i.loli.net/2019/07/11/5d26d5454a43f63552.png" alt></p><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
+    <content type="html"><![CDATA[<h4 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h4><blockquote><p>‘mysql’ 不是内部或外部命令，也不是可运行的程序<br>或批处理文件。</p></blockquote><p><img src="https://i.loli.net/2019/07/11/5d26949bb3f4979888.png" alt></p><a id="more"></a><h4 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h4><blockquote><p>没有配置mysql的环境变量，类似jdk环境变量的配置</p></blockquote><p><img src="https://i.loli.net/2019/07/11/5d2696d68790789655.png" alt></p><p><img src="https://i.loli.net/2019/07/11/5d2696ff5c66a93963.png" alt></p><p><img src="https://i.loli.net/2019/07/11/5d26979a23bdc35057.png" alt></p><h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><p><img src="https://i.loli.net/2019/07/11/5d26986d020b732530.png" alt></p><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
     
     <summary type="html">
     
       &lt;h4 id=&quot;错误信息&quot;&gt;&lt;a href=&quot;#错误信息&quot; class=&quot;headerlink&quot; title=&quot;错误信息&quot;&gt;&lt;/a&gt;错误信息&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;错误信息：Problem Occurred&lt;/p&gt;
+&lt;p&gt;‘mysql’ 不是内部或外部命令，也不是可运行的程序&lt;br&gt;或批处理文件。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/07/11/5d26d43f1259b57485.png&quot; alt&gt;&lt;br&gt;
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/07/11/5d26949bb3f4979888.png&quot; alt&gt;&lt;/p&gt;
     
     </summary>
     
-      <category term="MyEclipse" scheme="http://yoursite.com/categories/MyEclipse/"/>
+      <category term="MySQL" scheme="http://yoursite.com/categories/MySQL/"/>
     
     
-      <category term="HTML" scheme="http://yoursite.com/tags/HTML/"/>
+      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
     
   </entry>
   
@@ -170,27 +194,27 @@
   </entry>
   
   <entry>
-    <title>MySQL在命令提示符中无法连接</title>
-    <link href="http://yoursite.com/2019/07/11/mysql_cmd/"/>
-    <id>http://yoursite.com/2019/07/11/mysql_cmd/</id>
+    <title>MyEclipse创建HTML打开和关闭异常（Problem Occurred）</title>
+    <link href="http://yoursite.com/2019/07/11/myeclipse-html/"/>
+    <id>http://yoursite.com/2019/07/11/myeclipse-html/</id>
     <published>2019-07-10T16:00:00.000Z</published>
-    <updated>2019-07-11T02:03:04.409Z</updated>
+    <updated>2019-07-15T03:37:41.810Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h4><blockquote><p>‘mysql’ 不是内部或外部命令，也不是可运行的程序<br>或批处理文件。</p></blockquote><p><img src="https://i.loli.net/2019/07/11/5d26949bb3f4979888.png" alt></p><a id="more"></a><h4 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h4><blockquote><p>没有配置mysql的环境变量，类似jdk环境变量的配置</p></blockquote><p><img src="https://i.loli.net/2019/07/11/5d2696d68790789655.png" alt></p><p><img src="https://i.loli.net/2019/07/11/5d2696ff5c66a93963.png" alt></p><p><img src="https://i.loli.net/2019/07/11/5d26979a23bdc35057.png" alt></p><h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><p><img src="https://i.loli.net/2019/07/11/5d26986d020b732530.png" alt></p><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
+    <content type="html"><![CDATA[<h4 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h4><blockquote><p>错误信息：Problem Occurred</p></blockquote><p><img src="https://i.loli.net/2019/07/11/5d26d43f1259b57485.png" alt><br><a id="more"></a></p><h4 id="打开HTML文件"><a href="#打开HTML文件" class="headerlink" title="打开HTML文件"></a>打开HTML文件</h4><p><img src="https://i.loli.net/2019/07/11/5d26d4db2276279146.png" alt></p><h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><blockquote><p>JavaWeb项目创建HTML文件</p></blockquote><p><img src="https://i.loli.net/2019/07/11/5d26d5454a43f63552.png" alt></p><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
     
     <summary type="html">
     
       &lt;h4 id=&quot;错误信息&quot;&gt;&lt;a href=&quot;#错误信息&quot; class=&quot;headerlink&quot; title=&quot;错误信息&quot;&gt;&lt;/a&gt;错误信息&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;‘mysql’ 不是内部或外部命令，也不是可运行的程序&lt;br&gt;或批处理文件。&lt;/p&gt;
+&lt;p&gt;错误信息：Problem Occurred&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/07/11/5d26949bb3f4979888.png&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/07/11/5d26d43f1259b57485.png&quot; alt&gt;&lt;br&gt;
     
     </summary>
     
-      <category term="MySQL" scheme="http://yoursite.com/categories/MySQL/"/>
+      <category term="MyEclipse" scheme="http://yoursite.com/categories/MyEclipse/"/>
     
     
-      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+      <category term="HTML" scheme="http://yoursite.com/tags/HTML/"/>
     
   </entry>
   
@@ -365,6 +389,28 @@
   </entry>
   
   <entry>
+    <title>java商城项目（一）</title>
+    <link href="http://yoursite.com/2019/06/13/estoreone/"/>
+    <id>http://yoursite.com/2019/06/13/estoreone/</id>
+    <published>2019-06-12T16:00:00.000Z</published>
+    <updated>2019-06-13T12:28:50.789Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>eclipse/myeclipse+mysql+tomcat7以上+jdk1.8+Redis<br><a id="more"></a></p><h3 id="项目目录结构"><a href="#项目目录结构" class="headerlink" title="项目目录结构"></a>项目目录结构</h3><p><img src="https://i.loli.net/2019/06/13/5d0237eaeb19e80735.png" alt></p><h3 id="导入项目出现的错误"><a href="#导入项目出现的错误" class="headerlink" title="导入项目出现的错误"></a>导入项目出现的错误</h3><h6 id="eclipse-Target-runtime-Apache-Tomcat-v8-0-is-not-defined"><a href="#eclipse-Target-runtime-Apache-Tomcat-v8-0-is-not-defined" class="headerlink" title="eclipse Target runtime Apache Tomcat v8.0 is not defined."></a>eclipse Target runtime Apache Tomcat v8.0 is not defined.</h6><p><img src="https://i.loli.net/2019/06/13/5d0238ae22bd469197.png" alt></p><blockquote><p>【项目】→【右键】→【build path】→【configure build path】→【libraries】 这里把你的tomcat 改成（Edit）你用的版本 然后 【项目】→【右键】→【Properties】→【Targeted-Runtimes】 把你的tomcat打勾，然后，保存关闭 。</p></blockquote><hr><blockquote><p>或者点击这个Problems，右击错误描述Delete</p></blockquote><h6 id="Java-compiler-level-does-not-match-the-version-of-the-installed-Java-project-facet"><a href="#Java-compiler-level-does-not-match-the-version-of-the-installed-Java-project-facet" class="headerlink" title="Java compiler level does not match the version of the installed Java project facet."></a>Java compiler level does not match the version of the installed Java project facet.</h6><blockquote><p>点击错误描述，右击选择Quick Fix选择合适的版本</p></blockquote><h6 id="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样"><a href="#项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样" class="headerlink" title="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样"></a>项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样</h6><blockquote><p>tomcat服务器的端口号和安装的Oracle数据库的某个服务端口冲突<br>解决办法有二：<br>1.更改tomcat端口号：tomcat文件→conf→server.xml<br><img src="https://i.loli.net/2019/06/13/5d023c201546437357.png" alt></p></blockquote><pre><code>` &lt;Connector port=&quot;8090&quot; redirectPort=&quot;8443&quot; protocol=&quot;HTTP/1.1&quot; connectionTimeout=&quot;20000&quot; URIEncoding=&quot;utf-8&quot;/&gt;`</code></pre><blockquote><p>2.关闭oracle端口号Ctrl+Alt+Delete，打开任务管理器→服务→找到相关端口关闭 </p></blockquote><h6 id="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）-项目名-显示网络异常"><a href="#项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）-项目名-显示网络异常" class="headerlink" title="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常"></a>项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常</h6><p>出现类似如下错误：<br><img src="https://i.loli.net/2019/06/13/5d023e1189e9215670.png" alt></p><blockquote><p>确保项目正常打开<br><img src="https://i.loli.net/2019/06/13/5d023ed83ddd851128.png" alt><br>但是浏览器不能正常显示项目的页面<br>先用IDE（集成开发环境里）的浏览器打开，以myeclipse为例<br>window→Show View→Web Brower<br>会在项目启动时在IDE中显示项目地址，可能主机名称不是localhost，是一些其他的名称</p></blockquote><h3 id="项目运行结果"><a href="#项目运行结果" class="headerlink" title="项目运行结果"></a>项目运行结果</h3><p><img src="https://i.loli.net/2019/06/13/5d0240a16986349610.png" alt></p><p><img src="https://i.loli.net/2019/06/13/5d0241401e5a793512.png" alt></p><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;运行环境&quot;&gt;&lt;a href=&quot;#运行环境&quot; class=&quot;headerlink&quot; title=&quot;运行环境&quot;&gt;&lt;/a&gt;运行环境&lt;/h3&gt;&lt;p&gt;eclipse/myeclipse+mysql+tomcat7以上+jdk1.8+Redis&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="java电商项目" scheme="http://yoursite.com/tags/java%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>tomcat端口问题</title>
     <link href="http://yoursite.com/2019/06/13/java-errors/"/>
     <id>http://yoursite.com/2019/06/13/java-errors/</id>
@@ -386,28 +432,6 @@
     
     
       <category term="tomcat" scheme="http://yoursite.com/tags/tomcat/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java商城项目（一）</title>
-    <link href="http://yoursite.com/2019/06/13/estoreone/"/>
-    <id>http://yoursite.com/2019/06/13/estoreone/</id>
-    <published>2019-06-12T16:00:00.000Z</published>
-    <updated>2019-06-13T12:28:50.789Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>eclipse/myeclipse+mysql+tomcat7以上+jdk1.8+Redis<br><a id="more"></a></p><h3 id="项目目录结构"><a href="#项目目录结构" class="headerlink" title="项目目录结构"></a>项目目录结构</h3><p><img src="https://i.loli.net/2019/06/13/5d0237eaeb19e80735.png" alt></p><h3 id="导入项目出现的错误"><a href="#导入项目出现的错误" class="headerlink" title="导入项目出现的错误"></a>导入项目出现的错误</h3><h6 id="eclipse-Target-runtime-Apache-Tomcat-v8-0-is-not-defined"><a href="#eclipse-Target-runtime-Apache-Tomcat-v8-0-is-not-defined" class="headerlink" title="eclipse Target runtime Apache Tomcat v8.0 is not defined."></a>eclipse Target runtime Apache Tomcat v8.0 is not defined.</h6><p><img src="https://i.loli.net/2019/06/13/5d0238ae22bd469197.png" alt></p><blockquote><p>【项目】→【右键】→【build path】→【configure build path】→【libraries】 这里把你的tomcat 改成（Edit）你用的版本 然后 【项目】→【右键】→【Properties】→【Targeted-Runtimes】 把你的tomcat打勾，然后，保存关闭 。</p></blockquote><hr><blockquote><p>或者点击这个Problems，右击错误描述Delete</p></blockquote><h6 id="Java-compiler-level-does-not-match-the-version-of-the-installed-Java-project-facet"><a href="#Java-compiler-level-does-not-match-the-version-of-the-installed-Java-project-facet" class="headerlink" title="Java compiler level does not match the version of the installed Java project facet."></a>Java compiler level does not match the version of the installed Java project facet.</h6><blockquote><p>点击错误描述，右击选择Quick Fix选择合适的版本</p></blockquote><h6 id="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样"><a href="#项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样" class="headerlink" title="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样"></a>项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）出现Oracle数据库相关字样</h6><blockquote><p>tomcat服务器的端口号和安装的Oracle数据库的某个服务端口冲突<br>解决办法有二：<br>1.更改tomcat端口号：tomcat文件→conf→server.xml<br><img src="https://i.loli.net/2019/06/13/5d023c201546437357.png" alt></p></blockquote><pre><code>` &lt;Connector port=&quot;8090&quot; redirectPort=&quot;8443&quot; protocol=&quot;HTTP/1.1&quot; connectionTimeout=&quot;20000&quot; URIEncoding=&quot;utf-8&quot;/&gt;`</code></pre><blockquote><p>2.关闭oracle端口号Ctrl+Alt+Delete，打开任务管理器→服务→找到相关端口关闭 </p></blockquote><h6 id="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）-项目名-显示网络异常"><a href="#项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）-项目名-显示网络异常" class="headerlink" title="项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常"></a>项目运行成功，游览器输入localhost：8080（自己的tomcat端口号）/项目名/ 显示网络异常</h6><p>出现类似如下错误：<br><img src="https://i.loli.net/2019/06/13/5d023e1189e9215670.png" alt></p><blockquote><p>确保项目正常打开<br><img src="https://i.loli.net/2019/06/13/5d023ed83ddd851128.png" alt><br>但是浏览器不能正常显示项目的页面<br>先用IDE（集成开发环境里）的浏览器打开，以myeclipse为例<br>window→Show View→Web Brower<br>会在项目启动时在IDE中显示项目地址，可能主机名称不是localhost，是一些其他的名称</p></blockquote><h3 id="项目运行结果"><a href="#项目运行结果" class="headerlink" title="项目运行结果"></a>项目运行结果</h3><p><img src="https://i.loli.net/2019/06/13/5d0240a16986349610.png" alt></p><p><img src="https://i.loli.net/2019/06/13/5d0241401e5a793512.png" alt></p><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;运行环境&quot;&gt;&lt;a href=&quot;#运行环境&quot; class=&quot;headerlink&quot; title=&quot;运行环境&quot;&gt;&lt;/a&gt;运行环境&lt;/h3&gt;&lt;p&gt;eclipse/myeclipse+mysql+tomcat7以上+jdk1.8+Redis&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
-    
-    
-      <category term="java电商项目" scheme="http://yoursite.com/tags/java%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/"/>
     
   </entry>
   
@@ -478,30 +502,6 @@ print(math.pi)
     
     
       <category term="Python 第二章：Python语言基础" scheme="http://yoursite.com/tags/Python-%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9APython%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>XShell远程连接阿里云服务器（CentOS）</title>
-    <link href="http://yoursite.com/2019/06/06/xshell-aliyun/"/>
-    <id>http://yoursite.com/2019/06/06/xshell-aliyun/</id>
-    <published>2019-06-05T16:00:00.000Z</published>
-    <updated>2019-06-06T03:11:11.525Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="XShell"><a href="#XShell" class="headerlink" title="XShell"></a>XShell</h3><p>Xshell是一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及Microsoft Windows 平台的TELNET 协议。Xshell 通过互联网到远程主机的安全连接以及它创新性的设计和特色帮助用户在复杂的网络环境中享受他们的工作。<br>Xshell可以在Windows界面下用来访问远端不同系统下的服务器，从而比较好的达到远程控制终端的目的。除此之外，其还有丰富的外观配色方案以及样式选择。（百度百科）</p><a id="more"></a><h3 id="获取XShell"><a href="#获取XShell" class="headerlink" title="获取XShell"></a>获取XShell</h3><p>XShell是一款收费软件，现在已经更新到XSHell6了。</p><p><img src="https://i.loli.net/2019/06/06/5cf87ab319b3768005.png" alt></p><ul><li>你可以免费试用30天</li><li>你可以花钱购买</li><li>如果只是学习，申请一个家庭/学校免费版的就够了</li></ul><h3 id="家庭-学校免费版获取"><a href="#家庭-学校免费版获取" class="headerlink" title="家庭/学校免费版获取"></a>家庭/学校免费版获取</h3><p><a href="https://www.netsarang.com/zh/free-for-home-school/" target="_blank" rel="noopener">获取地址</a></p><p><img src="https://i.loli.net/2019/06/06/5cf87c1ccea3c98736.png" alt></p><ul><li>填写姓名</li><li>填写邮件（会通过邮箱的方式发送下载链接）</li><li>选择你的需求<ul><li>XShell</li><li>Xftp</li><li>两者</li></ul></li></ul><h3 id="远程连接（秘钥连接）"><a href="#远程连接（秘钥连接）" class="headerlink" title="远程连接（秘钥连接）"></a>远程连接（秘钥连接）</h3><p>有多种连接方式，这里只介绍采用秘钥连接的方式进行演示。其中，秘钥连接有服务器端生成秘钥，XShell导入秘钥文件；另外一种是XShell生成秘钥，服务器导入秘钥文件。</p><h4 id="第一种，XShell生成秘钥（一连接远程主机，进行SSH用户身份验证）"><a href="#第一种，XShell生成秘钥（一连接远程主机，进行SSH用户身份验证）" class="headerlink" title="第一种，XShell生成秘钥（一连接远程主机，进行SSH用户身份验证）"></a>第一种，XShell生成秘钥（一连接远程主机，进行SSH用户身份验证）</h4><ul><li>浏览-&gt;用户秘钥-&gt;生成 <ul><li>生成后记得保存*.pem文件</li></ul></li></ul><p><img src="https://i.loli.net/2019/06/06/5cf87f571744118337.png" alt></p><ul><li>服务器端导入秘钥文件</li></ul><p><img src="https://i.loli.net/2019/06/06/5cf881940817d69889.png" alt></p><h4 id="第二种，服务器端生成秘钥文件，XShell导入秘钥文件进行连接登录"><a href="#第二种，服务器端生成秘钥文件，XShell导入秘钥文件进行连接登录" class="headerlink" title="第二种，服务器端生成秘钥文件，XShell导入秘钥文件进行连接登录"></a>第二种，服务器端生成秘钥文件，XShell导入秘钥文件进行连接登录</h4><ul><li>远程连接-&gt;秘钥管理</li></ul><p><img src="https://i.loli.net/2019/06/06/5cf882623732343127.png" alt></p><ul><li><p>XShell导入秘钥文件</p></li><li><p>预览-&gt;文件<br><img src="https://i.loli.net/2019/06/06/5cf8832de4fb126614.png" alt></p></li><li><p>输入密码</p></li><li><p>连接成功</p></li></ul><p><img src="https://i.loli.net/2019/06/06/5cf883f41e45494561.png" alt></p><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><p>   更多精彩内容，欢迎扫码关注“<strong><em>原味工厂</em></strong>”</p><p><img src="https://i.loli.net/2019/05/29/5cee65d5eb54688976.jpg" alt="8454929096314a5.jpg"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;XShell&quot;&gt;&lt;a href=&quot;#XShell&quot; class=&quot;headerlink&quot; title=&quot;XShell&quot;&gt;&lt;/a&gt;XShell&lt;/h3&gt;&lt;p&gt;Xshell是一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及Microsoft Windows 平台的TELNET 协议。Xshell 通过互联网到远程主机的安全连接以及它创新性的设计和特色帮助用户在复杂的网络环境中享受他们的工作。&lt;br&gt;Xshell可以在Windows界面下用来访问远端不同系统下的服务器，从而比较好的达到远程控制终端的目的。除此之外，其还有丰富的外观配色方案以及样式选择。（百度百科）&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
-    
-    
-      <category term="XShell" scheme="http://yoursite.com/tags/XShell/"/>
-    
-      <category term="服务器" scheme="http://yoursite.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
   </entry>
   
